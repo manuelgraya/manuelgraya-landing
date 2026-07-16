@@ -1,0 +1,13 @@
+#!/bin/sh
+# Hook post-receive: despliega la web al hacer push.
+# Vive en el servidor: ~/repos/landing.git/hooks/post-receive
+WEB_ROOT="/srv/landing"
+GIT_DIR="$HOME/repos/landing.git"
+
+while read oldrev newrev refname; do
+    if [ "$refname" = "refs/heads/main" ]; then
+        echo ">> Desplegando main en $WEB_ROOT ..."
+        git --work-tree="$WEB_ROOT" --git-dir="$GIT_DIR" checkout -f main
+        echo ">> Despliegue completado: $(date '+%Y-%m-%d %H:%M:%S')"
+    fi
+done

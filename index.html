@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>manuelgraya | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link href="./css/output.css" rel="stylesheet">
+</head>
+<body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface dark:bg-inverse-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]">
+<div class="flex items-center gap-3">
+<img alt="Logo" class="w-10 h-10 pixel-border bg-primary-fixed" src="./assets/logo.jpg">
+<span class="font-headline-md text-headline-md text-primary uppercase tracking-tighter font-pixel text-[14px]">manuelgraya</span>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-secondary font-bold border-b-4 border-secondary font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="#proyectos">Proyectos</a>
+<a class="text-on-surface-variant hover:text-primary font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="#sobre-mi">Sobre Mí</a>
+<a class="text-on-surface-variant hover:text-primary transition-all flex items-center gap-1" href="https://github.com">
+<span class="material-symbols-outlined">terminal</span>
+</a>
+</nav>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary text-3xl">menu</span>
+</div>
+</header>
+<main class="pt-24 pb-12 max-w-container-max mx-auto px-margin">
+<!-- Hero Section -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
+<div class="relative group">
+<div class="absolute -inset-2 bg-primary-container z-0"></div>
+<img class="relative z-10 w-full pixel-border object-cover aspect-square" alt="Ilustración pixel art de un programador con su gato trabajando en un portátil" src="./assets/hero.jpg">
+</div>
+<div class="pixel-border bg-surface-container p-8 flex flex-col gap-6">
+<div class="flex items-center gap-2">
+<span class="w-4 h-4 bg-error rounded-full"></span>
+<span class="w-4 h-4 bg-primary rounded-full"></span>
+<span class="w-4 h-4 bg-secondary rounded-full"></span>
+</div>
+<div>
+<h1 class="font-pixel text-[24px] text-primary mb-4 leading-tight">Explorando el Software Libre</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Filosofía, Código, y Gatos</p>
+</div>
+<div class="terminal-container">
+<p class="text-[14px] leading-relaxed">
+    &gt; whoami<br>
+    &gt; Manuel Graya<br>
+    &gt; Full-stack Artisan<br>
+    &gt; Penguin Enthusiast<br>
+<span class="cursor"></span>
+</p>
+</div>
+<div class="flex gap-4">
+<button class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px]">Contratar</button>
+<button class="pixel-button bg-surface-container-highest text-on-surface px-6 py-2 font-label-sm uppercase tracking-widest text-[12px]">Descargar CV</button>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="mb-24" id="proyectos">
+<div class="flex items-center gap-4 mb-12">
+<h2 class="font-pixel text-[20px] text-primary uppercase">Proyectos</h2>
+<div class="h-1 flex-grow bg-on-surface"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="pixel-border bg-surface-container-low p-6 flex flex-col group hover:bg-white transition-colors">
+<div class="bg-primary-fixed-dim w-16 h-16 pixel-border mb-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-primary">terminal</span>
+</div>
+<h3 class="font-pixel text-[12px] mb-4 text-on-surface">Kernel Explorer</h3>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Visualizador de llamadas al sistema en tiempo real para entornos Unix.</p>
+<div class="flex gap-3">
+<button class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel">Código</button>
+<button class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel">Demo</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="pixel-border bg-surface-container-low p-6 flex flex-col group hover:bg-white transition-colors">
+<div class="bg-secondary-fixed-dim w-16 h-16 pixel-border mb-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-secondary">potted_plant</span>
+</div>
+<h3 class="font-pixel text-[12px] mb-4 text-on-surface">Gatito de Tareas</h3>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Task manager minimalista donde un gato pixelado te anima a terminar.</p>
+<div class="flex gap-3">
+<button class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel">Código</button>
+<button class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel">Demo</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="pixel-border bg-surface-container-low p-6 flex flex-col group hover:bg-white transition-colors">
+<div class="bg-tertiary-fixed-dim w-16 h-16 pixel-border mb-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-tertiary">database</span>
+</div>
+<h3 class="font-pixel text-[12px] mb-4 text-on-surface">Open Coffee Map</h3>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Mapa colaborativo de cafeterías con buen Wi-Fi y enchufes.</p>
+<div class="flex gap-3">
+<button class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel">Código</button>
+<button class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel">Demo</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="pixel-border bg-surface-container-low p-6 flex flex-col group hover:bg-white transition-colors">
+<div class="bg-primary-container w-16 h-16 pixel-border mb-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-on-primary-container">shield</span>
+</div>
+<h3 class="font-pixel text-[12px] mb-4 text-on-surface">Auth Pixel</h3>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Protocolo de autenticación visual basado en patrones de píxeles.</p>
+<div class="flex gap-3">
+<button class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel">Código</button>
+<button class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel">Demo</button>
+</div>
+</div>
+</div>
+</section>
+<!-- About Me Section -->
+<section class="mb-24 grid grid-cols-1 md:grid-cols-3 gap-8" id="sobre-mi">
+<div class="md:col-span-2 pixel-border bg-surface p-8">
+<h2 class="font-pixel text-[20px] text-primary mb-8 uppercase">Sobre Mí</h2>
+<div class="space-y-6 font-body-lg text-body-lg">
+<p>Empecé mi viaje en el mundo del código con una vieja Commodore y desde entonces no he parado de construir. Creo firmemente en la democratización del software y la transparencia del código.</p>
+<p>Cuando no estoy optimizando queries o depurando kernels, me encontrarás buscando la taza perfecta de café o jugando con mis tres gatos. Mi flujo de trabajo es 100% terminal-driven y fanático de Linux.</p>
+</div>
+<div class="mt-8 flex flex-wrap gap-4">
+<span class="px-3 py-1 pixel-border bg-secondary-container text-on-secondary-container font-label-sm">#Rust</span>
+<span class="px-3 py-1 pixel-border bg-secondary-container text-on-secondary-container font-label-sm">#Go</span>
+<span class="px-3 py-1 pixel-border bg-secondary-container text-on-secondary-container font-label-sm">#TypeScript</span>
+<span class="px-3 py-1 pixel-border bg-secondary-container text-on-secondary-container font-label-sm">#Linux</span>
+<span class="px-3 py-1 pixel-border bg-secondary-container text-on-secondary-container font-label-sm">#Docker</span>
+</div>
+</div>
+<div class="pixel-border bg-surface-container-highest p-4 flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#1e1c11 2px, transparent 0); background-size: 16px 16px;"></div>
+<div class="text-center">
+<span class="material-symbols-outlined text-[120px] text-primary mb-4" style="font-variation-settings: 'FILL' 1;">pets</span>
+<p class="font-pixel text-[10px] uppercase">Gatos &amp; Código</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-inverse-surface text-on-surface-variant border-t-8 border-primary py-12 px-margin">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white flex items-center justify-center pixel-border">
+<span class="material-symbols-outlined text-4xl text-on-surface" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div>
+<h4 class="font-pixel text-[12px] text-white">manuelgraya</h4>
+<p class="font-label-sm text-surface-variant">© 2026 - Made with pixels</p>
+</div>
+</div>
+<div class="flex gap-8">
+<a class="font-label-sm hover:text-secondary underline transition-colors" href="#">GitHub</a>
+<a class="font-label-sm hover:text-secondary transition-colors" href="#">LinkedIn</a>
+<a class="font-label-sm hover:text-secondary transition-colors" href="#">RSS</a>
+</div>
+<p class="font-label-sm text-center md:text-right">
+    Powered by Open Source and Coffee
+</p>
+</div>
+</footer>
+</body>
+</html>

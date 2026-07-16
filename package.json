@@ -1,0 +1,13 @@
+{
+  "name": "manuelgraya-landing",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i src/input.css -o css/output.css --minify",
+    "watch": "tailwindcss -i src/input.css -o css/output.css --watch",
+    "serve": "python -m http.server 8080"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
