@@ -18,6 +18,7 @@
 <nav class="hidden md:flex gap-8 items-center">
 <a class="text-secondary font-bold border-b-4 border-secondary font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="#proyectos">Proyectos</a>
 <a class="text-on-surface-variant hover:text-primary font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="#sobre-mi">Sobre Mí</a>
+<a class="text-on-surface-variant hover:text-primary font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="#contacto">Contacto</a>
 <a class="text-on-surface-variant hover:text-primary transition-all flex items-center gap-1" href="https://github.com">
 <span class="material-symbols-outlined">terminal</span>
 </a>
@@ -41,20 +42,19 @@
 </div>
 <div>
 <h1 class="font-pixel text-[24px] text-primary mb-4 leading-tight">Explorando el Software Libre</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Filosofía, Código, y Gatos</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Pragmatismo, Código y Curiosidad </p>
 </div>
 <div class="terminal-container">
 <p class="text-[14px] leading-relaxed">
     &gt; whoami<br>
     &gt; Manuel Graya<br>
-    &gt; Full-stack Artisan<br>
-    &gt; Penguin Enthusiast<br>
+    &gt; Devops Engineer<br>
+    &gt; Open source Enthusiast<br>
 <span class="cursor"></span>
 </p>
 </div>
 <div class="flex gap-4">
-<button class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px]">Contratar</button>
-<button class="pixel-button bg-surface-container-highest text-on-surface px-6 py-2 font-label-sm uppercase tracking-widest text-[12px]">Descargar CV</button>
+<a href="#contacto" class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px] text-center">Contactar</a>
 </div>
 </div>
 </section>
@@ -70,8 +70,8 @@
 <div class="bg-primary-fixed-dim w-16 h-16 pixel-border mb-6 flex items-center justify-center">
 <span class="material-symbols-outlined text-4xl text-primary">terminal</span>
 </div>
-<h3 class="font-pixel text-[12px] mb-4 text-on-surface">Kernel Explorer</h3>
-<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Visualizador de llamadas al sistema en tiempo real para entornos Unix.</p>
+<h3 class="font-pixel text-[12px] mb-4 text-on-surface">Web Psicóloga</h3>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Web diseñada para una psicóloga, para facilitar la comunicación, captación de clientes y gestión de citas.</p>
 <div class="flex gap-3">
 <button class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel">Código</button>
 <button class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel">Demo</button>
@@ -137,6 +137,42 @@
 <span class="material-symbols-outlined text-[120px] text-primary mb-4" style="font-variation-settings: 'FILL' 1;">pets</span>
 <p class="font-pixel text-[10px] uppercase">Gatos &amp; Código</p>
 </div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="mb-24" id="contacto">
+<div class="flex items-center gap-4 mb-12">
+<h2 class="font-pixel text-[20px] text-primary uppercase">Contacto</h2>
+<div class="h-1 flex-grow bg-on-surface"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+<div class="terminal-container">
+<p class="text-[14px] leading-relaxed">
+    &gt; mail --to manuelgraya<br>
+    &gt; ¿Un proyecto? ¿Una duda?<br>
+    &gt; ¿Una idea?<br>
+    &gt; Escríbeme y te respondo.<br>
+<span class="cursor"></span>
+</p>
+</div>
+<form action="https://formsubmit.co/manuel.ingraya@gmail.com" method="POST" class="pixel-border bg-surface-container p-8 flex flex-col gap-6">
+<input type="hidden" name="_subject" value="Nuevo mensaje desde la landing">
+<input type="hidden" name="_template" value="box">
+<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+<div class="flex flex-col gap-2">
+<label class="font-label-sm uppercase tracking-widest text-[12px]" for="nombre">Nombre</label>
+<input class="pixel-input" id="nombre" name="nombre" type="text" required placeholder="Ada Lovelace">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm uppercase tracking-widest text-[12px]" for="email">Email</label>
+<input class="pixel-input" id="email" name="email" type="email" required placeholder="ada@example.com">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm uppercase tracking-widest text-[12px]" for="mensaje">Mensaje</label>
+<textarea class="pixel-input" id="mensaje" name="mensaje" rows="5" required placeholder="Cuéntame tu idea..."></textarea>
+</div>
+<button type="submit" class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px]">Enviar</button>
+</form>
 </div>
 </section>
 </main>
