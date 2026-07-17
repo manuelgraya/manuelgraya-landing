@@ -2,9 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+}
+
+/* Que el título de la sección no quede oculto bajo el header fijo (h-16) */
+section[id] {
+    scroll-margin-top: 6rem;
+}
+
 body {
     background-color: #fff9ec;
     image-rendering: pixelated;
+}
+
+/* Menú móvil sin JS: se abre con #menu-movil en el hash y se cierra solo
+   al navegar a una sección (el hash cambia y deja de estar :target) */
+#menu-movil:target {
+    display: flex;
+}
+
+:root:has(#menu-movil:target) .abrir-menu {
+    display: none;
+}
+
+:root:has(#menu-movil:target) .cerrar-menu {
+    display: flex;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    .cursor {
+        animation: none;
+    }
 }
 
 /* Subrayado del nav siguiendo la sección visitada (:target), sin JS */

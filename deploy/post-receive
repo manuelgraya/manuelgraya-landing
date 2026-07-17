@@ -8,6 +8,13 @@ while read oldrev newrev refname; do
     if [ "$refname" = "refs/heads/main" ]; then
         echo ">> Desplegando main en $WEB_ROOT ..."
         git --work-tree="$WEB_ROOT" --git-dir="$GIT_DIR" checkout -f main
+        # Sustituye __BASE_URL__ por la URL pública, guardada fuera del repo
+        # en $GIT_DIR/base-url (una línea, sin barra final)
+        if [ -f "$GIT_DIR/base-url" ]; then
+            BASE_URL=$(cat "$GIT_DIR/base-url")
+            find "$WEB_ROOT" -maxdepth 1 -name '*.html' -exec sed -i "s|__BASE_URL__|$BASE_URL|g" {} +
+            echo ">> __BASE_URL__ -> $BASE_URL"
+        fi
         echo ">> Despliegue completado: $(date '+%Y-%m-%d %H:%M:%S')"
     fi
 done

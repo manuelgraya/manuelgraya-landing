@@ -4,6 +4,17 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>manuelgraya | Portfolio</title>
+<meta name="description" content="Portfolio de Manuel Graya, ingeniero DevOps. Proyectos, sobre mí y contacto. Hecho con píxeles, open source y café.">
+<meta name="theme-color" content="#fff9ec">
+<!-- __BASE_URL__ se sustituye por la URL pública en el hook de deploy -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="manuelgraya | Portfolio">
+<meta property="og:description" content="Portfolio de Manuel Graya, ingeniero DevOps. Proyectos, sobre mí y contacto.">
+<meta property="og:url" content="__BASE_URL__/">
+<meta property="og:image" content="__BASE_URL__/assets/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 <link href="./css/output.css" rel="stylesheet">
@@ -23,9 +34,18 @@
 <span class="material-symbols-outlined">terminal</span>
 </a>
 </nav>
-<div class="md:hidden">
+<a class="abrir-menu md:hidden flex items-center" href="#menu-movil" aria-label="Abrir menú">
 <span class="material-symbols-outlined text-primary text-3xl">menu</span>
-</div>
+</a>
+<a class="cerrar-menu hidden md:hidden items-center" href="#cerrar-menu" aria-label="Cerrar menú">
+<span class="material-symbols-outlined text-primary text-3xl">close</span>
+</a>
+<nav class="hidden md:hidden absolute top-full left-0 w-full flex-col bg-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]" id="menu-movil">
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="#proyectos">Proyectos</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="#sobre-mi">Sobre Mí</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="#contacto">Contacto</a>
+<a class="px-margin py-4 text-on-surface-variant font-label-sm text-label-sm uppercase flex items-center gap-2" href="https://github.com/manuelgraya"><span class="material-symbols-outlined">terminal</span>GitHub</a>
+</nav>
 </header>
 <main class="pt-24 pb-12 max-w-container-max mx-auto px-margin">
 <!-- Hero Section -->
@@ -157,6 +177,7 @@
 </div>
 <form action="https://formsubmit.co/manuel.ingraya@gmail.com" method="POST" class="pixel-border bg-surface-container p-8 flex flex-col gap-6">
 <input type="hidden" name="_subject" value="Nuevo mensaje desde la landing">
+<input type="hidden" name="_next" value="__BASE_URL__/gracias.html">
 <input type="hidden" name="_template" value="box">
 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 <div class="flex flex-col gap-2">
