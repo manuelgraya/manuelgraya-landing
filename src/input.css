@@ -103,6 +103,25 @@ body {
     }
 }
 
+/* "Ver más" tecnologías en /sobre-mi/, sin JS: checkbox oculto + label como
+   botón. .tech-extra usa display:contents para no romper el grid al
+   mostrarse */
+.tech-extra {
+    display: none;
+}
+
+#ver-mas-tech:checked ~ .tech-extra {
+    display: contents;
+}
+
+#ver-mas-tech:checked ~ .tech-toggle-mas {
+    display: none;
+}
+
+#ver-mas-tech:checked ~ .tech-toggle-menos {
+    display: inline-flex;
+}
+
 .pixel-border {
     border: 4px solid #1e1c11;
     box-shadow: 4px 4px 0px 0px #1e1c11;
