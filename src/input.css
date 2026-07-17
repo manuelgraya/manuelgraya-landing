@@ -76,6 +76,11 @@ body {
     box-shadow: inset 4px 4px 0px 0px #000;
 }
 
+/* Glow fósforo de la terminal de la 404 (diseño Stitch) */
+.terminal-glow {
+    text-shadow: 0 0 5px #7efba4;
+}
+
 .cursor {
     display: inline-block;
     width: 10px;

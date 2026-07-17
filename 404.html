@@ -3,40 +3,111 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>404 — Página no encontrada | manuelgraya</title>
+<title>404 — Ruta no encontrada | manuelgraya</title>
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#fff9ec">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Press+Start+2P&family=VT323&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 <link href="/css/output.css" rel="stylesheet">
 </head>
-<body class="font-body-md text-on-surface min-h-screen flex items-center justify-center px-margin">
-<main class="max-w-xl w-full flex flex-col gap-8">
-<div class="pixel-border bg-surface-container p-8 flex flex-col gap-6">
-<div class="flex items-center gap-2">
-<span class="w-4 h-4 bg-error rounded-full"></span>
-<span class="w-4 h-4 bg-primary rounded-full"></span>
-<span class="w-4 h-4 bg-secondary rounded-full"></span>
+<body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface dark:bg-inverse-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]">
+<div class="flex items-center gap-3">
+<img alt="Logo" class="w-10 h-10 pixel-border bg-primary-fixed" src="/assets/logo.jpg">
+<span class="font-headline-md text-headline-md text-primary uppercase tracking-tighter font-pixel text-[14px]">manuelgraya</span>
 </div>
-<div class="flex items-center gap-6">
-<h1 class="font-pixel text-[40px] text-error leading-none">404</h1>
-<span class="material-symbols-outlined text-[64px] text-primary" style="font-variation-settings: 'FILL' 1;">pets</span>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/index.html#proyectos">Proyectos</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/index.html#sobre-mi">Sobre Mí</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/index.html#contacto">Contacto</a>
+<a class="text-on-surface-variant hover:text-primary transition-all flex items-center gap-1" href="https://github.com/manuelgraya">
+<span class="material-symbols-outlined">terminal</span>
+</a>
+</nav>
+<a class="abrir-menu md:hidden flex items-center" href="#menu-movil" aria-label="Abrir menú">
+<span class="material-symbols-outlined text-primary text-3xl">menu</span>
+</a>
+<a class="cerrar-menu hidden md:hidden items-center" href="#cerrar-menu" aria-label="Cerrar menú">
+<span class="material-symbols-outlined text-primary text-3xl">close</span>
+</a>
+<nav class="hidden md:hidden absolute top-full left-0 w-full flex-col bg-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]" id="menu-movil">
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/index.html#proyectos">Proyectos</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/index.html#sobre-mi">Sobre Mí</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/index.html#contacto">Contacto</a>
+<a class="px-margin py-4 text-on-surface-variant font-label-sm text-label-sm uppercase flex items-center gap-2" href="https://github.com/manuelgraya"><span class="material-symbols-outlined">terminal</span>GitHub</a>
+</nav>
+</header>
+<main class="min-h-screen pt-32 pb-20 px-margin flex flex-col items-center justify-center text-center">
+<!-- Código de error -->
+<div class="mb-8">
+<h1 class="font-pixel text-primary uppercase tracking-widest mb-6 leading-none" style="font-size: clamp(40px, 9vw, 88px);">404</h1>
+<h2 class="font-headline-md text-headline-md text-on-surface-variant uppercase inline-block px-4 py-2 bg-surface-container-low pixel-border" style="border-bottom-color: #6f4627;">Ruta no encontrada</h2>
 </div>
-<p class="font-pixel text-[14px] text-primary uppercase leading-relaxed">Página no encontrada</p>
-<div class="terminal-container">
-<p class="text-[14px] leading-relaxed">
-    &gt; cd /esta-pagina<br>
-    &gt; bash: cd: /esta-pagina: No such file or directory<br>
-    &gt; El gato se ha comido esta página.<br>
-    &gt; exit 404<br>
+<!-- Terminal de informe de error -->
+<div class="relative w-full max-w-2xl mb-16 flex flex-col items-center">
+<div class="w-full bg-on-surface shadow-[8px_8px_0px_0px_#83746b] p-6 font-label-sm text-label-sm text-secondary-fixed text-left min-h-[240px] relative overflow-hidden">
+<div class="flex items-center gap-2 mb-4 border-b border-outline/40 pb-2">
+<span class="w-3 h-3 bg-error"></span>
+<span class="w-3 h-3 bg-secondary-container"></span>
+<span class="w-3 h-3 bg-primary-container"></span>
+<span class="ml-2 opacity-50">root@manuelgraya:~# informe_de_error</span>
+</div>
+<div class="terminal-glow space-y-2">
+<p class="text-[#ff6b5e] font-bold">FATAL: RESOURCE_NOT_FOUND</p>
+<p>&gt; escaneando el sistema de archivos...</p>
+<p>&gt; [ERR] Segmentation fault (core dumped)</p>
+<p>&gt; [ERR] El gato se ha comido esta página.</p>
+<p class="mt-4">&gt; ruta: /sys/kernel/navigation/missing_link</p>
+<p>&gt; estado: null_pointer_exception</p>
+<p class="mt-6 flex items-center gap-2">
+<span>_</span>
 <span class="cursor"></span>
 </p>
 </div>
-<div class="flex flex-wrap gap-4">
-<a href="/index.html" class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px] text-center">Volver al inicio</a>
-<a href="/index.html#proyectos" class="pixel-button bg-secondary text-on-secondary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px] text-center">Ver proyectos</a>
+</div>
+<!-- Cartel de aviso -->
+<div class="absolute -bottom-8 -right-2 md:-right-12 rotate-3 z-10">
+<div class="w-36 h-36 md:w-40 md:h-40 bg-error pixel-border flex flex-col items-center justify-center gap-3 text-on-error p-4">
+<span class="material-symbols-outlined text-[56px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="font-pixel text-[10px] leading-tight">SYSTEM ERROR</span>
 </div>
 </div>
+</div>
+<!-- Descripción -->
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-xl mb-12">
+    Error de segmentación: la ruta solicitada no existe en el sistema.
+    <br class="hidden md:block">
+    No te preocupes, los logs de error han sido generados y el kernel está intentando recuperarse.
+</p>
+<!-- Acción principal -->
+<a href="/index.html" class="pixel-button bg-secondary text-on-secondary font-headline-md text-headline-md uppercase px-10 py-5 inline-flex items-center gap-4">
+<span class="material-symbols-outlined text-3xl">home</span>
+    Volver al inicio
+</a>
 </main>
+<!-- Footer -->
+<footer class="w-full bg-inverse-surface text-on-surface-variant border-t-8 border-primary py-12 px-margin">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white flex items-center justify-center pixel-border">
+<span class="material-symbols-outlined text-4xl text-on-surface" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div>
+<h4 class="font-pixel text-[12px] text-white">manuelgraya</h4>
+<p class="font-label-sm text-surface-variant">© 2026 - Made with pixels</p>
+</div>
+</div>
+<div class="flex gap-8">
+<a class="font-label-sm hover:text-secondary underline transition-colors" href="https://github.com/manuelgraya">GitHub</a>
+<a class="font-label-sm hover:text-secondary transition-colors" href="https://www.linkedin.com/in/manuel-garcia-7023a0204/">LinkedIn</a>
+<a class="font-label-sm hover:text-secondary transition-colors" href="https://www.instagram.com/manuel.graya/">Instagram</a>
+</div>
+<p class="font-label-sm text-center md:text-right">
+    Powered by Open Source and Coffee
+</p>
+</div>
+</footer>
 </body>
 </html>
