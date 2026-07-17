@@ -39,12 +39,32 @@ body {
     }
 }
 
-/* Subrayado del nav siguiendo la sección visitada (:target), sin JS */
-:root:has(#proyectos:target) nav a[href="#proyectos"],
-:root:has(#sobre-mi:target) nav a[href="#sobre-mi"],
-:root:has(#contacto:target) nav a[href="#contacto"] {
+/* Subrayado del nav siguiendo la sección visitada (:target), sin JS.
+   El header es común (src/partials/header.html) y sus enlaces usan /#seccion */
+:root:has(#proyectos:target) header nav a[href="/#proyectos"],
+:root:has(#contacto:target) header nav a[href="/#contacto"] {
     @apply text-secondary font-bold border-secondary;
 }
+
+/* En /sobre-mi/ el enlace de la propia página queda marcado activo */
+.pagina-sobre-mi header nav a[href="/sobre-mi/"] {
+    @apply text-secondary font-bold border-secondary;
+}
+
+/* Página /sobre-mi/: tipografía del mockup de Stitch. Sus tokens difieren de
+   los del index (Courier Prime 16/18px en vez de VT323 20/24px, headlines y
+   labels más pequeños). Scoped a main/footer para NO afectar al header común */
+.pagina-sobre-mi.font-body-md,
+.pagina-sobre-mi :is(main, footer) .font-body-md,
+.pagina-sobre-mi :is(main, footer) .font-body-lg {
+    font-family: 'Courier Prime', monospace;
+}
+
+.pagina-sobre-mi :is(main, footer) .text-body-lg { font-size: 18px; line-height: 28px; }
+.pagina-sobre-mi :is(main, footer) .text-body-md { font-size: 16px; line-height: 24px; }
+.pagina-sobre-mi :is(main, footer) .text-headline-lg { font-size: 32px; line-height: 40px; }
+.pagina-sobre-mi :is(main, footer) .text-headline-md { font-size: 24px; line-height: 32px; }
+.pagina-sobre-mi :is(main, footer) .text-label-sm { font-size: 12px; }
 
 .pixel-border {
     border: 4px solid #1e1c11;

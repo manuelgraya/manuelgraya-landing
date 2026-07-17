@@ -7,9 +7,11 @@ Portfolio") y se adaptó a build local.
 
 ## Estructura
 
-- `index.html` — toda la página (hero con terminal animada, Proyectos, Sobre Mí, footer)
-- `src/input.css` — directivas Tailwind + clases custom (`.pixel-border`, `.pixel-button`, `.terminal-container`, `.cursor`)
-- `css/output.css` — CSS compilado y minificado. **Se commitea**: el servidor no tiene Node y sirve estáticos tal cual
+- `index.html` — página principal (hero con terminal animada, Proyectos, Sobre Mí, footer)
+- `sobre-mi/index.html` — página /sobre-mi/ (trayectoria, expertise, workflow, valores), adaptada del mockup de Stitch "manuelgraya - Sobre Mí"
+- `src/input.css` — directivas Tailwind + clases custom (`.pixel-border`, `.pixel-button`, `.terminal-container`, `.cursor`) + overrides tipográficos de /sobre-mi/ y estados activos del nav
+- `src/partials/` — **único sitio donde se editan header y footer** (`header.html`, `footer.html`). `npm run build` ejecuta `src/inyectar-partials.js`, que los pega idénticos entre los marcadores `<!-- header-comun -->` / `<!-- footer-comun -->` de index, 404 y sobre-mi. No editarlos inline en las páginas: el build lo machaca. El enlace activo por página se marca vía CSS (clase `pagina-sobre-mi` en el body)
+- `css/output.css` — CSS compilado y minificado. **Se commitea**: el servidor no tiene Node y sirve estáticos tal cual. nginx lo sirve sin Cache-Control y los navegadores cachean versiones viejas: al cambiar estilos hay que subir el `?v=` del `<link>` de output.css en TODOS los html
 - `tailwind.config.js` — tema del diseño: paleta Material-style (tonos madera/pergamino + verde terminal), `borderRadius: 0` (pixel art), fuentes monoespaciadas
 - `assets/` — imágenes descargadas del mockup (los enlaces de googleusercontent de Stitch caducan; nunca enlazar a ellos)
 - `deploy/` — scripts de aprovisionamiento del servidor (referencia; ya ejecutados)

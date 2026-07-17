@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "tailwindcss -i src/input.css -o css/output.css --minify",
+    "build": "node src/inyectar-partials.js && tailwindcss -i src/input.css -o css/output.css --minify",
     "watch": "tailwindcss -i src/input.css -o css/output.css --watch",
     "serve": "python -m http.server 8080"
   },

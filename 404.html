@@ -9,36 +9,42 @@
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link href="/css/output.css?v=20260717a" rel="stylesheet">
+<link href="/css/output.css?v=20260717c" rel="stylesheet">
 </head>
 <body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
-<!-- TopAppBar -->
+<!-- header-comun -->
+<!-- TopAppBar común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
+     (src/inyectar-partials.js lo pega entre los marcadores header-comun de cada página).
+     El enlace activo por página se marca vía CSS en src/input.css, no aquí. -->
 <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface dark:bg-inverse-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]">
-<div class="flex items-center gap-3">
+<a class="flex items-center gap-3" href="/">
 <img alt="Logo" class="w-10 h-10 pixel-border bg-primary-fixed" src="/assets/logo.jpg">
 <span class="font-headline-md text-headline-md text-primary uppercase tracking-tighter font-pixel text-[14px]">manuelgraya</span>
-</div>
+</a>
 <nav class="hidden md:flex gap-8 items-center">
-<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/index.html#proyectos">Proyectos</a>
-<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/index.html#sobre-mi">Sobre Mí</a>
-<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/index.html#contacto">Contacto</a>
-<a class="text-on-surface-variant hover:text-primary transition-all flex items-center gap-1" href="https://github.com/manuelgraya">
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/#proyectos">Proyectos</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/sobre-mi/">Sobre Mí</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/#contacto">Contacto</a>
+</nav>
+<div class="flex items-center gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-all flex items-center gap-1" href="https://github.com/manuelgraya" aria-label="GitHub">
 <span class="material-symbols-outlined">terminal</span>
 </a>
-</nav>
 <a class="abrir-menu md:hidden flex items-center" href="#menu-movil" aria-label="Abrir menú">
 <span class="material-symbols-outlined text-primary text-3xl">menu</span>
 </a>
 <a class="cerrar-menu hidden md:hidden items-center" href="#cerrar-menu" aria-label="Cerrar menú">
 <span class="material-symbols-outlined text-primary text-3xl">close</span>
 </a>
+</div>
 <nav class="hidden md:hidden absolute top-full left-0 w-full flex-col bg-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]" id="menu-movil">
-<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/index.html#proyectos">Proyectos</a>
-<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/index.html#sobre-mi">Sobre Mí</a>
-<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/index.html#contacto">Contacto</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/#proyectos">Proyectos</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/sobre-mi/">Sobre Mí</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/#contacto">Contacto</a>
 <a class="px-margin py-4 text-on-surface-variant font-label-sm text-label-sm uppercase flex items-center gap-2" href="https://github.com/manuelgraya"><span class="material-symbols-outlined">terminal</span>GitHub</a>
 </nav>
 </header>
+<!-- /header-comun -->
 <main class="min-h-screen pt-32 pb-20 px-margin flex flex-col items-center justify-center text-center">
 <!-- Código de error -->
 <div class="mb-8">
@@ -87,27 +93,29 @@
     Volver al inicio
 </a>
 </main>
-<!-- Footer -->
-<footer class="w-full bg-inverse-surface text-on-surface-variant border-t-8 border-primary py-12 px-margin">
-<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-white flex items-center justify-center pixel-border">
-<span class="material-symbols-outlined text-4xl text-on-surface" style="font-variation-settings: 'FILL' 1;">terminal</span>
-</div>
-<div>
-<h4 class="font-pixel text-[12px] text-white">manuelgraya</h4>
-<p class="font-label-sm text-surface-variant">© 2026 - Made with pixels</p>
-</div>
+<!-- footer-comun -->
+<!-- Footer común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
+     (src/inyectar-partials.js lo pega entre los marcadores footer-comun de cada página). -->
+<footer class="w-full py-gutter px-margin bg-surface-container border-t-4 border-primary">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-headline-lg text-headline-lg text-primary">manuelgraya</span>
+<p class="font-label-sm text-label-sm text-on-surface mt-2">© 2026 - Made with pixels</p>
 </div>
 <div class="flex gap-8">
-<a class="font-label-sm hover:text-secondary underline transition-colors" href="https://github.com/manuelgraya">GitHub</a>
-<a class="font-label-sm hover:text-secondary transition-colors" href="https://www.linkedin.com/in/manuel-garcia-7023a0204/">LinkedIn</a>
-<a class="font-label-sm hover:text-secondary transition-colors" href="https://www.instagram.com/manuel.graya/">Instagram</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://github.com/manuelgraya">GitHub</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://www.linkedin.com/in/manuel-garcia-7023a0204/">LinkedIn</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://www.instagram.com/manuel.graya/">Instagram</a>
 </div>
-<p class="font-label-sm text-center md:text-right">
-    Powered by Open Source and Coffee
-</p>
+<div class="flex flex-col items-center md:items-end gap-2">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
+<span class="font-label-sm text-label-sm text-on-surface">SYSTEM_ONLINE</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Powered by Open Source and Coffee</p>
+</div>
 </div>
 </footer>
+<!-- /footer-comun -->
 </body>
 </html>
