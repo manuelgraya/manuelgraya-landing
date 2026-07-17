@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link href="./css/output.css?v=20260717d" rel="stylesheet">
+<link href="./css/output.css?v=20260717j" rel="stylesheet">
 </head>
 <body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- header-comun -->
@@ -26,13 +26,13 @@
      El enlace activo por página se marca vía CSS en src/input.css, no aquí. -->
 <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface dark:bg-inverse-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]">
 <a class="flex items-center gap-3" href="/">
-<img alt="Logo" class="w-10 h-10 pixel-border bg-primary-fixed" src="/assets/logo.jpg">
-<span class="font-headline-md text-headline-md text-primary uppercase tracking-tighter font-pixel text-[14px]">manuelgraya</span>
+<img alt="Logo" class="h-11 w-auto" src="/assets/logo.png">
+<span class="text-primary uppercase tracking-tighter font-pixel text-[11px] md:text-[14px]">manuelgraya</span>
 </a>
 <nav class="hidden md:flex gap-8 items-center md:absolute md:left-1/2 md:-translate-x-1/2">
-<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/#proyectos">Proyectos</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/proyectos/">Proyectos</a>
 <a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/sobre-mi/">Sobre Mí</a>
-<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/#contacto">Contacto</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/contacto/">Contacto</a>
 </nav>
 <div class="flex items-center gap-4">
 <a class="text-on-surface-variant hover:text-primary transition-all flex items-center gap-1" href="https://github.com/manuelgraya" aria-label="GitHub">
@@ -46,9 +46,9 @@
 </a>
 </div>
 <nav class="hidden md:hidden absolute top-full left-0 w-full flex-col bg-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]" id="menu-movil">
-<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/#proyectos">Proyectos</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/proyectos/">Proyectos</a>
 <a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/sobre-mi/">Sobre Mí</a>
-<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/#contacto">Contacto</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/contacto/">Contacto</a>
 <a class="px-margin py-4 text-on-surface-variant font-label-sm text-label-sm uppercase flex items-center gap-2" href="https://github.com/manuelgraya"><span class="material-symbols-outlined">terminal</span>GitHub</a>
 </nav>
 </header>
@@ -90,55 +90,45 @@
 <h2 class="font-pixel text-[20px] text-primary uppercase">Proyectos</h2>
 <div class="h-1 flex-grow bg-on-surface"></div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
-<!-- Card 1 -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Web angelagarciapsicologia -->
 <div class="pixel-border bg-surface-container-low p-6 flex flex-col group hover:bg-white transition-colors">
 <div class="bg-primary-fixed-dim w-16 h-16 pixel-border mb-6 flex items-center justify-center">
-<span class="material-symbols-outlined text-4xl text-primary">terminal</span>
+<span class="material-symbols-outlined text-4xl text-primary">psychology</span>
 </div>
 <h3 class="font-pixel text-[12px] mb-4 text-on-surface">Web Psicóloga</h3>
-<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Web diseñada para una psicóloga, para facilitar la comunicación, captación de clientes y gestión de citas.</p>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Web para una consulta de psicología: presencia online, captación de clientes y gestión de citas. En producción con Django y Nginx.</p>
 <div class="flex gap-3">
-<button class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel">Código</button>
-<button class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel">Demo</button>
+<a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel" href="/proyectos/#aviso-codigo-privado">Código</a>
+<a class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel" href="https://angelagarciapsicologia.com/">Demo</a>
 </div>
 </div>
-<!-- Card 2 -->
+<!-- Landing manuelgraya -->
 <div class="pixel-border bg-surface-container-low p-6 flex flex-col group hover:bg-white transition-colors">
 <div class="bg-secondary-fixed-dim w-16 h-16 pixel-border mb-6 flex items-center justify-center">
-<span class="material-symbols-outlined text-4xl text-secondary">potted_plant</span>
+<span class="material-symbols-outlined text-4xl text-secondary">terminal</span>
 </div>
-<h3 class="font-pixel text-[12px] mb-4 text-on-surface">Gatito de Tareas</h3>
-<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Task manager minimalista donde un gato pixelado te anima a terminar.</p>
+<h3 class="font-pixel text-[12px] mb-4 text-on-surface">Landing manuelgraya</h3>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Esta misma web: HTML estático y Tailwind, sin JS en producción. Deploy con git push a un servidor propio con Nginx.</p>
 <div class="flex gap-3">
-<button class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel">Código</button>
-<button class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel">Demo</button>
+<a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel" href="https://github.com/manuelgraya/manuelgraya-landing">Código</a>
+<a class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel" href="/">Demo</a>
 </div>
 </div>
-<!-- Card 3 -->
+<!-- Lista RRPP Bot -->
 <div class="pixel-border bg-surface-container-low p-6 flex flex-col group hover:bg-white transition-colors">
 <div class="bg-tertiary-fixed-dim w-16 h-16 pixel-border mb-6 flex items-center justify-center">
-<span class="material-symbols-outlined text-4xl text-tertiary">database</span>
+<span class="material-symbols-outlined text-4xl text-tertiary">smart_toy</span>
 </div>
-<h3 class="font-pixel text-[12px] mb-4 text-on-surface">Open Coffee Map</h3>
-<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Mapa colaborativo de cafeterías con buen Wi-Fi y enchufes.</p>
+<h3 class="font-pixel text-[12px] mb-4 text-on-surface">Lista RRPP Bot</h3>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Bot de Telegram para que los RRPP de una discoteca gestionen sus listas de invitados, con envío automático del PDF consolidado por correo.</p>
 <div class="flex gap-3">
-<button class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel">Código</button>
-<button class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel">Demo</button>
+<a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel" href="/proyectos/#aviso-codigo-privado">Código</a>
 </div>
 </div>
-<!-- Card 4 -->
-<div class="pixel-border bg-surface-container-low p-6 flex flex-col group hover:bg-white transition-colors">
-<div class="bg-primary-container w-16 h-16 pixel-border mb-6 flex items-center justify-center">
-<span class="material-symbols-outlined text-4xl text-on-primary-container">shield</span>
 </div>
-<h3 class="font-pixel text-[12px] mb-4 text-on-surface">Auth Pixel</h3>
-<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Protocolo de autenticación visual basado en patrones de píxeles.</p>
-<div class="flex gap-3">
-<button class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel">Código</button>
-<button class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel">Demo</button>
-</div>
-</div>
+<div class="mt-12 flex justify-center">
+<a href="/proyectos/" class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px] inline-block">Todos los proyectos</a>
 </div>
 </section>
 <!-- About Me Section -->
@@ -162,9 +152,9 @@
 </div>
 <div class="pixel-border bg-surface-container-highest p-4 flex items-center justify-center relative overflow-hidden">
 <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#1e1c11 2px, transparent 0); background-size: 16px 16px;"></div>
-<div class="text-center">
-<span class="material-symbols-outlined text-[120px] text-primary mb-4" style="font-variation-settings: 'FILL' 1;">pets</span>
-<p class="font-pixel text-[10px] uppercase">Gatos &amp; Código</p>
+<div class="text-center z-10">
+<img class="w-32 h-32 pixel-border object-cover mx-auto mb-4" alt="Logo de manuelgraya" src="./assets/logo.jpg">
+<p class="font-pixel text-[10px] uppercase">Código</p>
 </div>
 </div>
 </section>

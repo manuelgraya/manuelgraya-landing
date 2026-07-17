@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Contacto | manuelgraya</title>
+<meta name="description" content="Contacta con Manuel Graya: formulario, GitHub y LinkedIn. Respuesta en menos de 24h.">
+<meta name="theme-color" content="#fff9ec">
+<!-- __BASE_URL__ se sustituye por la URL pública en el hook de deploy -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Contacto | manuelgraya">
+<meta property="og:description" content="Contacta con Manuel Graya: formulario, GitHub y LinkedIn. Respuesta en menos de 24h.">
+<meta property="og:url" content="__BASE_URL__/contacto/">
+<meta property="og:image" content="__BASE_URL__/assets/logo.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="/css/output.css?v=20260717j" rel="stylesheet">
+</head>
+<body class="pagina-contacto bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- header-comun -->
+<!-- TopAppBar común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
+     (src/inyectar-partials.js lo pega entre los marcadores header-comun de cada página).
+     El enlace activo por página se marca vía CSS en src/input.css, no aquí. -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface dark:bg-inverse-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]">
+<a class="flex items-center gap-3" href="/">
+<img alt="Logo" class="h-11 w-auto" src="/assets/logo.png">
+<span class="text-primary uppercase tracking-tighter font-pixel text-[11px] md:text-[14px]">manuelgraya</span>
+</a>
+<nav class="hidden md:flex gap-8 items-center md:absolute md:left-1/2 md:-translate-x-1/2">
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/proyectos/">Proyectos</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/sobre-mi/">Sobre Mí</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/contacto/">Contacto</a>
+</nav>
+<div class="flex items-center gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-all flex items-center gap-1" href="https://github.com/manuelgraya" aria-label="GitHub">
+<span class="material-symbols-outlined">terminal</span>
+</a>
+<a class="abrir-menu md:hidden flex items-center" href="#menu-movil" aria-label="Abrir menú">
+<span class="material-symbols-outlined text-primary text-3xl">menu</span>
+</a>
+<a class="cerrar-menu hidden md:hidden items-center" href="#cerrar-menu" aria-label="Cerrar menú">
+<span class="material-symbols-outlined text-primary text-3xl">close</span>
+</a>
+</div>
+<nav class="hidden md:hidden absolute top-full left-0 w-full flex-col bg-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]" id="menu-movil">
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/proyectos/">Proyectos</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/sobre-mi/">Sobre Mí</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/contacto/">Contacto</a>
+<a class="px-margin py-4 text-on-surface-variant font-label-sm text-label-sm uppercase flex items-center gap-2" href="https://github.com/manuelgraya"><span class="material-symbols-outlined">terminal</span>GitHub</a>
+</nav>
+</header>
+<!-- /header-comun -->
+<main class="flex-grow pt-24 pb-12 px-margin max-w-container-max mx-auto w-full">
+<!-- Hero -->
+<section class="mb-12">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">./Contacto</h1>
+<div class="w-24 h-2 bg-primary mb-8"></div>
+<p class="font-body-lg text-body-lg max-w-2xl text-on-surface-variant">
+    Inicializando protocolo de comunicación... Rellena los datos de tu transmisión o usa las interfaces técnicas listadas debajo.
+</p>
+</section>
+<!-- Grid principal -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+<!-- Columna izquierda: Terminal Mail -->
+<section class="md:col-span-7">
+<div class="bg-surface-variant p-6 border-2 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)] h-full flex flex-col">
+<div class="flex items-center gap-2 mb-6 border-b-2 border-outline-variant pb-4">
+<span class="material-symbols-outlined text-primary">mail</span>
+<h2 class="font-headline-md text-headline-md text-primary">Terminal Mail</h2>
+</div>
+<form action="https://formsubmit.co/manuel.ingraya@gmail.com" method="POST" class="space-y-6 flex-grow flex flex-col">
+<input type="hidden" name="_subject" value="Nuevo mensaje desde /contacto/">
+<input type="hidden" name="_next" value="__BASE_URL__/gracias.html">
+<input type="hidden" name="_template" value="box">
+<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant" for="nombre">USER_IDENTIFICATION</label>
+<input class="w-full bg-surface border-2 border-on-surface shadow-[inset_2px_2px_0px_0px_rgba(30,28,17,0.2)] px-4 py-3 font-body-md text-body-md focus:outline-none focus:ring-0 focus:border-secondary" id="nombre" name="nombre" type="text" required placeholder="Linus Torvalds">
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant" for="email">RETURN_PATH_EMAIL</label>
+<input class="w-full bg-surface border-2 border-on-surface shadow-[inset_2px_2px_0px_0px_rgba(30,28,17,0.2)] px-4 py-3 font-body-md text-body-md focus:outline-none focus:ring-0 focus:border-secondary" id="email" name="email" type="email" required placeholder="linus@example.com">
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant" for="mensaje">MESSAGE_PAYLOAD</label>
+<textarea class="w-full bg-surface border-2 border-on-surface shadow-[inset_2px_2px_0px_0px_rgba(30,28,17,0.2)] px-4 py-3 font-body-md text-body-md focus:outline-none focus:ring-0 focus:border-secondary resize-none" id="mensaje" name="mensaje" rows="6" required placeholder="Cuéntame tu idea..."></textarea>
+</div>
+<button class="bg-primary text-on-primary font-headline-md text-headline-md px-8 py-4 border-2 border-on-surface shadow-[2px_2px_0px_0px_rgba(30,28,17,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all flex items-center gap-3 w-fit mt-auto" type="submit">
+<span>send --mensaje</span>
+<span class="material-symbols-outlined">send</span>
+</button>
+</form>
+</div>
+</section>
+<!-- Columna derecha: interfaces técnicas -->
+<aside class="md:col-span-5 space-y-8">
+<!-- Enlaces -->
+<div class="bg-surface-container-high p-6 border-2 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-secondary">cable</span>
+<h2 class="font-headline-md text-headline-md text-secondary">Interfaces Técnicas</h2>
+</div>
+<ul class="space-y-4">
+<li>
+<a class="flex items-center justify-between p-3 border-2 border-on-surface bg-surface hover:bg-secondary-container transition-colors group" href="https://github.com/manuelgraya">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">code</span>
+<span class="font-body-md text-body-md font-bold">GitHub</span>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</li>
+<li>
+<a class="flex items-center justify-between p-3 border-2 border-on-surface bg-surface hover:bg-secondary-container transition-colors group" href="https://www.linkedin.com/in/manuel-garcia-7023a0204/">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">person_add</span>
+<span class="font-body-md text-body-md font-bold">LinkedIn</span>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</li>
+<li class="flex items-center gap-3 p-3 border-2 border-on-surface bg-surface-container">
+<span class="material-symbols-outlined text-primary">alternate_email</span>
+<span class="font-body-md text-body-md break-all">manuel.ingraya@gmail.com</span>
+</li>
+</ul>
+</div>
+<!-- Log de conexión -->
+<div class="space-y-4">
+<h3 class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">terminal</span>
+    Log de conexión
+</h3>
+<div class="bg-on-surface text-secondary-fixed border-2 border-on-tertiary-fixed-variant shadow-[4px_4px_0px_0px_#5d4037] p-4 font-label-sm text-label-sm leading-relaxed overflow-x-auto">
+<div class="mb-2 text-surface-variant opacity-60"># uplink v2.1</div>
+<pre>$ mail --to manuelgraya --verbose
+&gt; Resolviendo host........ OK
+&gt; Abriendo canal seguro... OK
+&gt; Esperando payload del usuario...</pre>
+<div class="mt-2 flex items-center gap-2">
+<span class="cursor"></span>
+</div>
+</div>
+</div>
+<!-- Panel de estado -->
+<div class="border-2 border-on-surface p-4 bg-tertiary-container text-on-tertiary shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]">
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm uppercase">Node Status:</span>
+<span class="bg-secondary text-on-secondary px-2 py-0.5 font-label-sm text-label-sm font-bold uppercase">Online</span>
+</div>
+<div class="mt-2 h-1 bg-on-tertiary w-full opacity-20"></div>
+<p class="font-label-sm text-label-sm mt-3 opacity-90">Zona horaria: Europe/Madrid // Respuesta: &lt; 24h</p>
+</div>
+</aside>
+</div>
+<!-- Detalle visual -->
+<div class="relative w-full h-48 border-2 border-on-surface overflow-hidden bg-surface-container shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]">
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(#1e1c11_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="text-center px-4">
+<div class="font-headline-md text-headline-md opacity-20 break-all">01010111 01010010 01001001 01010100 01000101</div>
+<div class="font-label-sm text-label-sm uppercase tracking-widest opacity-40 mt-2">Conectando con Manuel...</div>
+</div>
+</div>
+</div>
+</main>
+<!-- footer-comun -->
+<!-- Footer común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
+     (src/inyectar-partials.js lo pega entre los marcadores footer-comun de cada página). -->
+<footer class="w-full py-gutter px-margin bg-surface-container border-t-4 border-primary">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white flex items-center justify-center pixel-border">
+<span class="material-symbols-outlined text-4xl text-on-surface" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div>
+<h4 class="font-pixel text-[12px] text-on-surface">manuelgraya</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">© 2026 - Made with pixels</p>
+</div>
+</div>
+<div class="flex gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://github.com/manuelgraya">GitHub</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://www.linkedin.com/in/manuel-garcia-7023a0204/">LinkedIn</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://www.instagram.com/manuel.graya/">Instagram</a>
+</div>
+<div class="flex flex-col items-center md:items-end gap-2">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
+<span class="font-label-sm text-label-sm text-on-surface">SYSTEM_ONLINE</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Powered by Open Source and Coffee</p>
+</div>
+</div>
+</footer>
+<!-- /footer-comun -->
+</body>
+</html>

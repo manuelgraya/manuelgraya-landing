@@ -4,20 +4,20 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Sobre Mí | manuelgraya</title>
-<meta name="description" content="Trayectoria y filosofía de Manuel Graya: software libre, Linux y desarrollo low-level.">
+<meta name="description" content="Trayectoria y filosofía de Manuel Graya: software libre, Linux y cultura DevOps.">
 <meta name="theme-color" content="#fff9ec">
 <!-- __BASE_URL__ se sustituye por la URL pública en el hook de deploy -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:title" content="Sobre Mí | manuelgraya">
-<meta property="og:description" content="Trayectoria y filosofía de Manuel Graya: software libre, Linux y desarrollo low-level.">
+<meta property="og:description" content="Trayectoria y filosofía de Manuel Graya: software libre, Linux y cultura DevOps.">
 <meta property="og:url" content="__BASE_URL__/sobre-mi/">
 <meta property="og:image" content="__BASE_URL__/assets/sobre-mi-commodore.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<link href="/css/output.css?v=20260717d" rel="stylesheet">
+<link href="/css/output.css?v=20260717j" rel="stylesheet">
 </head>
 <body class="pagina-sobre-mi bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- header-comun -->
@@ -26,13 +26,13 @@
      El enlace activo por página se marca vía CSS en src/input.css, no aquí. -->
 <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface dark:bg-inverse-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]">
 <a class="flex items-center gap-3" href="/">
-<img alt="Logo" class="w-10 h-10 pixel-border bg-primary-fixed" src="/assets/logo.jpg">
-<span class="font-headline-md text-headline-md text-primary uppercase tracking-tighter font-pixel text-[14px]">manuelgraya</span>
+<img alt="Logo" class="h-11 w-auto" src="/assets/logo.png">
+<span class="text-primary uppercase tracking-tighter font-pixel text-[11px] md:text-[14px]">manuelgraya</span>
 </a>
 <nav class="hidden md:flex gap-8 items-center md:absolute md:left-1/2 md:-translate-x-1/2">
-<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/#proyectos">Proyectos</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/proyectos/">Proyectos</a>
 <a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/sobre-mi/">Sobre Mí</a>
-<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/#contacto">Contacto</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/contacto/">Contacto</a>
 </nav>
 <div class="flex items-center gap-4">
 <a class="text-on-surface-variant hover:text-primary transition-all flex items-center gap-1" href="https://github.com/manuelgraya" aria-label="GitHub">
@@ -46,9 +46,9 @@
 </a>
 </div>
 <nav class="hidden md:hidden absolute top-full left-0 w-full flex-col bg-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]" id="menu-movil">
-<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/#proyectos">Proyectos</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/proyectos/">Proyectos</a>
 <a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/sobre-mi/">Sobre Mí</a>
-<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/#contacto">Contacto</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/contacto/">Contacto</a>
 <a class="px-margin py-4 text-on-surface-variant font-label-sm text-label-sm uppercase flex items-center gap-2" href="https://github.com/manuelgraya"><span class="material-symbols-outlined">terminal</span>GitHub</a>
 </nav>
 </header>
@@ -76,31 +76,31 @@
 </section>
 <!-- Technical Expertise Bento -->
 <section class="mb-16">
-<h2 class="font-headline-md text-headline-md text-primary mb-8 border-l-8 border-primary pl-4">Expertise Técnica</h2>
+<h2 class="font-headline-md text-headline-md text-primary mb-8 border-l-8 border-primary pl-4">Experiencia Técnica</h2>
 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-<!-- Rust -->
+<!-- Linux -->
 <div class="bg-surface border-2 border-on-surface p-4 flex flex-col items-center text-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-[4px_4px_0px_0px_rgba(30,28,17,1)] transition-all">
 <div class="w-16 h-16 bg-primary-container flex items-center justify-center border-2 border-on-surface mb-4">
-<span class="material-symbols-outlined text-on-primary-container text-4xl">settings_ethernet</span>
+<span class="material-symbols-outlined text-on-primary-container text-4xl">terminal</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-primary mb-2">Rust</h3>
-<p class="text-label-sm font-label-sm opacity-70">Memory Safety / Performance</p>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Linux</h3>
+<p class="text-label-sm font-label-sm opacity-70">Sistemas / Kernel</p>
 </div>
-<!-- Go -->
+<!-- C++ -->
 <div class="bg-surface border-2 border-on-surface p-4 flex flex-col items-center text-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-[4px_4px_0px_0px_rgba(30,28,17,1)] transition-all">
 <div class="w-16 h-16 bg-secondary-container flex items-center justify-center border-2 border-on-surface mb-4">
-<span class="material-symbols-outlined text-on-secondary-container text-4xl">alt_route</span>
+<span class="material-symbols-outlined text-on-secondary-container text-4xl">memory</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-secondary mb-2">Go</h3>
-<p class="text-label-sm font-label-sm opacity-70">Concurrency / Backend</p>
+<h3 class="font-headline-md text-headline-md text-secondary mb-2">C++</h3>
+<p class="text-label-sm font-label-sm opacity-70">Performance / Systems</p>
 </div>
-<!-- TypeScript -->
+<!-- Python -->
 <div class="bg-surface border-2 border-on-surface p-4 flex flex-col items-center text-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-[4px_4px_0px_0px_rgba(30,28,17,1)] transition-all">
 <div class="w-16 h-16 bg-surface-dim flex items-center justify-center border-2 border-on-surface mb-4">
-<span class="material-symbols-outlined text-primary text-4xl">javascript</span>
+<span class="material-symbols-outlined text-primary text-4xl">code</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface-variant mb-2">TypeScript</h3>
-<p class="text-label-sm font-label-sm opacity-70">Typed Logic / Architecture</p>
+<h3 class="font-headline-md text-headline-md text-on-surface-variant mb-2">Python</h3>
+<p class="text-label-sm font-label-sm opacity-70">Scripting / Automatización</p>
 </div>
 <!-- Docker -->
 <div class="bg-surface border-2 border-on-surface p-4 flex flex-col items-center text-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-[4px_4px_0px_0px_rgba(30,28,17,1)] transition-all">
@@ -170,15 +170,15 @@
 </div>
 </div>
 <div class="p-8 border-4 border-secondary bg-surface-container relative">
-<div class="absolute -top-4 -right-4 bg-secondary text-on-secondary px-4 py-1 font-label-sm text-label-sm border-2 border-on-surface">HARDWARE</div>
-<h3 class="font-headline-md text-headline-md text-secondary mb-4 uppercase">Low-Level Dev</h3>
+<div class="absolute -top-4 -right-4 bg-secondary text-on-secondary px-4 py-1 font-label-sm text-label-sm border-2 border-on-surface">METODOLOGÍA</div>
+<h3 class="font-headline-md text-headline-md text-secondary mb-4 uppercase">Scrum & DevOps</h3>
 <p class="font-body-md text-body-md">
-    Entender el silicio es lo que diferencia a un programador de un ingeniero. Trabajo habitualmente con arquitecturas x86 y ARM, depurando cuellos de botella en la memoria y optimizando drivers para exprimir cada ciclo de CPU disponible.
+    Los buenos sistemas se construyen en equipo. Trabajo con metodologías ágiles —sprints, retrospectivas y entrega continua— y aplico cultura DevOps: integración continua, infraestructura como código y automatización para desplegar rápido sin sacrificar estabilidad.
 </p>
 <div class="mt-6 flex gap-4">
-<span class="material-symbols-outlined text-primary text-3xl">memory</span>
-<span class="material-symbols-outlined text-primary text-3xl">developer_board</span>
-<span class="material-symbols-outlined text-primary text-3xl">microwave</span>
+<span class="material-symbols-outlined text-primary text-3xl">groups</span>
+<span class="material-symbols-outlined text-primary text-3xl">sync</span>
+<span class="material-symbols-outlined text-primary text-3xl">rocket_launch</span>
 </div>
 </div>
 </section>

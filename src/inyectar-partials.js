@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const raiz = path.join(__dirname, '..');
-const paginas = ['index.html', '404.html', 'sobre-mi/index.html'];
+const paginas = ['index.html', '404.html', 'sobre-mi/index.html', 'proyectos/index.html', 'contacto/index.html'];
 const parciales = [
   { archivo: 'header.html', marcador: 'header-comun' },
   { archivo: 'footer.html', marcador: 'footer-comun' },

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Proyectos | manuelgraya</title>
+<meta name="description" content="Proyectos y contribuciones de Manuel Graya: webs en producción, experimentos pixel art y herramientas open source.">
+<meta name="theme-color" content="#fff9ec">
+<!-- __BASE_URL__ se sustituye por la URL pública en el hook de deploy -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Proyectos | manuelgraya">
+<meta property="og:description" content="Proyectos y contribuciones de Manuel Graya: webs en producción, experimentos pixel art y herramientas open source.">
+<meta property="og:url" content="__BASE_URL__/proyectos/">
+<meta property="og:image" content="__BASE_URL__/assets/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="/css/output.css?v=20260717j" rel="stylesheet">
+</head>
+<body class="pagina-proyectos bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- header-comun -->
+<!-- TopAppBar común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
+     (src/inyectar-partials.js lo pega entre los marcadores header-comun de cada página).
+     El enlace activo por página se marca vía CSS en src/input.css, no aquí. -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface dark:bg-inverse-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]">
+<a class="flex items-center gap-3" href="/">
+<img alt="Logo" class="h-11 w-auto" src="/assets/logo.png">
+<span class="text-primary uppercase tracking-tighter font-pixel text-[11px] md:text-[14px]">manuelgraya</span>
+</a>
+<nav class="hidden md:flex gap-8 items-center md:absolute md:left-1/2 md:-translate-x-1/2">
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/proyectos/">Proyectos</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/sobre-mi/">Sobre Mí</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/contacto/">Contacto</a>
+</nav>
+<div class="flex items-center gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-all flex items-center gap-1" href="https://github.com/manuelgraya" aria-label="GitHub">
+<span class="material-symbols-outlined">terminal</span>
+</a>
+<a class="abrir-menu md:hidden flex items-center" href="#menu-movil" aria-label="Abrir menú">
+<span class="material-symbols-outlined text-primary text-3xl">menu</span>
+</a>
+<a class="cerrar-menu hidden md:hidden items-center" href="#cerrar-menu" aria-label="Cerrar menú">
+<span class="material-symbols-outlined text-primary text-3xl">close</span>
+</a>
+</div>
+<nav class="hidden md:hidden absolute top-full left-0 w-full flex-col bg-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]" id="menu-movil">
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/proyectos/">Proyectos</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/sobre-mi/">Sobre Mí</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/contacto/">Contacto</a>
+<a class="px-margin py-4 text-on-surface-variant font-label-sm text-label-sm uppercase flex items-center gap-2" href="https://github.com/manuelgraya"><span class="material-symbols-outlined">terminal</span>GitHub</a>
+</nav>
+</header>
+<!-- /header-comun -->
+<main class="flex-grow pt-24 pb-12 px-margin max-w-container-max mx-auto w-full">
+<!-- Título de página -->
+<section class="mb-12">
+<div class="flex flex-col gap-2">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">./Proyectos_y_Contribuciones</h1>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">directory_sync</span>
+<span class="font-label-sm text-label-sm uppercase">PATH: /home/graya/proyectos</span>
+</div>
+</div>
+<div class="h-2 w-full bg-on-surface mt-6"></div>
+</section>
+<!-- Listado de proyectos -->
+<div class="flex flex-col gap-12">
+<!-- Web Psicóloga -->
+<article class="flex flex-col md:flex-row gap-8 bg-surface-container-lowest border-4 border-on-surface shadow-[8px_8px_0px_0px_rgba(30,28,17,1)] p-6">
+<div class="w-full md:w-32 h-32 flex-shrink-0 bg-primary-container border-4 border-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-5xl text-on-primary-container">psychology</span>
+</div>
+<div class="flex flex-col flex-grow gap-4">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Web angelagarciapsicologia</h2>
+<span class="font-label-sm text-label-sm bg-secondary-container text-on-secondary-container px-3 py-1 border-2 border-on-surface uppercase">Web · En producción</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+    Web diseñada para una consulta de psicología: presencia online, captación de clientes y gestión de citas. Desplegada en producción con Django y Nginx sobre un servidor Linux autogestionado.
+</p>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">Django</span>
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">Nginx</span>
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">Linux</span>
+</div>
+<div class="flex flex-wrap gap-4 mt-2">
+<a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel inline-block" href="#aviso-codigo-privado">Código</a>
+<a class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel" href="https://angelagarciapsicologia.com/">Demo</a>
+</div>
+</div>
+</article>
+<!-- Landing manuelgraya -->
+<article class="flex flex-col md:flex-row gap-8 bg-surface-container-lowest border-4 border-on-surface shadow-[8px_8px_0px_0px_rgba(30,28,17,1)] p-6">
+<div class="w-full md:w-32 h-32 flex-shrink-0 bg-tertiary-container border-4 border-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-5xl text-on-tertiary-container">terminal</span>
+</div>
+<div class="flex flex-col flex-grow gap-4">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Landing manuelgraya</h2>
+<span class="font-label-sm text-label-sm bg-secondary-container text-on-secondary-container px-3 py-1 border-2 border-on-surface uppercase">Esta web · En producción</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+    Esta misma web: HTML estático y Tailwind CSS compilado, sin JavaScript en producción. Deploy con git push a un servidor propio con Nginx, al estilo old-school. Diseño pixel art hecho en Stitch y adaptado a build local.
+</p>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">HTML</span>
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">Tailwind CSS</span>
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">Nginx</span>
+</div>
+<div class="flex flex-wrap gap-4 mt-2">
+<a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel inline-block" href="https://github.com/manuelgraya/manuelgraya-landing">Código</a>
+<a class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel inline-block" href="/">Demo</a>
+</div>
+</div>
+</article>
+<!-- Lista RRPP Bot -->
+<article class="flex flex-col md:flex-row gap-8 bg-surface-container-lowest border-4 border-on-surface shadow-[8px_8px_0px_0px_rgba(30,28,17,1)] p-6">
+<div class="w-full md:w-32 h-32 flex-shrink-0 bg-primary-container border-4 border-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-5xl text-on-primary-container">smart_toy</span>
+</div>
+<div class="flex flex-col flex-grow gap-4">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Lista RRPP Bot</h2>
+<span class="font-label-sm text-label-sm bg-secondary-container text-on-secondary-container px-3 py-1 border-2 border-on-surface uppercase">Bot · Telegram</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+    Bot de Telegram para que los RRPP de una discoteca gestionen sus listas de invitados de viernes y sábado. Cada RRPP maneja sus listas aisladas solo con botones, y el bot envía automáticamente la lista consolidada en PDF por correo cada fin de semana.
+</p>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">Python</span>
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">Telegram API</span>
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">PDF</span>
+</div>
+<div class="flex flex-wrap gap-4 mt-2">
+<a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel inline-block" href="#aviso-codigo-privado">Código</a>
+</div>
+</div>
+</article>
+</div>
+<!-- Terminal de estadísticas -->
+<section class="mt-20">
+<div class="border-4 border-on-surface bg-inverse-surface shadow-[8px_8px_0px_0px_rgba(30,28,17,1)]">
+<div class="bg-surface-variant px-4 py-2 flex items-center justify-between border-b-2 border-on-surface">
+<span class="font-label-sm text-label-sm text-on-surface font-bold">STATS_PROYECTOS.SH</span>
+<div class="flex gap-2">
+<div class="w-3 h-3 bg-error border border-on-surface"></div>
+<div class="w-3 h-3 bg-secondary-fixed border border-on-surface"></div>
+</div>
+</div>
+<div class="p-6 font-label-sm text-label-sm text-secondary-fixed border-l-4 border-primary">
+<div class="mb-4 text-on-primary-container">$ fetch --proyectos</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1">
+<p>&gt; PROYECTOS_ACTIVOS: 3</p>
+<p>&gt; EN_PRODUCCION: 3</p>
+<p>&gt; FILOSOFIA: OPEN_SOURCE</p>
+</div>
+<div class="space-y-1">
+<p>&gt; STACK_PREFERIDO: PYTHON/C++/DOCKER</p>
+<p>&gt; OS: ARCH_LINUX</p>
+<p>&gt; UPTIME: 99.9%</p>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span>$</span>
+<span class="cursor"></span>
+</div>
+</div>
+</div>
+</section>
+<!-- Notificación emergente "código privado": CSS-only con :target (como el
+     menú móvil). El ancla es un elemento fijo e invisible separado del toast
+     para que el navegador no haga scroll al abrirlo; el toast se muestra como
+     hermano (.aviso-ancla:target + .aviso-toast). Se cierra con la X -->
+<span class="aviso-ancla" id="aviso-codigo-privado"></span>
+<aside class="aviso-toast" role="alert">
+<div class="border-4 border-on-surface bg-inverse-surface shadow-[8px_8px_0px_0px_rgba(30,28,17,1)]">
+<div class="bg-surface-variant px-4 py-1 flex items-center justify-between gap-4 border-b-2 border-on-surface">
+<span class="font-label-sm text-label-sm text-on-surface font-bold">ERROR.LOG</span>
+<a class="material-symbols-outlined text-on-surface hover:text-error" href="#cerrar-aviso" aria-label="Cerrar aviso">close</a>
+</div>
+<div class="p-4 font-label-sm text-label-sm text-secondary-fixed">
+<p class="text-on-primary-container">$ git clone</p>
+<p class="mt-2 text-error-container">&gt; fatal: ACCESO_DENEGADO — repositorio privado</p>
+<p>&gt; Por petición del cliente, el código de este proyecto no es público.</p>
+<div class="mt-2 flex items-center gap-2">
+<span>$</span>
+<span class="cursor"></span>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- footer-comun -->
+<!-- Footer común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
+     (src/inyectar-partials.js lo pega entre los marcadores footer-comun de cada página). -->
+<footer class="w-full py-gutter px-margin bg-surface-container border-t-4 border-primary">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white flex items-center justify-center pixel-border">
+<span class="material-symbols-outlined text-4xl text-on-surface" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div>
+<h4 class="font-pixel text-[12px] text-on-surface">manuelgraya</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">© 2026 - Made with pixels</p>
+</div>
+</div>
+<div class="flex gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://github.com/manuelgraya">GitHub</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://www.linkedin.com/in/manuel-garcia-7023a0204/">LinkedIn</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://www.instagram.com/manuel.graya/">Instagram</a>
+</div>
+<div class="flex flex-col items-center md:items-end gap-2">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
+<span class="font-label-sm text-label-sm text-on-surface">SYSTEM_ONLINE</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Powered by Open Source and Coffee</p>
+</div>
+</div>
+</footer>
+<!-- /footer-comun -->
+</body>
+</html>
