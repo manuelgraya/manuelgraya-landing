@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link href="./css/output.css?v=20260717l" rel="stylesheet">
+<link href="./css/output.css?v=20260717m" rel="stylesheet">
 </head>
 <body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- header-comun -->
@@ -161,7 +161,7 @@
 <h2 class="font-pixel text-[20px] text-primary uppercase">Contacto</h2>
 <div class="h-1 flex-grow bg-on-surface"></div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
 <div class="flex flex-col gap-8">
 <div class="terminal-container">
 <p class="text-[14px] leading-relaxed">
@@ -222,9 +222,9 @@
 <label class="font-label-sm uppercase tracking-widest text-[12px]" for="email">Email</label>
 <input class="pixel-input" id="email" name="email" type="email" required placeholder="linus@example.com">
 </div>
-<div class="flex flex-col gap-2">
+<div class="flex flex-col gap-2 flex-grow">
 <label class="font-label-sm uppercase tracking-widest text-[12px]" for="mensaje">Mensaje</label>
-<textarea class="pixel-input" id="mensaje" name="mensaje" rows="5" required placeholder="Cuéntame tu idea..."></textarea>
+<textarea class="pixel-input flex-grow" id="mensaje" name="mensaje" rows="5" required placeholder="Cuéntame tu idea..."></textarea>
 </div>
 <button type="submit" class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px]">Enviar</button>
 </form>
