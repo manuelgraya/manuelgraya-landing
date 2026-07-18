@@ -1,9 +1,10 @@
 # manuelgraya-landing
 
-Landing page personal de Manuel Graya con estética pixel art. Página única
-estática: HTML + Tailwind CSS compilado. Sin frameworks, sin JS en producción.
-El diseño original se hizo en Google Stitch (proyecto "Pixel Art Developer
-Portfolio") y se adaptó a build local.
+Landing page personal de Manuel Graya con estética pixel art. Web estática:
+HTML + Tailwind CSS compilado, sin frameworks. El único JS de producción es
+`js/contacto.js` (formulario de contacto); el resto de interactividad es
+CSS-only (:target/checkbox). El diseño original se hizo en Google Stitch
+(proyecto "Pixel Art Developer Portfolio") y se adaptó a build local.
 
 ## Estructura
 
@@ -14,6 +15,8 @@ Portfolio") y se adaptó a build local.
 - `src/partials/` — **único sitio donde se editan header y footer** (`header.html`, `footer.html`). `npm run build` ejecuta `src/inyectar-partials.js`, que los pega idénticos entre los marcadores `<!-- header-comun -->` / `<!-- footer-comun -->` de index, 404, sobre-mi y proyectos. No editarlos inline en las páginas: el build lo machaca. El enlace activo por página se marca vía CSS (clase `pagina-sobre-mi` en el body)
 - `css/output.css` — CSS compilado y minificado. **Se commitea**: el servidor no tiene Node y sirve estáticos tal cual. nginx lo sirve sin Cache-Control y los navegadores cachean versiones viejas: al cambiar estilos hay que subir el `?v=` del `<link>` de output.css en TODOS los html
 - `tailwind.config.js` — tema del diseño: paleta Material-style (tonos madera/pergamino + verde terminal), `borderRadius: 0` (pixel art), fuentes monoespaciadas
+- `api/contacto.py` — backend del formulario de contacto (Python stdlib, sin dependencias): sirve el captcha aritmético (token HMAC sin estado), valida, limita por IP y envía el correo por SMTP de Gmail. Configuración por variables de entorno; las credenciales viven SOLO en el servidor (`.env` del servicio systemd, ver CLAUDE.local.md). Corre como servicio systemd detrás de nginx (`location /api/contacto`); tras cambiarlo hay que reiniciar el servicio en el servidor
+- `js/contacto.js` — único JS de producción: pide el captcha, envía el formulario por fetch a `/api/contacto` y muestra la notificación estilo terminal (`.aviso-toast.aviso-visible`, mismo estilo que el aviso CSS-only de "código privado"). Los formularios se marcan con `data-contacto`. Al cambiarlo, subir el `?v=` del `<script>` en index y contacto
 - `assets/` — imágenes descargadas del mockup (los enlaces de googleusercontent de Stitch caducan; nunca enlazar a ellos)
 - `deploy/` — scripts de aprovisionamiento del servidor (referencia; ya ejecutados)
 

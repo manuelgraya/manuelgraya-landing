@@ -15,6 +15,11 @@ while read oldrev newrev refname; do
             find "$WEB_ROOT" -name '*.html' -exec sed -i "s|__BASE_URL__|$BASE_URL|g" {} +
             echo ">> __BASE_URL__ -> $BASE_URL"
         fi
+        # La API de contacto corre desde el web root: hay que reiniciarla para
+        # que cargue el código nuevo (necesita sudo sin contraseña o hacerlo a mano)
+        sudo -n systemctl restart landing-contacto 2>/dev/null \
+            && echo ">> Servicio landing-contacto reiniciado" \
+            || echo ">> AVISO: reinicia la API a mano: sudo systemctl restart landing-contacto"
         echo ">> Despliegue completado: $(date '+%Y-%m-%d %H:%M:%S')"
     fi
 done

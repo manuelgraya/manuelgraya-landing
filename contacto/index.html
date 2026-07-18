@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<link href="/css/output.css?v=20260717m" rel="stylesheet">
+<link href="/css/output.css?v=20260718a" rel="stylesheet">
 </head>
 <body class="pagina-contacto bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- header-comun -->
@@ -71,11 +71,8 @@
 <span class="material-symbols-outlined text-primary">mail</span>
 <h2 class="font-headline-md text-headline-md text-primary">Terminal Mail</h2>
 </div>
-<form action="https://formsubmit.co/manuel.ingraya@gmail.com" method="POST" class="space-y-6 flex-grow flex flex-col">
-<input type="hidden" name="_subject" value="Nuevo mensaje desde /contacto/">
-<input type="hidden" name="_next" value="__BASE_URL__/gracias.html">
-<input type="hidden" name="_template" value="box">
-<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+<form data-contacto method="POST" action="/api/contacto" class="space-y-6 flex-grow flex flex-col">
+<input type="text" name="web" style="display:none" tabindex="-1" autocomplete="off">
 <div class="space-y-2">
 <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant" for="nombre">USER_IDENTIFICATION</label>
 <input class="w-full bg-surface border-2 border-on-surface shadow-[inset_2px_2px_0px_0px_rgba(30,28,17,0.2)] px-4 py-3 font-body-md text-body-md focus:outline-none focus:ring-0 focus:border-secondary" id="nombre" name="nombre" type="text" required placeholder="Linus Torvalds">
@@ -87,6 +84,10 @@
 <div class="space-y-2">
 <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant" for="mensaje">MESSAGE_PAYLOAD</label>
 <textarea class="w-full bg-surface border-2 border-on-surface shadow-[inset_2px_2px_0px_0px_rgba(30,28,17,0.2)] px-4 py-3 font-body-md text-body-md focus:outline-none focus:ring-0 focus:border-secondary resize-none" id="mensaje" name="mensaje" rows="6" required placeholder="Cuéntame tu idea..."></textarea>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant" for="captcha">HUMAN_CHECK: <span class="captcha-pregunta text-secondary">cargando...</span></label>
+<input class="w-full max-w-[10rem] bg-surface border-2 border-on-surface shadow-[inset_2px_2px_0px_0px_rgba(30,28,17,0.2)] px-4 py-3 font-body-md text-body-md focus:outline-none focus:ring-0 focus:border-secondary" id="captcha" name="captcha" type="text" inputmode="numeric" required autocomplete="off" placeholder="??">
 </div>
 <button class="bg-primary text-on-primary font-headline-md text-headline-md px-8 py-4 border-2 border-on-surface shadow-[2px_2px_0px_0px_rgba(30,28,17,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all flex items-center gap-3 w-fit mt-auto" type="submit">
 <span>send --mensaje</span>
@@ -205,5 +206,6 @@
 </div>
 </footer>
 <!-- /footer-comun -->
+<script src="/js/contacto.js?v=20260718a" defer></script>
 </body>
 </html>

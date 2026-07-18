@@ -87,7 +87,8 @@ body {
     margin-left: auto;
 }
 
-.aviso-ancla:target + .aviso-toast {
+.aviso-ancla:target + .aviso-toast,
+.aviso-toast.aviso-visible {
     display: block;
     animation: aviso-entra 0.3s steps(6) both;
 }
@@ -98,7 +99,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .aviso-toast:target {
+    .aviso-ancla:target + .aviso-toast,
+    .aviso-toast.aviso-visible {
         animation: none;
     }
 }

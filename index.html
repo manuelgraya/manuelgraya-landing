@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link href="./css/output.css?v=20260717o" rel="stylesheet">
+<link href="./css/output.css?v=20260718a" rel="stylesheet">
 </head>
 <body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- header-comun -->
@@ -109,7 +109,7 @@
 <span class="material-symbols-outlined text-4xl text-secondary">terminal</span>
 </div>
 <h3 class="font-pixel text-[12px] mb-4 text-on-surface">Landing manuelgraya</h3>
-<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Esta misma web: HTML estático y Tailwind, sin JS en producción. Deploy con git push a un servidor propio con Nginx.</p>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Esta misma web: HTML estático y Tailwind, con microbackend Python para el contacto. Deploy con git push a un servidor propio con Nginx.</p>
 <div class="flex gap-3">
 <a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel" href="https://github.com/manuelgraya/manuelgraya-landing">Código</a>
 <a class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel" href="/">Demo</a>
@@ -209,11 +209,8 @@
 </ul>
 </div>
 </div>
-<form action="https://formsubmit.co/manuel.ingraya@gmail.com" method="POST" class="pixel-border bg-surface-container p-8 flex flex-col gap-6">
-<input type="hidden" name="_subject" value="Nuevo mensaje desde la landing">
-<input type="hidden" name="_next" value="__BASE_URL__/gracias.html">
-<input type="hidden" name="_template" value="box">
-<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+<form data-contacto method="POST" action="/api/contacto" class="pixel-border bg-surface-container p-8 flex flex-col gap-6">
+<input type="text" name="web" style="display:none" tabindex="-1" autocomplete="off">
 <div class="flex flex-col gap-2">
 <label class="font-label-sm uppercase tracking-widest text-[12px]" for="nombre">Nombre</label>
 <input class="pixel-input" id="nombre" name="nombre" type="text" required placeholder="Linus Torvalds">
@@ -225,6 +222,10 @@
 <div class="flex flex-col gap-2 flex-grow">
 <label class="font-label-sm uppercase tracking-widest text-[12px]" for="mensaje">Mensaje</label>
 <textarea class="pixel-input flex-grow" id="mensaje" name="mensaje" rows="5" required placeholder="Cuéntame tu idea..."></textarea>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm uppercase tracking-widest text-[12px]" for="captcha">Human_check: <span class="captcha-pregunta text-secondary">cargando...</span></label>
+<input class="pixel-input max-w-[10rem]" id="captcha" name="captcha" type="text" inputmode="numeric" required autocomplete="off" placeholder="??">
 </div>
 <button type="submit" class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px]">Enviar</button>
 </form>
@@ -282,5 +283,6 @@
 </div>
 </footer>
 <!-- /footer-comun -->
+<script src="/js/contacto.js?v=20260718a" defer></script>
 </body>
 </html>
