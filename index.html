@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link href="./css/output.css?v=20260718a" rel="stylesheet">
+<link href="./css/output.css?v=20260718b" rel="stylesheet">
 </head>
 <body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- header-comun -->
@@ -56,11 +56,11 @@
 <main class="pt-24 pb-12 max-w-container-max mx-auto px-margin">
 <!-- Hero Section -->
 <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
-<div class="relative group">
+<div class="relative group entra-izquierda">
 <div class="absolute -inset-2 bg-primary-container z-0"></div>
 <img class="relative z-10 w-full pixel-border object-cover aspect-square" alt="Ilustración pixel art de un programador con su gato trabajando en un portátil" src="./assets/hero.jpg">
 </div>
-<div class="pixel-border bg-surface-container p-8 flex flex-col gap-6">
+<div class="pixel-border bg-surface-container p-8 flex flex-col gap-6 entra-derecha">
 <div class="flex items-center gap-2">
 <span class="w-4 h-4 bg-error rounded-full"></span>
 <span class="w-4 h-4 bg-primary rounded-full"></span>
@@ -72,11 +72,11 @@
 </div>
 <div class="terminal-container">
 <p class="text-[14px] leading-relaxed">
-    &gt; whoami<br>
-    &gt; Manuel Graya<br>
-    &gt; Devops Engineer<br>
-    &gt; Open source Enthusiast<br>
-<span class="cursor"></span>
+<span class="tty-linea" style="--n:8; --retardo:.6s">&gt; whoami</span>
+<span class="tty-linea" style="--n:14; --retardo:1.2s">&gt; Manuel Graya</span>
+<span class="tty-linea" style="--n:17; --retardo:2.1s">&gt; Devops Engineer</span>
+<span class="tty-linea" style="--n:24; --retardo:3.1s">&gt; Open source Enthusiast</span>
+<span class="cursor cursor-retardado" style="--retardo:4.4s"></span>
 </p>
 </div>
 <div class="flex gap-4">
@@ -86,13 +86,13 @@
 </section>
 <!-- Projects Section -->
 <section class="mb-24" id="proyectos">
-<div class="flex items-center gap-4 mb-12">
+<div class="flex items-center gap-4 mb-12 revela">
 <h2 class="font-pixel text-[20px] text-primary uppercase">Proyectos</h2>
 <div class="h-1 flex-grow bg-on-surface"></div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
 <!-- Web angelagarciapsicologia -->
-<div class="pixel-border bg-surface-container-low p-6 flex flex-col group hover:bg-white transition-colors">
+<div class="pixel-border bg-surface-container-low p-6 flex flex-col group hover:bg-white transition-colors revela">
 <div class="bg-primary-fixed-dim w-16 h-16 pixel-border mb-6 flex items-center justify-center">
 <span class="material-symbols-outlined text-4xl text-primary">psychology</span>
 </div>
@@ -104,7 +104,7 @@
 </div>
 </div>
 <!-- Landing manuelgraya -->
-<div class="pixel-border bg-surface-container-low p-6 flex flex-col group hover:bg-white transition-colors">
+<div class="pixel-border bg-surface-container-low p-6 flex flex-col group hover:bg-white transition-colors revela">
 <div class="bg-secondary-fixed-dim w-16 h-16 pixel-border mb-6 flex items-center justify-center">
 <span class="material-symbols-outlined text-4xl text-secondary">terminal</span>
 </div>
@@ -116,7 +116,7 @@
 </div>
 </div>
 <!-- Lista RRPP Bot -->
-<div class="pixel-border bg-surface-container-low p-6 flex flex-col group hover:bg-white transition-colors">
+<div class="pixel-border bg-surface-container-low p-6 flex flex-col group hover:bg-white transition-colors revela">
 <div class="bg-tertiary-fixed-dim w-16 h-16 pixel-border mb-6 flex items-center justify-center">
 <span class="material-symbols-outlined text-4xl text-tertiary">smart_toy</span>
 </div>
@@ -127,13 +127,13 @@
 </div>
 </div>
 </div>
-<div class="mt-12 flex justify-center">
+<div class="mt-12 flex justify-center revela">
 <a href="/proyectos/" class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px] inline-block">Todos los proyectos</a>
 </div>
 </section>
 <!-- About Me Section -->
 <section class="mb-24 grid grid-cols-1 md:grid-cols-3 gap-8" id="sobre-mi">
-<div class="md:col-span-2 pixel-border bg-surface p-8">
+<div class="md:col-span-2 pixel-border bg-surface p-8 revela">
 <h2 class="font-pixel text-[20px] text-primary mb-8 uppercase">Sobre Mí</h2>
 <div class="space-y-6 font-body-lg text-body-lg">
 <p>Las matemáticas, la resolución de problemas y el conectar con las personas siempre han sido mis fuertes. La informática me ganó al descubrir que aquí no existen límites: el escenario perfecto para desatar mi creatividad y aplicar soluciones que impacten de verdad.</p>
@@ -150,19 +150,19 @@
 <a href="/sobre-mi/" class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px] inline-block">Trayectoria completa</a>
 </div>
 </div>
-<div class="pixel-border bg-surface-container-highest p-4 flex items-center justify-center relative overflow-hidden">
+<div class="pixel-border bg-surface-container-highest p-4 flex items-center justify-center relative overflow-hidden revela">
 <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#1e1c11 2px, transparent 0); background-size: 16px 16px;"></div>
 <img class="w-full h-full object-cover pixel-border z-10" alt="Ilustración pixel art de un desarrollador programando en su escritorio, con un gato y un pingüino Tux al fondo" src="./assets/ia-landing-pixel.webp">
 </div>
 </section>
 <!-- Contact Section -->
 <section class="mb-24" id="contacto">
-<div class="flex items-center gap-4 mb-12">
+<div class="flex items-center gap-4 mb-12 revela">
 <h2 class="font-pixel text-[20px] text-primary uppercase">Contacto</h2>
 <div class="h-1 flex-grow bg-on-surface"></div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-8 revela">
 <div class="terminal-container">
 <p class="text-[14px] leading-relaxed">
     &gt; mail --to manuelgraya<br>
@@ -209,7 +209,7 @@
 </ul>
 </div>
 </div>
-<form data-contacto method="POST" action="/api/contacto" class="pixel-border bg-surface-container p-8 flex flex-col gap-6">
+<form data-contacto method="POST" action="/api/contacto" class="pixel-border bg-surface-container p-8 flex flex-col gap-6 revela">
 <input type="text" name="web" style="display:none" tabindex="-1" autocomplete="off">
 <div class="flex flex-col gap-2">
 <label class="font-label-sm uppercase tracking-widest text-[12px]" for="nombre">Nombre</label>

@@ -124,6 +124,73 @@ body {
     display: inline-flex;
 }
 
+/* ===== Animaciones del inicio (CSS-only) =====
+   - Entrada del hero al cargar (.entra-izquierda / .entra-derecha)
+   - Máquina de escribir en la terminal del hero (.tty-linea): cada línea
+     declara inline --n (nº de caracteres) y --retardo. Al ser fuente
+     monoespaciada, animar el ancho en pasos de 1ch equivale a teclear
+     carácter a carácter
+   - Aparición al hacer scroll (.revela) con scroll-driven animations,
+     solo en navegadores con animation-timeline (el resto ve el contenido
+     sin animar) */
+
+.tty-linea {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .entra-izquierda {
+        animation: entra-izquierda 0.5s steps(5) both;
+    }
+
+    .entra-derecha {
+        animation: entra-derecha 0.5s steps(5) both;
+    }
+
+    .tty-linea {
+        width: 0;
+        animation: tty-teclea calc(var(--n) * 0.05s) steps(var(--n)) var(--retardo, 0s) both;
+    }
+
+    /* El cursor no aparece hasta que terminan de teclearse las líneas:
+       tty-aparece (última de la lista) lo mantiene invisible durante su
+       retardo y al acabar deja el parpadeo de blink. Doble clase para ganar
+       en especificidad a la regla .cursor, definida más abajo */
+    .cursor.cursor-retardado {
+        animation: blink 1s step-end infinite, tty-aparece 0.1s steps(1) var(--retardo, 0s) backwards;
+    }
+
+    @supports (animation-timeline: view()) {
+        .revela {
+            animation: revela-entra steps(6) both;
+            animation-timeline: view();
+            animation-range: entry 5% entry 45%;
+        }
+    }
+}
+
+@keyframes entra-izquierda {
+    from { opacity: 0; transform: translateX(-32px); }
+}
+
+@keyframes entra-derecha {
+    from { opacity: 0; transform: translateX(32px); }
+}
+
+@keyframes tty-teclea {
+    to { width: calc(var(--n) * 1ch); }
+}
+
+@keyframes tty-aparece {
+    from { opacity: 0; }
+}
+
+@keyframes revela-entra {
+    from { opacity: 0; transform: translateY(24px); }
+}
+
 .pixel-border {
     border: 4px solid #1e1c11;
     box-shadow: 4px 4px 0px 0px #1e1c11;
