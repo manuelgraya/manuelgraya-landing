@@ -17,9 +17,27 @@
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<link href="/css/output.css?v=20260718d" rel="stylesheet">
+<link href="/css/output.css?v=20260718e" rel="stylesheet">
 </head>
 <body class="pagina-proyectos bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Carga breve de ruta (variante de la pantalla de carga del inicio,
+     CSS-only: .cargador-breve se apaga sola) -->
+<div class="cargador cargador-breve" aria-hidden="true">
+<svg class="w-24 h-24" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<rect fill="none" height="60" stroke="#8b5e3c" stroke-width="4" width="60" x="20" y="20">
+<animate attributeName="stroke-dasharray" dur="0.7s" fill="freeze" from="0, 240" to="240, 0"></animate>
+</rect>
+<path d="M35 40 L45 50 L35 60" fill="none" stroke="#8b5e3c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+<animate attributeName="opacity" dur="1s" repeatCount="indefinite" values="0;1;0"></animate>
+</path>
+<rect fill="#8b5e3c" height="4" width="15" x="50" y="55">
+<animate attributeName="opacity" dur="0.8s" repeatCount="indefinite" values="1;0;1"></animate>
+</rect>
+</svg>
+<p class="font-pixel text-[12px] text-primary"><span class="tty-linea" style="--n:21; --retardo:.1s">&gt; CARGANDO PROYECTOS_</span></p>
+</div>
+<!-- Fondo shader compartido con el inicio (js/shader.js) -->
+<div class="fondo-shader" aria-hidden="true"><canvas id="fondo-shader"></canvas></div>
 <!-- header-comun -->
 <!-- TopAppBar común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
      (src/inyectar-partials.js lo pega entre los marcadores header-comun de cada página).
@@ -53,7 +71,7 @@
 </nav>
 </header>
 <!-- /header-comun -->
-<main class="flex-grow pt-24 pb-12 px-margin max-w-container-max mx-auto w-full">
+<main class="entra-pagina flex-grow pt-24 pb-12 px-margin max-w-container-max mx-auto w-full">
 <!-- Título de página -->
 <section class="mb-12">
 <div class="flex flex-col gap-2">
@@ -222,5 +240,6 @@
 </div>
 </footer>
 <!-- /footer-comun -->
+<script src="/js/shader.js?v=20260718a" defer></script>
 </body>
 </html>

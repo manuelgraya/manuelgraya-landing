@@ -128,7 +128,9 @@ body {
    - Pantalla de carga (.cargador): overlay a pantalla completa con el logo
      SVG animado (SMIL) de Stitch y un "INICIANDO SISTEMA_" tecleado. Se
      apaga sola a los ~1.5s y da paso al efecto TV, cuyas animaciones
-     arrancan retrasadas ese mismo tiempo. Solo existe con motion permitido
+     arrancan retrasadas ese mismo tiempo. Solo existe con motion permitido.
+     Las páginas interiores usan la variante .cargador-breve (~0.9s, tecleo
+     más rápido) y su contenido entra al apagarse (.entra-pagina en el main)
    - Fondo shader (.fondo-shader): canvas WebGL fijo tras el contenido
      (js/shader.js), a baja opacidad para que respire entre las tarjetas
    - Carga "TV retro" de la imagen del hero (.tv-pantalla en el contenedor +
@@ -191,6 +193,20 @@ body {
         gap: 2rem;
         background: #fff9ec;
         animation: cargador-apaga 0.4s steps(8) 1.5s forwards;
+    }
+
+    /* Variante breve para las páginas interiores: mismo ritual, menos espera */
+    .cargador-breve {
+        animation: cargador-apaga 0.3s steps(8) 0.9s forwards;
+    }
+
+    .cargador-breve .tty-linea {
+        animation-duration: calc(var(--n) * 0.04s);
+    }
+
+    /* El contenido de las páginas interiores sube al apagarse su cargador */
+    .entra-pagina {
+        animation: revela-entra 0.4s steps(6) 0.8s both;
     }
 
     /* Las animaciones del hero llevan +1.5s de retraso para arrancar justo

@@ -9,9 +9,11 @@
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link href="/css/output.css?v=20260718d" rel="stylesheet">
+<link href="/css/output.css?v=20260718e" rel="stylesheet">
 </head>
 <body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Fondo shader compartido con el inicio (js/shader.js) -->
+<div class="fondo-shader" aria-hidden="true"><canvas id="fondo-shader"></canvas></div>
 <!-- header-comun -->
 <!-- TopAppBar común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
      (src/inyectar-partials.js lo pega entre los marcadores header-comun de cada página).
@@ -122,5 +124,6 @@
 </div>
 </footer>
 <!-- /footer-comun -->
+<script src="/js/shader.js?v=20260718a" defer></script>
 </body>
 </html>
