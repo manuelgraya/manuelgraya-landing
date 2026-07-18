@@ -17,9 +17,30 @@
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link href="./css/output.css?v=20260718c" rel="stylesheet">
+<link href="./css/output.css?v=20260718d" rel="stylesheet">
 </head>
 <body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Pantalla de carga del inicio (CSS-only, .cargador se apaga sola): logo
+     SVG animado del diseño de Stitch + texto tecleado. aria-hidden porque es
+     puramente decorativa -->
+<div class="cargador" aria-hidden="true">
+<svg class="w-32 h-32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<rect fill="none" height="60" stroke="#8b5e3c" stroke-width="4" width="60" x="20" y="20">
+<animate attributeName="stroke-dasharray" dur="1.2s" fill="freeze" from="0, 240" to="240, 0"></animate>
+</rect>
+<path d="M35 40 L45 50 L35 60" fill="none" stroke="#8b5e3c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+<animate attributeName="opacity" dur="1s" repeatCount="indefinite" values="0;1;0"></animate>
+</path>
+<rect fill="#8b5e3c" height="4" width="15" x="50" y="55">
+<animate attributeName="opacity" dur="0.8s" repeatCount="indefinite" values="1;0;1"></animate>
+</rect>
+</svg>
+<p class="font-pixel text-[12px] text-primary"><span class="tty-linea" style="--n:20; --retardo:.2s">&gt; INICIANDO SISTEMA_</span></p>
+</div>
+<!-- Fondo shader del diseño de Stitch: rejilla pixel pulsante detrás del
+     contenido (js/shader.js pinta en el canvas; sin WebGL queda el fondo
+     plano del body) -->
+<div class="fondo-shader" aria-hidden="true"><canvas id="fondo-shader"></canvas></div>
 <!-- header-comun -->
 <!-- TopAppBar común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
      (src/inyectar-partials.js lo pega entre los marcadores header-comun de cada página).
@@ -74,11 +95,11 @@
 </div>
 <div class="terminal-container">
 <p class="text-[14px] leading-relaxed">
-<span class="tty-linea" style="--n:8; --retardo:.6s">&gt; whoami</span>
-<span class="tty-linea" style="--n:14; --retardo:1.2s">&gt; Manuel Graya</span>
-<span class="tty-linea" style="--n:17; --retardo:2.1s">&gt; Devops Engineer</span>
-<span class="tty-linea" style="--n:24; --retardo:3.1s">&gt; Open source Enthusiast</span>
-<span class="cursor cursor-retardado" style="--retardo:4.4s"></span>
+<span class="tty-linea" style="--n:8; --retardo:2.1s">&gt; whoami</span>
+<span class="tty-linea" style="--n:14; --retardo:2.7s">&gt; Manuel Graya</span>
+<span class="tty-linea" style="--n:17; --retardo:3.6s">&gt; Devops Engineer</span>
+<span class="tty-linea" style="--n:24; --retardo:4.6s">&gt; Open source Enthusiast</span>
+<span class="cursor cursor-retardado" style="--retardo:5.9s"></span>
 </p>
 </div>
 <div class="flex gap-4">
@@ -290,5 +311,6 @@
 </footer>
 <!-- /footer-comun -->
 <script src="/js/contacto.js?v=20260718a" defer></script>
+<script src="/js/shader.js?v=20260718a" defer></script>
 </body>
 </html>

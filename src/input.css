@@ -125,6 +125,12 @@ body {
 }
 
 /* ===== Animaciones del inicio (CSS-only) =====
+   - Pantalla de carga (.cargador): overlay a pantalla completa con el logo
+     SVG animado (SMIL) de Stitch y un "INICIANDO SISTEMA_" tecleado. Se
+     apaga sola a los ~1.5s y da paso al efecto TV, cuyas animaciones
+     arrancan retrasadas ese mismo tiempo. Solo existe con motion permitido
+   - Fondo shader (.fondo-shader): canvas WebGL fijo tras el contenido
+     (js/shader.js), a baja opacidad para que respire entre las tarjetas
    - Carga "TV retro" de la imagen del hero (.tv-pantalla en el contenedor +
      .tv-carga en la imagen): la imagen se monta en líneas de arriba a abajo
      (clip-path en steps), con scanlines por encima y una barra de barrido
@@ -153,9 +159,44 @@ body {
     position: relative;
 }
 
+/* Pantalla de carga: oculta por defecto (usuarios con reduced-motion o
+   sin CSS moderno nunca la ven) */
+.cargador {
+    display: none;
+}
+
+.fondo-shader {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.fondo-shader canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 @media (prefers-reduced-motion: no-preference) {
+    .cargador {
+        display: flex;
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        background: #fff9ec;
+        animation: cargador-apaga 0.4s steps(8) 1.5s forwards;
+    }
+
+    /* Las animaciones del hero llevan +1.5s de retraso para arrancar justo
+       cuando la pantalla de carga se apaga */
     .tv-carga {
-        animation: tv-lineas 1s steps(28) both;
+        animation: tv-lineas 1s steps(28) 1.5s both;
     }
 
     /* Scanlines mientras la imagen se monta; se apagan al acabar */
@@ -166,7 +207,7 @@ body {
         z-index: 20;
         pointer-events: none;
         background: repeating-linear-gradient(to bottom, rgba(30, 28, 17, 0.35) 0 2px, transparent 2px 4px);
-        animation: tv-apaga 0.2s linear 1.1s forwards;
+        animation: tv-apaga 0.2s linear 2.6s forwards;
     }
 
     /* Barra de barrido: baja a la vez que se van montando las líneas */
@@ -181,11 +222,11 @@ body {
         pointer-events: none;
         background: #7bf8a1;
         box-shadow: 0 0 12px 2px #7bf8a1;
-        animation: tv-barre 1s steps(28) both, tv-apaga 0.1s steps(1) 1s forwards;
+        animation: tv-barre 1s steps(28) 1.5s both, tv-apaga 0.1s steps(1) 2.5s forwards;
     }
 
     .tv-enciende {
-        animation: tv-enciende 0.5s steps(6) both;
+        animation: tv-enciende 0.5s steps(6) 1.5s both;
     }
 
     .tty-linea {
@@ -202,7 +243,7 @@ body {
     }
 
     .indicador-scroll {
-        animation: indicador-baja 0.8s steps(2) infinite alternate, tty-aparece 0.1s steps(1) 1.4s backwards;
+        animation: indicador-baja 0.8s steps(2) infinite alternate, tty-aparece 0.1s steps(1) 2.9s backwards;
     }
 
     @supports (animation-timeline: view()) {
@@ -269,6 +310,10 @@ body {
     0% { transform: scaleY(0.04); filter: brightness(3); }
     70% { transform: scaleY(1.04); filter: brightness(1.4); }
     100% { transform: scaleY(1); filter: brightness(1); }
+}
+
+@keyframes cargador-apaga {
+    to { opacity: 0; visibility: hidden; }
 }
 
 @keyframes indicador-baja {
