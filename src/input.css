@@ -125,14 +125,23 @@ body {
 }
 
 /* ===== Animaciones del inicio (CSS-only) =====
-   - Entrada del hero al cargar (.entra-izquierda / .entra-derecha)
+   - Carga "TV retro" de la imagen del hero (.tv-pantalla en el contenedor +
+     .tv-carga en la imagen): la imagen se monta en líneas de arriba a abajo
+     (clip-path en steps), con scanlines por encima y una barra de barrido
+     que recorre la pantalla y se apaga al terminar
+   - Encendido CRT del panel del hero (.tv-enciende): se abre desde una
+     línea horizontal con un flash de brillo, como una tele al encenderse
    - Máquina de escribir en la terminal del hero (.tty-linea): cada línea
      declara inline --n (nº de caracteres) y --retardo. Al ser fuente
      monoespaciada, animar el ancho en pasos de 1ch equivale a teclear
      carácter a carácter
-   - Aparición al hacer scroll (.revela) con scroll-driven animations,
-     solo en navegadores con animation-timeline (el resto ve el contenido
-     sin animar) */
+   - Indicador de scroll del hero (.indicador-scroll): aparece al terminar
+     la carga TV y rebota en pasos
+   - Aparición al hacer scroll con scroll-driven animations, solo en
+     navegadores con animation-timeline (el resto ve el contenido sin
+     animar): .revela (sube), .revela-izquierda / .revela-derecha
+     (laterales), .tv-carga-scroll (la imagen se monta en líneas según
+     entra en pantalla) y escalonado de tarjetas por nth-child */
 
 .tty-linea {
     display: block;
@@ -140,13 +149,43 @@ body {
     white-space: nowrap;
 }
 
+.tv-pantalla {
+    position: relative;
+}
+
 @media (prefers-reduced-motion: no-preference) {
-    .entra-izquierda {
-        animation: entra-izquierda 0.5s steps(5) both;
+    .tv-carga {
+        animation: tv-lineas 1s steps(28) both;
     }
 
-    .entra-derecha {
-        animation: entra-derecha 0.5s steps(5) both;
+    /* Scanlines mientras la imagen se monta; se apagan al acabar */
+    .tv-pantalla::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        pointer-events: none;
+        background: repeating-linear-gradient(to bottom, rgba(30, 28, 17, 0.35) 0 2px, transparent 2px 4px);
+        animation: tv-apaga 0.2s linear 1.1s forwards;
+    }
+
+    /* Barra de barrido: baja a la vez que se van montando las líneas */
+    .tv-pantalla::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 6px;
+        z-index: 30;
+        pointer-events: none;
+        background: #7bf8a1;
+        box-shadow: 0 0 12px 2px #7bf8a1;
+        animation: tv-barre 1s steps(28) both, tv-apaga 0.1s steps(1) 1s forwards;
+    }
+
+    .tv-enciende {
+        animation: tv-enciende 0.5s steps(6) both;
     }
 
     .tty-linea {
@@ -162,11 +201,44 @@ body {
         animation: blink 1s step-end infinite, tty-aparece 0.1s steps(1) var(--retardo, 0s) backwards;
     }
 
+    .indicador-scroll {
+        animation: indicador-baja 0.8s steps(2) infinite alternate, tty-aparece 0.1s steps(1) 1.4s backwards;
+    }
+
     @supports (animation-timeline: view()) {
         .revela {
             animation: revela-entra steps(6) both;
             animation-timeline: view();
             animation-range: entry 5% entry 45%;
+        }
+
+        .revela-izquierda {
+            animation: entra-izquierda steps(6) both;
+            animation-timeline: view();
+            animation-range: entry 5% entry 45%;
+        }
+
+        .revela-derecha {
+            animation: entra-derecha steps(6) both;
+            animation-timeline: view();
+            animation-range: entry 5% entry 45%;
+        }
+
+        /* La imagen se monta en líneas de TV según entra en pantalla */
+        .tv-carga-scroll {
+            animation: tv-lineas steps(28) both;
+            animation-timeline: view();
+            animation-range: entry 10% entry 70%;
+        }
+
+        /* Tarjetas hermanas dentro de un grid: cada una entra un poco
+           después que la anterior */
+        .grid > .revela:nth-child(2) {
+            animation-range: entry 15% entry 55%;
+        }
+
+        .grid > .revela:nth-child(3) {
+            animation-range: entry 25% entry 65%;
         }
     }
 }
@@ -177,6 +249,31 @@ body {
 
 @keyframes entra-derecha {
     from { opacity: 0; transform: translateX(32px); }
+}
+
+@keyframes tv-lineas {
+    from { clip-path: inset(0 0 100% 0); }
+    to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes tv-barre {
+    from { top: 0; }
+    to { top: calc(100% - 6px); }
+}
+
+@keyframes tv-apaga {
+    to { opacity: 0; }
+}
+
+@keyframes tv-enciende {
+    0% { transform: scaleY(0.04); filter: brightness(3); }
+    70% { transform: scaleY(1.04); filter: brightness(1.4); }
+    100% { transform: scaleY(1); filter: brightness(1); }
+}
+
+@keyframes indicador-baja {
+    from { transform: translateY(-3px); }
+    to { transform: translateY(5px); }
 }
 
 @keyframes tty-teclea {

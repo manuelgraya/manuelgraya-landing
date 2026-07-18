@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link href="./css/output.css?v=20260718b" rel="stylesheet">
+<link href="./css/output.css?v=20260718c" rel="stylesheet">
 </head>
 <body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- header-comun -->
@@ -54,13 +54,15 @@
 </header>
 <!-- /header-comun -->
 <main class="pt-24 pb-12 max-w-container-max mx-auto px-margin">
-<!-- Hero Section -->
-<section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
-<div class="relative group entra-izquierda">
+<!-- Hero Section: ocupa la primera pantalla completa (min-h) y termina en
+     el indicador que invita a bajar a proyectos -->
+<section class="mb-24 flex flex-col justify-center gap-10 md:min-h-[calc(100svh_-_8rem)]">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="relative group tv-pantalla">
 <div class="absolute -inset-2 bg-primary-container z-0"></div>
-<img class="relative z-10 w-full pixel-border object-cover aspect-square" alt="Ilustración pixel art de un programador con su gato trabajando en un portátil" src="./assets/hero.jpg">
+<img class="relative z-10 w-full pixel-border object-cover aspect-square tv-carga" alt="Ilustración pixel art de un programador con su gato trabajando en un portátil" src="./assets/hero.jpg">
 </div>
-<div class="pixel-border bg-surface-container p-8 flex flex-col gap-6 entra-derecha">
+<div class="pixel-border bg-surface-container p-8 flex flex-col gap-6 tv-enciende">
 <div class="flex items-center gap-2">
 <span class="w-4 h-4 bg-error rounded-full"></span>
 <span class="w-4 h-4 bg-primary rounded-full"></span>
@@ -83,6 +85,10 @@
 <a href="#contacto" class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px] text-center">Contactar</a>
 </div>
 </div>
+</div>
+<a href="#proyectos" class="indicador-scroll self-center text-primary hover:text-secondary transition-colors" aria-label="Bajar a proyectos">
+<span class="material-symbols-outlined text-4xl">keyboard_double_arrow_down</span>
+</a>
 </section>
 <!-- Projects Section -->
 <section class="mb-24" id="proyectos">
@@ -133,7 +139,7 @@
 </section>
 <!-- About Me Section -->
 <section class="mb-24 grid grid-cols-1 md:grid-cols-3 gap-8" id="sobre-mi">
-<div class="md:col-span-2 pixel-border bg-surface p-8 revela">
+<div class="md:col-span-2 pixel-border bg-surface p-8 revela-izquierda">
 <h2 class="font-pixel text-[20px] text-primary mb-8 uppercase">Sobre Mí</h2>
 <div class="space-y-6 font-body-lg text-body-lg">
 <p>Las matemáticas, la resolución de problemas y el conectar con las personas siempre han sido mis fuertes. La informática me ganó al descubrir que aquí no existen límites: el escenario perfecto para desatar mi creatividad y aplicar soluciones que impacten de verdad.</p>
@@ -150,9 +156,9 @@
 <a href="/sobre-mi/" class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px] inline-block">Trayectoria completa</a>
 </div>
 </div>
-<div class="pixel-border bg-surface-container-highest p-4 flex items-center justify-center relative overflow-hidden revela">
+<div class="pixel-border bg-surface-container-highest p-4 flex items-center justify-center relative overflow-hidden">
 <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#1e1c11 2px, transparent 0); background-size: 16px 16px;"></div>
-<img class="w-full h-full object-cover pixel-border z-10" alt="Ilustración pixel art de un desarrollador programando en su escritorio, con un gato y un pingüino Tux al fondo" src="./assets/ia-landing-pixel.webp">
+<img class="w-full h-full object-cover pixel-border z-10 tv-carga-scroll" alt="Ilustración pixel art de un desarrollador programando en su escritorio, con un gato y un pingüino Tux al fondo" src="./assets/ia-landing-pixel.webp">
 </div>
 </section>
 <!-- Contact Section -->
@@ -162,7 +168,7 @@
 <div class="h-1 flex-grow bg-on-surface"></div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-<div class="flex flex-col gap-8 revela">
+<div class="flex flex-col gap-8 revela-izquierda">
 <div class="terminal-container">
 <p class="text-[14px] leading-relaxed">
     &gt; mail --to manuelgraya<br>
@@ -209,7 +215,7 @@
 </ul>
 </div>
 </div>
-<form data-contacto method="POST" action="/api/contacto" class="pixel-border bg-surface-container p-8 flex flex-col gap-6 revela">
+<form data-contacto method="POST" action="/api/contacto" class="pixel-border bg-surface-container p-8 flex flex-col gap-6 revela-derecha">
 <input type="text" name="web" style="display:none" tabindex="-1" autocomplete="off">
 <div class="flex flex-col gap-2">
 <label class="font-label-sm uppercase tracking-widest text-[12px]" for="nombre">Nombre</label>
