@@ -90,12 +90,20 @@ body {
 .aviso-ancla:target + .aviso-toast,
 .aviso-toast.aviso-visible {
     display: block;
-    animation: aviso-entra 0.3s steps(6) both;
+    /* Easing suave (no steps) a propósito: en WebKit/iOS steps() + fill dejaba
+       el toast atascado a medio camino (translateY enorme con %, o congelado en
+       el primer paso con px). El estado en reposo del toast ya es opacity 1 /
+       translateY(0), así que sin fill descansa correcto en cualquier motor */
+    animation: aviso-entra 0.28s ease-out;
 }
 
+/* Offset en px (no %) a propósito: en WebKit/iOS un translateY en porcentaje
+   con steps() se dispara a un valor gigante y el toast desaparece fuera de la
+   pantalla. Con un desplazamiento fijo pequeño + opacidad el efecto es el
+   mismo y, si el fill llegara a atascarse, quedaría a unos px imperceptibles */
 @keyframes aviso-entra {
-    from { transform: translateY(150%); }
-    to { transform: translateY(0); }
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
