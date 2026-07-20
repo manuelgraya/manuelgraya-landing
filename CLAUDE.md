@@ -14,7 +14,7 @@ decorativo del index); el resto de interactividad es CSS-only
 - `proyectos/index.html` — página /proyectos/ (listado detallado de proyectos + terminal de stats), adaptada del mockup de Stitch "manuelgraya - Proyectos" con los proyectos reales del index. Comparte con /sobre-mi/ los overrides tipográficos de input.css (clase `pagina-proyectos` en el body). El enlace "Proyectos" del nav apunta aquí (antes al anchor /#proyectos)
 - `src/input.css` — directivas Tailwind + clases custom (`.pixel-border`, `.pixel-button`, `.terminal-container`, `.cursor`) + overrides tipográficos de /sobre-mi/ y estados activos del nav
 - `src/partials/` — **único sitio donde se editan header y footer** (`header.html`, `footer.html`). `npm run build` ejecuta `src/inyectar-partials.js`, que los pega idénticos entre los marcadores `<!-- header-comun -->` / `<!-- footer-comun -->` de index, 404, sobre-mi y proyectos. No editarlos inline en las páginas: el build lo machaca. El enlace activo por página se marca vía CSS (clase `pagina-sobre-mi` en el body)
-- `css/output.css` — CSS compilado y minificado. **Se commitea**: el servidor no tiene Node y sirve estáticos tal cual. nginx lo sirve sin Cache-Control y los navegadores cachean versiones viejas: al cambiar estilos hay que subir el `?v=` del `<link>` de output.css en TODOS los html
+- `css/output.css` — CSS compilado y minificado. **Se commitea**: el servidor no tiene Node y sirve estáticos tal cual. nginx lo sirve sin Cache-Control y los navegadores cachean versiones viejas: al cambiar estilos hay que subir el `?v=` del `<link>` de output.css en TODOS los html. **OJO con el HTML**: los `.html` NO tienen cache-busting (no llevan `?v=`), así que tras desplegar un cambio de contenido/markup el navegador puede seguir mostrando la página vieja del live; para verificar en el servidor hay que forzar recarga (Ctrl+Shift+R). Si un cambio "no aparece" desplegado, sospechar de esto antes de tocar código
 - `tailwind.config.js` — tema del diseño: paleta Material-style (tonos madera/pergamino + verde terminal), `borderRadius: 0` (pixel art), fuentes monoespaciadas
 - `api/contacto.py` — backend del formulario de contacto (Python stdlib, sin dependencias): sirve el captcha aritmético (token HMAC sin estado), valida, limita por IP y envía el correo por SMTP de Gmail. Configuración por variables de entorno; las credenciales viven SOLO en el servidor (`.env` del servicio systemd, ver CLAUDE.local.md). Corre como servicio systemd detrás de nginx (`location /api/contacto`); tras cambiarlo hay que reiniciar el servicio en el servidor
 - `js/shader.js` — fondo animado de TODAS las páginas: shader WebGL de Stitch (rejilla pixel pulsante con scanline) en un canvas fijo tras el contenido (`.fondo-shader`). Con prefers-reduced-motion pinta un solo fotograma; sin WebGL se quita el canvas. Las pantallas de carga (`.cargador`, SVG SMIL + tecleo) son CSS-only: la del index (~1.5s) retrasa el arranque del efecto TV del hero; las rutas interiores usan `.cargador-breve` (~0.9s, texto propio por página) y su `<main class="entra-pagina">` sube al apagarse. La 404 solo lleva el fondo
@@ -33,6 +33,15 @@ npm run build      # build minificado — OBLIGATORIO antes de commitear cambios
 
 Tailwind es **v3** (config JS clásica). No migrar a v4 sin decidirlo expresamente.
 
+Tailwind purga las clases no usadas, así que `output.css` solo contiene las
+utilidades presentes en el HTML/partials. Al editar markup:
+
+- Si **reutilizas** clases que ya existen en `output.css`, NO hace falta
+  recompilar ni subir el `?v=`. Para comprobarlo: `grep 'nombre-clase' css/output.css`
+- Si **introduces una clase nueva** (p. ej. `self-start` si no estaba), hay que
+  `npm run build` y subir el `?v=` de output.css en todos los html. Preferir
+  reutilizar clases ya compiladas cuando el resultado visual es equivalente
+
 Fuentes: Google Fonts (Press Start 2P, VT323, Space Mono, JetBrains Mono,
 Material Symbols Outlined). Los iconos son ligaduras de Material Symbols.
 
@@ -50,3 +59,5 @@ Material Symbols Outlined). Los iconos son ligaduras de Material Symbols.
 - Commits en español, sin trailer de coautoría (Co-Authored-By)
 - Contenido de la web en español
 - No poner IPs, usuarios ni detalles del servidor en archivos versionados
+- **Tarjetas de proyecto duplicadas**: los proyectos aparecen en `index.html` (3 destacados en la sección Proyectos) y en `proyectos/index.html` (listado completo). NO son partials (los partials solo cubren header/footer), así que al añadir/editar/quitar un proyecto hay que tocar **las dos páginas a mano** y mantenerlas coherentes
+- **Badge Público/Privado + aviso de código privado**: cada tarjeta lleva un badge `Público` (icono `lock_open`, `bg-secondary-container`) o `Privado` (icono `lock`, `bg-error-container`). Los proyectos privados apuntan su botón "Código" a `#aviso-codigo-privado`, un toast de error CSS-only (patrón `.aviso-ancla:target + .aviso-toast`, "ERROR.LOG / ACCESO_DENEGADO") replicado al final del `<main>` de index y proyectos. Al replicar tarjetas hay que mantener este mismo patrón
