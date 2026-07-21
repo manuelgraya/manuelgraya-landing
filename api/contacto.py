@@ -22,6 +22,7 @@ import os
 import random
 import re
 import smtplib
+import threading
 import time
 from collections import defaultdict, deque
 from email.message import EmailMessage
@@ -38,6 +39,7 @@ RATE_WINDOW = 3600     # ...por hora
 
 _envios_por_ip = defaultdict(deque)
 _tokens_usados = {}  # token -> ts, para impedir reutilizarlos dentro del TTL
+_lock = threading.Lock()  # protege el estado compartido entre hilos
 
 
 def _firma(respuesta: str, ts: str, nonce: str) -> str:
@@ -59,31 +61,40 @@ def nuevo_captcha() -> dict:
 def captcha_valido(token: str, respuesta: str) -> bool:
     try:
         ts, nonce, sig = token.split(".")
+        ts_int = int(ts)
     except ValueError:
         return False
-    if time.time() - int(ts) > CAPTCHA_TTL:
-        return False
-    if token in _tokens_usados:
+    if time.time() - ts_int > CAPTCHA_TTL:
         return False
     if not hmac.compare_digest(sig, _firma(respuesta.strip(), ts, nonce)):
         return False
     ahora = time.time()
-    _tokens_usados[token] = ahora
-    for t, usado_en in list(_tokens_usados.items()):
-        if ahora - usado_en > CAPTCHA_TTL:
-            del _tokens_usados[t]
+    with _lock:  # check-then-insert atómico: cierra la carrera de reutilización
+        if token in _tokens_usados:
+            return False
+        _tokens_usados[token] = ahora
+        for t, usado_en in list(_tokens_usados.items()):
+            if ahora - usado_en > CAPTCHA_TTL:
+                del _tokens_usados[t]
     return True
 
 
 def dentro_del_limite(ip: str) -> bool:
     ahora = time.time()
-    envios = _envios_por_ip[ip]
-    while envios and ahora - envios[0] > RATE_WINDOW:
-        envios.popleft()
-    if len(envios) >= RATE_LIMIT:
-        return False
-    envios.append(ahora)
-    return True
+    with _lock:
+        # purga global: descarta envíos caducados y elimina las IPs que se
+        # quedan sin ninguno, para que el diccionario no crezca sin límite
+        for otra_ip in list(_envios_por_ip):
+            cola = _envios_por_ip[otra_ip]
+            while cola and ahora - cola[0] > RATE_WINDOW:
+                cola.popleft()
+            if not cola:
+                del _envios_por_ip[otra_ip]
+        envios = _envios_por_ip[ip]
+        if len(envios) >= RATE_LIMIT:
+            return False
+        envios.append(ahora)
+        return True
 
 
 def enviar_correo(nombre: str, email: str, mensaje: str) -> None:
@@ -119,7 +130,7 @@ class Handler(BaseHTTPRequestHandler):
             self._json(404, {"error": "no encontrado"})
             return
         try:
-            longitud = min(int(self.headers.get("Content-Length", 0)), 64 * 1024)
+            longitud = max(0, min(int(self.headers.get("Content-Length", 0)), 64 * 1024))
             datos = json.loads(self.rfile.read(longitud))
         except (ValueError, json.JSONDecodeError):
             self._json(400, {"error": "petición inválida"})
