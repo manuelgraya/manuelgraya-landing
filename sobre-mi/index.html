@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<link href="/css/output.css?v=20260721a" rel="stylesheet">
+<link href="/css/output.css?v=20260722a" rel="stylesheet">
 </head>
 <body class="pagina-sobre-mi bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- Carga breve de ruta (variante de la pantalla de carga del inicio,
@@ -75,7 +75,7 @@
 <!-- Hero / Intro Section -->
 <section class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
 <div class="md:col-span-8 flex flex-col justify-center">
-<h1 class="font-headline-lg text-headline-lg text-primary mb-6">./Trayectoria_y_Filosofía</h1>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-6 break-words">./Trayectoria_y_Filosofía</h1>
 <div class="bg-surface-container border-2 border-on-surface p-6 shadow-[8px_8px_0px_0px_rgba(30,28,17,1)]">
 <p class="font-body-lg text-body-lg mb-4">
     Desde pequeño, las matemáticas, la resolución de problemas y el conectar con las personas han sido mis grandes fuertes. Aunque la física me apasionaba, la informática terminó ganando la partida al descubrir que en este sector no existen límites; es el escenario perfecto donde puedo desatar mi creatividad, saciar mi curiosidad constante y aplicar soluciones pragmáticas que impacten de verdad en la vida de los demás.
@@ -98,7 +98,7 @@
 <!-- Technical Expertise Bento -->
 <section class="mb-16">
 <h2 class="font-headline-md text-headline-md text-primary mb-8 border-l-8 border-primary pl-4">Experiencia Técnica</h2>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
 <!-- Linux -->
 <div class="bg-surface border-2 border-on-surface p-4 flex flex-col items-center text-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-[4px_4px_0px_0px_rgba(30,28,17,1)] transition-all">
 <div class="w-16 h-16 bg-primary-container flex items-center justify-center border-2 border-on-surface mb-4">
@@ -262,8 +262,8 @@
 <p class="text-label-sm font-label-sm opacity-70">Sistemas expertos</p>
 </div>
 </div>
-<label for="ver-mas-tech" class="tech-toggle-mas pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px] md:col-span-4 justify-self-center cursor-pointer inline-flex items-center gap-2">Ver más<span class="material-symbols-outlined text-lg">expand_more</span></label>
-<label for="ver-mas-tech" class="tech-toggle-menos pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px] md:col-span-4 justify-self-center cursor-pointer hidden items-center gap-2">Ver menos<span class="material-symbols-outlined text-lg">expand_less</span></label>
+<label for="ver-mas-tech" class="tech-toggle-mas pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px] sm:col-span-2 md:col-span-4 justify-self-center cursor-pointer inline-flex items-center gap-2">Ver más<span class="material-symbols-outlined text-lg">expand_more</span></label>
+<label for="ver-mas-tech" class="tech-toggle-menos pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px] sm:col-span-2 md:col-span-4 justify-self-center cursor-pointer hidden items-center gap-2">Ver menos<span class="material-symbols-outlined text-lg">expand_less</span></label>
 </div>
 </section>
 <!-- The Terminal Section (Workflow) -->
@@ -285,22 +285,22 @@
 <span class="text-primary-fixed-dim">➜</span>
 <span class="text-on-primary-container">ls -la stack/</span>
 </div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-2 opacity-90">
-<span>.neovim_init</span>
-<span>.tmux.conf</span>
-<span>.zshrc</span>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 opacity-90">
+<span>.claude.md</span>
+<span>docker-compose.yml</span>
 <span>.gitconfig</span>
+<span>.github/workflows/</span>
 <span class="text-tertiary-fixed-dim">scripts/</span>
 <span class="text-tertiary-fixed-dim">dotfiles/</span>
-<span>arch-config.yaml</span>
-<span>kernel-hooks/</span>
+<span>Dockerfile</span>
+<span>.vscode/settings.json</span>
 </div>
 <div class="flex gap-2 pt-4">
 <span class="text-primary-fixed-dim">➜</span>
 <span class="text-on-primary-container">cat workflow.md</span>
 </div>
 <div class="border-l-2 border-secondary-fixed/30 pl-4 py-2 italic text-surface-container-low">
-    "Mi flujo de trabajo es terminal-first. Utilizo Neovim como IDE principal, Tmux para la gestión de sesiones y Zsh para la automatización de tareas. Creo en entornos minimalistas que eliminan las distracciones visuales para priorizar la arquitectura lógica."
+    "Mi flujo de trabajo es terminal-first. Utilizo VSCode como editor principal, Docker para entornos reproducibles, Linux como sistema base, Git para control de versiones, Claude Code para acelerar el desarrollo, y CI/CD con GitHub Actions o scripts para automatizar despliegues y pruebas."
 </div>
 <div class="flex items-center gap-1">
 <span class="text-primary-fixed-dim">➜</span>

@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<link href="/css/output.css?v=20260721a" rel="stylesheet">
+<link href="/css/output.css?v=20260722a" rel="stylesheet">
 </head>
 <body class="pagina-proyectos bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- Carga breve de ruta (variante de la pantalla de carga del inicio,
@@ -75,7 +75,7 @@
 <!-- Título de página -->
 <section class="mb-12">
 <div class="flex flex-col gap-2">
-<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">./Proyectos_y_Contribuciones</h1>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight break-words">./Proyectos_y_Contribuciones</h1>
 <div class="flex items-center gap-2 text-on-surface-variant">
 <span class="material-symbols-outlined text-sm">directory_sync</span>
 <span class="font-label-sm text-label-sm uppercase">PATH: /home/graya/proyectos</span>
@@ -95,7 +95,7 @@
 </div>
 <div class="flex flex-col flex-grow gap-4">
 <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
-<h2 class="font-headline-md text-headline-md text-on-surface">Web angelagarciapsicologia</h2>
+<h2 class="font-headline-md text-headline-md text-on-surface break-words">Web angelagarciapsicologia</h2>
 <div class="flex flex-wrap items-center gap-2">
 <span class="font-label-sm text-label-sm bg-secondary-container text-on-secondary-container px-3 py-1 border-2 border-on-surface uppercase">Web · En producción</span>
 </div>
@@ -109,7 +109,7 @@
 <span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">Linux</span>
 </div>
 <div class="flex flex-wrap gap-4 mt-2">
-<a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel inline-block" href="#aviso-codigo-privado">Código</a>
+<a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel inline-block" role="button" tabindex="0" data-aviso-codigo style="cursor:pointer">Código</a>
 <a class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel" href="https://angelagarciapsicologia.com/">Demo</a>
 </div>
 </div>
@@ -124,7 +124,7 @@
 </div>
 <div class="flex flex-col flex-grow gap-4">
 <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
-<h2 class="font-headline-md text-headline-md text-on-surface">Landing manuelgraya</h2>
+<h2 class="font-headline-md text-headline-md text-on-surface break-words">Landing manuelgraya</h2>
 <div class="flex flex-wrap items-center gap-2">
 <span class="font-label-sm text-label-sm bg-secondary-container text-on-secondary-container px-3 py-1 border-2 border-on-surface uppercase">Esta web · En producción</span>
 </div>
@@ -153,7 +153,7 @@
 </div>
 <div class="flex flex-col flex-grow gap-4">
 <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
-<h2 class="font-headline-md text-headline-md text-on-surface">Lista RRPP Bot</h2>
+<h2 class="font-headline-md text-headline-md text-on-surface break-words">Lista RRPP Bot</h2>
 <div class="flex flex-wrap items-center gap-2">
 <span class="font-label-sm text-label-sm bg-secondary-container text-on-secondary-container px-3 py-1 border-2 border-on-surface uppercase">Bot · Telegram</span>
 </div>
@@ -167,7 +167,7 @@
 <span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">PDF</span>
 </div>
 <div class="flex flex-wrap gap-4 mt-2">
-<a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel inline-block" href="#aviso-codigo-privado">Código</a>
+<a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel inline-block" role="button" tabindex="0" data-aviso-codigo style="cursor:pointer">Código</a>
 </div>
 </div>
 </article>
@@ -203,16 +203,18 @@
 </div>
 </div>
 </section>
-<!-- Notificación emergente "código privado": CSS-only con :target (como el
-     menú móvil). El ancla es un elemento fijo e invisible separado del toast
-     para que el navegador no haga scroll al abrirlo; el toast se muestra como
-     hermano (.aviso-ancla:target + .aviso-toast). Se cierra con la X -->
-<span class="aviso-ancla" id="aviso-codigo-privado"></span>
+</main>
+<!-- Notificación emergente "código privado": la muestra js/aviso-codigo.js por
+     JS (clase .aviso-visible) al pulsar "Código" ([data-aviso-codigo]) en un
+     proyecto privado, y se auto-oculta a los 6 s. No usa hash/:target, así que
+     la URL nunca cambia. Va FUERA del <main> a propósito: dentro, el transform
+     de .entra-pagina hacía de bloque contenedor y position:fixed la anclaba al
+     final del contenido en vez de al viewport. -->
 <aside class="aviso-toast" role="alert">
 <div class="border-4 border-on-surface bg-inverse-surface shadow-[8px_8px_0px_0px_rgba(30,28,17,1)]">
 <div class="bg-surface-variant px-4 py-1 flex items-center justify-between gap-4 border-b-2 border-on-surface">
 <span class="font-label-sm text-label-sm text-on-surface font-bold">ERROR.LOG</span>
-<a class="material-symbols-outlined text-on-surface hover:text-error" href="#cerrar-aviso" aria-label="Cerrar aviso">close</a>
+<a class="material-symbols-outlined text-on-surface hover:text-error" role="button" tabindex="0" data-aviso-cerrar aria-label="Cerrar aviso" style="cursor:pointer">close</a>
 </div>
 <div class="p-4 font-label-sm text-label-sm text-secondary-fixed">
 <p class="text-on-primary-container">$ git clone</p>
@@ -225,7 +227,6 @@
 </div>
 </div>
 </aside>
-</main>
 <!-- footer-comun -->
 <!-- Footer común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
      (src/inyectar-partials.js lo pega entre los marcadores footer-comun de cada página). -->
@@ -255,6 +256,7 @@
 </div>
 </footer>
 <!-- /footer-comun -->
+<script src="/js/aviso-codigo.js?v=20260721b" defer></script>
 <script src="/js/shader.js?v=20260718a" defer></script>
 </body>
 </html>

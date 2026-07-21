@@ -4,6 +4,13 @@
 
 html {
     scroll-behavior: smooth;
+    /* Las animaciones de revelado (.revela-izquierda/derecha) mantienen los
+       elementos aún no visibles desplazados ±32px con translateX; en el index
+       eso asomaba fuera del viewport y provocaba scroll horizontal en móvil.
+       overflow-x:hidden en body no basta (los elementos position:fixed como el
+       header o el shader se estiran al ancho desbordado), así que se contiene
+       también en la raíz */
+    overflow-x: hidden;
 }
 
 /* Que el título de la sección no quede oculto bajo el header fijo (h-16) */
@@ -14,6 +21,11 @@ section[id] {
 body {
     background-color: #fff9ec;
     image-rendering: pixelated;
+    /* Ningún elemento debe provocar scroll horizontal en móvil (las sombras
+       offset de .pixel-border y el texto monoespaciado de ancho fijo pueden
+       asomar). index.html y 404.html no llevan la clase overflow-x-hidden en
+       el body, así que se garantiza aquí para todas las páginas */
+    overflow-x: hidden;
 }
 
 /* Menú móvil sin JS: se abre con #menu-movil en el hash y se cierra solo
@@ -62,6 +74,55 @@ body {
 :is(.pagina-sobre-mi, .pagina-proyectos, .pagina-contacto) :is(main, footer) .text-headline-lg { font-size: 32px; line-height: 40px; }
 :is(.pagina-sobre-mi, .pagina-proyectos, .pagina-contacto) :is(main, footer) .text-headline-md { font-size: 24px; line-height: 32px; }
 :is(.pagina-sobre-mi, .pagina-proyectos, .pagina-contacto) :is(main, footer) .text-label-sm { font-size: 12px; }
+
+/* ===== Ajustes responsive para móvil =====
+   Solo afectan a pantallas pequeñas (<640px) o punteros táctiles; el diseño de
+   escritorio (>=768px, ratón) queda intacto. Cubren el escalón que faltaba
+   entre el layout móvil y el de md: (antes solo se usaba md:): reducen el
+   margen lateral, contienen las tipografías de los mockups de Stitch y
+   agrandan las áreas táctiles de los botones pixel pequeños. */
+
+@media (max-width: 639px) {
+    /* Menos margen lateral en móvil: 24px por lado se comía demasiado ancho */
+    .px-margin {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* Menos padding y fuente algo menor en la terminal del hero para que la
+       línea más larga ("> Open source Enthusiast") no pierda el último
+       carácter a 320px (.tty-linea es overflow:hidden y recortaba la "t").
+       El selector .terminal-container p gana en especificidad a la utilidad
+       text-[14px] del propio párrafo */
+    .terminal-container {
+        padding: 12px;
+    }
+
+    .terminal-container p {
+        font-size: 13px;
+    }
+
+    /* Headlines de los mockups (Space Mono) más contenidas en móvil. Junto con
+       break-words en los títulos-slug (p. ej. "./Trayectoria_y_Filosofía" o
+       "Web angelagarciapsicologia"), que no tienen espacios donde partir,
+       evitan que desborden el viewport */
+    :is(.pagina-sobre-mi, .pagina-proyectos, .pagina-contacto) :is(main, footer) .text-headline-lg { font-size: 24px; line-height: 30px; }
+    :is(.pagina-sobre-mi, .pagina-proyectos, .pagina-contacto) :is(main, footer) .text-headline-md { font-size: 20px; line-height: 26px; }
+}
+
+/* Áreas táctiles cómodas en dispositivos de puntero grueso (móvil/tablet): los
+   botones pixel pequeños (Código/Demo, text-[10px] py-1) quedaban muy por
+   debajo del mínimo recomendado (~44px). Se excluye .hidden para no romper el
+   estado inicial oculto del toggle "Ver menos" de /sobre-mi/. No aplica con
+   ratón, así que el escritorio no cambia */
+@media (pointer: coarse) {
+    .pixel-button:not(.hidden) {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
 
 /* Notificación emergente "código privado" (/proyectos/), sin JS: se abre por
    :target al pulsar un botón Código y se cierra con el enlace #cerrar-aviso.

@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link href="./css/output.css?v=20260721a" rel="stylesheet">
+<link href="./css/output.css?v=20260722a" rel="stylesheet">
 </head>
 <body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- Pantalla de carga del inicio (CSS-only, .cargador se apaga sola): logo
@@ -78,19 +78,19 @@
 <!-- Hero Section: ocupa la primera pantalla completa (min-h) y termina en
      el indicador que invita a bajar a proyectos -->
 <section class="mb-24 flex flex-col justify-center gap-10 md:min-h-[calc(100svh_-_8rem)]">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
 <div class="relative group tv-pantalla">
 <div class="absolute -inset-2 bg-primary-container z-0"></div>
 <img class="relative z-10 w-full pixel-border object-cover aspect-square tv-carga" alt="Ilustración pixel art de un programador con su gato trabajando en un portátil" src="./assets/hero.jpg">
 </div>
-<div class="pixel-border bg-surface-container p-8 flex flex-col gap-6 tv-enciende">
+<div class="pixel-border bg-surface-container p-6 sm:p-8 flex flex-col gap-6 tv-enciende">
 <div class="flex items-center gap-2">
 <span class="w-4 h-4 bg-error rounded-full"></span>
 <span class="w-4 h-4 bg-primary rounded-full"></span>
 <span class="w-4 h-4 bg-secondary rounded-full"></span>
 </div>
 <div>
-<h1 class="font-pixel text-[24px] text-primary mb-4 leading-tight">Graya Dev Ingeniero</h1>
+<h1 class="font-pixel text-[18px] sm:text-[24px] text-primary mb-4 leading-tight">Graya Dev Ingeniero</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant">Pragmatismo, código y curiosidad </p>
 </div>
 <div class="terminal-container">
@@ -114,7 +114,7 @@
 <!-- Projects Section -->
 <section class="mb-24" id="proyectos">
 <div class="flex items-center gap-4 mb-12 revela">
-<h2 class="font-pixel text-[20px] text-primary uppercase">Proyectos</h2>
+<h2 class="font-pixel text-[16px] sm:text-[20px] text-primary uppercase">Proyectos</h2>
 <div class="h-1 flex-grow bg-on-surface"></div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
@@ -129,7 +129,7 @@
 <h3 class="font-pixel text-[12px] mb-4 text-on-surface">Web Psicóloga</h3>
 <p class="font-body-md text-on-surface-variant mb-6 flex-grow">Web para una consulta de psicología: presencia online, captación de clientes y gestión de citas. En producción con Django y Nginx.</p>
 <div class="flex gap-3">
-<a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel" href="#aviso-codigo-privado">Código</a>
+<a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel" role="button" tabindex="0" data-aviso-codigo style="cursor:pointer">Código</a>
 <a class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel" href="https://angelagarciapsicologia.com/">Demo</a>
 </div>
 </div>
@@ -159,7 +159,7 @@
 <h3 class="font-pixel text-[12px] mb-4 text-on-surface">Lista RRPP Bot</h3>
 <p class="font-body-md text-on-surface-variant mb-6 flex-grow">Bot de Telegram para que los RRPP de una discoteca gestionen sus listas de invitados, con envío automático del PDF consolidado por correo.</p>
 <div class="flex gap-3">
-<a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel" href="#aviso-codigo-privado">Código</a>
+<a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel" role="button" tabindex="0" data-aviso-codigo style="cursor:pointer">Código</a>
 </div>
 </div>
 </div>
@@ -170,7 +170,7 @@
 <!-- About Me Section -->
 <section class="mb-24 grid grid-cols-1 md:grid-cols-3 gap-8" id="sobre-mi">
 <div class="md:col-span-2 pixel-border bg-surface p-8 revela-izquierda">
-<h2 class="font-pixel text-[20px] text-primary mb-8 uppercase">Sobre Mí</h2>
+<h2 class="font-pixel text-[16px] sm:text-[20px] text-primary mb-8 uppercase">Sobre Mí</h2>
 <div class="space-y-6 font-body-lg text-body-lg">
 <p>Las matemáticas, la resolución de problemas y el conectar con las personas siempre han sido mis fuertes. La informática me ganó al descubrir que aquí no existen límites: el escenario perfecto para desatar mi creatividad y aplicar soluciones que impacten de verdad.</p>
 <p>Empecé en 2020 y poco después dejé Windows por el software libre: el Open Source me demostró de lo que es capaz la humanidad con un propósito común. Hoy vivo en primera línea la revolución de la IA, con la aspiración de convertirme en un gran experto y seguir construyendo el futuro.</p>
@@ -194,7 +194,7 @@
 <!-- Contact Section -->
 <section class="mb-24" id="contacto">
 <div class="flex items-center gap-4 mb-12 revela">
-<h2 class="font-pixel text-[20px] text-primary uppercase">Contacto</h2>
+<h2 class="font-pixel text-[16px] sm:text-[20px] text-primary uppercase">Contacto</h2>
 <div class="h-1 flex-grow bg-on-surface"></div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -267,16 +267,17 @@
 </form>
 </div>
 </section>
-<!-- Notificación emergente "código privado": CSS-only con :target (como el
-     menú móvil). El ancla es un elemento fijo e invisible separado del toast
-     para que el navegador no haga scroll al abrirlo; el toast se muestra como
-     hermano (.aviso-ancla:target + .aviso-toast). Se cierra con la X -->
-<span class="aviso-ancla" id="aviso-codigo-privado"></span>
+</main>
+<!-- Notificación emergente "código privado": la muestra js/aviso-codigo.js por
+     JS (clase .aviso-visible) al pulsar "Código" ([data-aviso-codigo]) en un
+     proyecto privado, y se auto-oculta a los 6 s. No usa hash/:target, así que
+     la URL nunca cambia. Va FUERA del <main> (mismo patrón que en /proyectos/,
+     donde el transform de .entra-pagina rompía position:fixed). -->
 <aside class="aviso-toast" role="alert">
 <div class="border-4 border-on-surface bg-inverse-surface shadow-[8px_8px_0px_0px_rgba(30,28,17,1)]">
 <div class="bg-surface-variant px-4 py-1 flex items-center justify-between gap-4 border-b-2 border-on-surface">
 <span class="font-label-sm text-label-sm text-on-surface font-bold">ERROR.LOG</span>
-<a class="material-symbols-outlined text-on-surface hover:text-error" href="#cerrar-aviso" aria-label="Cerrar aviso">close</a>
+<a class="material-symbols-outlined text-on-surface hover:text-error" role="button" tabindex="0" data-aviso-cerrar aria-label="Cerrar aviso" style="cursor:pointer">close</a>
 </div>
 <div class="p-4 font-label-sm text-label-sm text-secondary-fixed">
 <p class="text-on-primary-container">$ git clone</p>
@@ -289,7 +290,6 @@
 </div>
 </div>
 </aside>
-</main>
 <!-- footer-comun -->
 <!-- Footer común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
      (src/inyectar-partials.js lo pega entre los marcadores footer-comun de cada página). -->
@@ -319,6 +319,7 @@
 </div>
 </footer>
 <!-- /footer-comun -->
+<script src="/js/aviso-codigo.js?v=20260721b" defer></script>
 <script src="/js/contacto.js?v=20260718a" defer></script>
 <script src="/js/shader.js?v=20260718a" defer></script>
 </body>
