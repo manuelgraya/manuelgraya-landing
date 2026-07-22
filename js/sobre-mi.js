@@ -200,8 +200,8 @@
       animacionActiva = true;
       cambioDeCanal(function () {
         ponFuentes([
-          { src: base + '.webm?v=1', type: 'video/webm' },
-          { src: base + '.mp4?v=1', type: 'video/mp4' },
+          { src: base + '.webm?v=2', type: 'video/webm' },
+          { src: base + '.mp4?v=2', type: 'video/mp4' },
         ]);
         elVideo.loop = false;
         elVideo.playbackRate = 1;
