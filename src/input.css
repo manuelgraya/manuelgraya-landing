@@ -431,6 +431,56 @@ body {
     from { opacity: 0; transform: translateY(24px); }
 }
 
+/* =====================================================================
+   Inicio — pantallas a página completa con "salto" entre secciones.
+   Cada <section> del index (Portada, Proyectos, Sobre Mí, Contacto) ocupa
+   una pantalla (md:min-h en el HTML) y la rueda encaja de una a la
+   siguiente (scroll-snap suave); los indicadores encadenan los 4 saltos.
+   Solo en pantallas grandes (md+): en móvil el contenido fluye natural.
+   :has aísla el efecto al index (main.saltos) sin tocar el resto de rutas.
+   ===================================================================== */
+@media (min-width: 768px) {
+    html:has(main.saltos) {
+        scroll-snap-type: y proximity;
+        scroll-padding-top: 4rem;
+        scroll-behavior: smooth;
+    }
+    main.saltos > section {
+        scroll-snap-align: start;
+        /* Anula el scroll-margin-top: 6rem de section[id] (pensado para el
+           layout antiguo): aquí cada sección debe aterrizar justo bajo el
+           header (scroll-padding-top: 4rem) para que llene la pantalla y la
+           flecha de salto caiga SIEMPRE a la misma altura de referencia */
+        scroll-margin-top: 0;
+    }
+}
+
+/* Indicador de salto entre secciones: como el del hero pero siempre visible
+   (sin la aparición retrasada), solo rebota en pasos. */
+@media (prefers-reduced-motion: no-preference) {
+    .indicador-salto {
+        animation: indicador-baja 0.8s steps(2) infinite alternate;
+    }
+    /* CTA del avatar de Sobre Mí: rebota para llamar al clic */
+    .invita-conoceme {
+        animation: invita-bob 0.9s steps(2) infinite alternate;
+    }
+}
+
+@keyframes invita-bob {
+    from { transform: translateY(0); }
+    to { transform: translateY(-6px); }
+}
+
+/* Avatar de Sobre Mí en el index: el enlace que lo envuelve lo levanta al hover */
+.avatar-invita {
+    transition: transform 0.1s steps(2), box-shadow 0.1s steps(2);
+}
+.group:hover .avatar-invita {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0px 0px #5d4037;
+}
+
 /* Consola-firma del hero: tipografía monoespaciada del cuerpo de la ventana */
 .consola-hero {
     font-family: 'Space Mono', 'JetBrains Mono', monospace;
@@ -844,5 +894,108 @@ img {
     .dialogo-tecleando .dialogo-texto::after,
     .dialogo-opcion--sel .dialogo-cursor {
         animation: none;
+    }
+}
+
+/* ---- Reproductor de música de /sobre-mi/ ----------------------------- */
+/* Panel fijo estilo consola: botón mute + slider de volumen. Coherente con
+   la caja de diálogo (fondo #1e1c11, borde grueso, sombra dura, verde tty). */
+.musica-control {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    background: #1e1c11;
+    border: 3px solid #83746b;
+    box-shadow: inset 3px 3px 0px 0px #000, 5px 5px 0px 0px #5d4037;
+    color: #7bf8a1;
+}
+.musica-boton {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: #000;
+    border: 2px solid #7bf8a1;
+    color: #7bf8a1;
+    cursor: pointer;
+    transition: transform 0.08s, background 0.12s, color 0.12s;
+}
+.musica-boton:hover {
+    background: #7bf8a1;
+    color: #000;
+}
+.musica-boton:active {
+    transform: translate(2px, 2px);
+}
+.musica-boton .material-symbols-outlined {
+    font-size: 22px;
+}
+.musica-silenciada .musica-boton {
+    border-color: #83746b;
+    color: #83746b;
+}
+.musica-silenciada .musica-boton:hover {
+    background: #83746b;
+    color: #000;
+}
+.musica-slider-caja {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.musica-etiqueta {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    letter-spacing: 0.5px;
+    color: #83746b;
+}
+/* Slider pixel: raíl fino oscuro + pulgar cuadrado verde tty. */
+.musica-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 90px;
+    height: 6px;
+    background: #000;
+    border: 2px solid #5d4037;
+    cursor: pointer;
+}
+.musica-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 16px;
+    background: #7bf8a1;
+    border: 2px solid #000;
+    cursor: pointer;
+}
+.musica-slider::-moz-range-thumb {
+    width: 12px;
+    height: 16px;
+    background: #7bf8a1;
+    border: 2px solid #000;
+    border-radius: 0;
+    cursor: pointer;
+}
+.musica-slider:focus-visible {
+    outline: 2px solid #f4c542;
+    outline-offset: 2px;
+}
+.musica-boton:focus-visible {
+    outline: 2px solid #f4c542;
+    outline-offset: 2px;
+}
+@media (max-width: 480px) {
+    .musica-slider {
+        width: 64px;
+    }
+    .musica-etiqueta {
+        display: none;
     }
 }

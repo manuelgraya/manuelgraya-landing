@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link href="./css/output.css?v=20260722i" rel="stylesheet">
+<link href="./css/output.css?v=20260722l" rel="stylesheet">
 </head>
 <body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- Pantalla de carga del inicio (CSS-only, .cargador se apaga sola): logo
@@ -74,10 +74,10 @@
 </nav>
 </header>
 <!-- /header-comun -->
-<main class="pt-24 pb-12 max-w-container-max mx-auto px-margin">
+<main class="saltos pt-24 md:pt-16 pb-12 max-w-container-max mx-auto px-margin">
 <!-- Hero Section: ocupa la primera pantalla completa (min-h) y termina en
      el indicador que invita a bajar a proyectos -->
-<section class="mb-24 flex flex-col justify-center gap-10 md:min-h-[calc(100svh_-_8rem)]">
+<section class="relative mb-24 md:mb-0 flex flex-col justify-center gap-10 md:min-h-[calc(100svh_-_4rem)]">
 <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center">
 <!-- Consola-firma: la ventana de terminal es el elemento protagonista y ocupa
      mas ancho que la imagen (8/12). Banner ASCII (ANSI Shadow, escalado con
@@ -136,12 +136,12 @@
 <a href="/sobre-mi/" class="pixel-button bg-secondary text-on-secondary px-5 py-3 flex items-center gap-2 font-label-sm uppercase tracking-widest text-[12px]"><span class="material-symbols-outlined text-lg">person</span>Sobre Mí</a>
 <a href="/contacto/" class="pixel-button bg-primary text-on-primary px-5 py-3 flex items-center gap-2 font-label-sm uppercase tracking-widest text-[12px]"><span class="material-symbols-outlined text-lg">mail</span>Contacto</a>
 </div>
-<a href="#proyectos" class="indicador-scroll self-center text-primary hover:text-secondary transition-colors" aria-label="Bajar a proyectos">
+<a href="#proyectos" class="indicador-scroll absolute bottom-6 left-1/2 -translate-x-1/2 text-primary hover:text-secondary transition-colors" aria-label="Bajar a proyectos">
 <span class="material-symbols-outlined text-4xl">keyboard_double_arrow_down</span>
 </a>
 </section>
 <!-- Projects Section -->
-<section class="mb-24" id="proyectos">
+<section class="relative mb-24 md:mb-0 flex flex-col justify-center md:min-h-[calc(100svh_-_4rem)]" id="proyectos">
 <div class="flex items-center gap-4 mb-12 revela">
 <h2 class="font-pixel text-[16px] sm:text-[20px] text-primary uppercase">Proyectos</h2>
 <div class="h-1 flex-grow bg-on-surface"></div>
@@ -195,33 +195,44 @@
 <div class="mt-12 flex justify-center revela">
 <a href="/proyectos/" class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px] inline-block">Todos los proyectos</a>
 </div>
+<a href="#sobre-mi" class="indicador-salto absolute bottom-6 left-1/2 -translate-x-1/2 text-primary hover:text-secondary transition-colors" aria-label="Bajar a sobre mí">
+<span class="material-symbols-outlined text-4xl">keyboard_double_arrow_down</span>
+</a>
 </section>
-<!-- About Me Section -->
-<section class="mb-24 grid grid-cols-1 md:grid-cols-3 gap-8" id="sobre-mi">
-<div class="md:col-span-2 pixel-border bg-surface p-8 revela-izquierda">
-<h2 class="font-pixel text-[16px] sm:text-[20px] text-primary mb-8 uppercase">Sobre Mí</h2>
-<div class="space-y-6 font-body-lg text-body-lg">
-<p>Las matemáticas, la resolución de problemas y el conectar con las personas siempre han sido mis fuertes. La informática me ganó al descubrir que aquí no existen límites: el escenario perfecto para desatar mi creatividad y aplicar soluciones que impacten de verdad.</p>
-<p>Empecé en 2020 y poco después dejé Windows por el software libre: el Open Source me demostró de lo que es capaz la humanidad con un propósito común. Hoy vivo en primera línea la revolución de la IA, con la aspiración de convertirme en un gran experto y seguir construyendo el futuro.</p>
+<!-- About Me Section: el avatar animado de /sobre-mi/ (mismo vídeo idle, aquí
+     solo en bucle, sin la máquina de estados del JS) invita a visitar la
+     página. Todo el bloque enlaza a /sobre-mi/. -->
+<section class="relative mb-24 md:mb-0 flex flex-col justify-center gap-10 md:min-h-[calc(100svh_-_4rem)]" id="sobre-mi">
+<div class="flex items-center gap-4 revela">
+<h2 class="font-pixel text-[16px] sm:text-[20px] text-primary uppercase">Sobre Mí</h2>
+<div class="h-1 flex-grow bg-on-surface"></div>
 </div>
-<div class="mt-8 flex flex-wrap gap-4">
-<span class="px-3 py-1 pixel-border bg-secondary-container text-on-secondary-container font-label-sm">#Engineer</span>
-<span class="px-3 py-1 pixel-border bg-secondary-container text-on-secondary-container font-label-sm">#C++</span>
-<span class="px-3 py-1 pixel-border bg-secondary-container text-on-secondary-container font-label-sm">#Python</span>
-<span class="px-3 py-1 pixel-border bg-secondary-container text-on-secondary-container font-label-sm">#Linux</span>
-<span class="px-3 py-1 pixel-border bg-secondary-container text-on-secondary-container font-label-sm">#Docker</span>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center w-full max-w-4xl mx-auto">
+<!-- Avatar clicable (reutiliza .avatar-marco/.avatar-video/.avatar-scan/.avatar-nombre) -->
+<a href="/sobre-mi/" class="group block revela-izquierda" aria-label="Ir a Sobre Mí">
+<div class="avatar-marco avatar-invita" data-estado="idle">
+<video class="avatar-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+<source src="/assets/avatar-idle.webm?v=3" type="video/webm">
+<source src="/assets/avatar-idle.mp4?v=3" type="video/mp4">
+</video>
+<div class="avatar-scan" aria-hidden="true"></div>
+<span class="avatar-nombre">MANUEL.EXE</span>
 </div>
-<div class="mt-8">
-<a href="/sobre-mi/" class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px] inline-block">Trayectoria completa</a>
+</a>
+<!-- Invitación -->
+<div class="flex flex-col items-center md:items-start gap-6 text-center md:text-left revela-derecha">
+<p class="font-body-lg text-body-lg text-on-surface-variant">¿Quién hay detrás de la terminal?. Ven a hablar conmigo y te lo cuento.</p>
+<a href="/sobre-mi/" class="invita-conoceme pixel-button bg-secondary text-on-secondary px-8 py-3 inline-flex items-center gap-3 font-pixel text-[12px] uppercase">
+<span class="material-symbols-outlined text-lg">sms</span>¡Conóceme más!
+</a>
 </div>
 </div>
-<div class="pixel-border bg-surface-container-highest p-4 flex items-center justify-center relative overflow-hidden">
-<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#1e1c11 2px, transparent 0); background-size: 16px 16px;"></div>
-<img class="w-full h-full object-cover pixel-border z-10 tv-carga-scroll" alt="Ilustración pixel art de un desarrollador programando en su escritorio, con un gato y un pingüino Tux al fondo" src="./assets/ia-landing-pixel.webp">
-</div>
+<a href="#contacto" class="indicador-salto absolute bottom-6 left-1/2 -translate-x-1/2 text-primary hover:text-secondary transition-colors" aria-label="Bajar a contacto">
+<span class="material-symbols-outlined text-4xl">keyboard_double_arrow_down</span>
+</a>
 </section>
 <!-- Contact Section -->
-<section class="mb-24" id="contacto">
+<section class="mb-24 md:mb-0 flex flex-col justify-center md:min-h-[calc(100svh_-_4rem)]" id="contacto">
 <div class="flex items-center gap-4 mb-12 revela">
 <h2 class="font-pixel text-[16px] sm:text-[20px] text-primary uppercase">Contacto</h2>
 <div class="h-1 flex-grow bg-on-surface"></div>

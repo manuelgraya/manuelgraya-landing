@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<link href="/css/output.css?v=20260722i" rel="stylesheet">
+<link href="/css/output.css?v=20260722l" rel="stylesheet">
 </head>
 <body class="pagina-sobre-mi bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- Carga breve de ruta (variante de la pantalla de carga del inicio,
@@ -116,6 +116,20 @@
 </div>
 </section>
 </main>
+<!-- Música de fondo de /sobre-mi/ + control (mute/volumen). Lógica en
+     js/sobre-mi.js. Empieza oculto y JS lo revela (sin JS no hay control). -->
+<div class="musica-control" data-musica hidden>
+<audio data-musica-audio loop preload="none">
+<source src="/assets/music-sobre-mi.mp3?v=1" type="audio/mpeg">
+</audio>
+<button type="button" class="musica-boton" data-musica-toggle aria-label="Silenciar música" aria-pressed="false">
+<span class="material-symbols-outlined" data-musica-icono>volume_up</span>
+</button>
+<div class="musica-slider-caja">
+<span class="musica-etiqueta">VOL</span>
+<input type="range" class="musica-slider" data-musica-volumen min="0" max="100" value="55" aria-label="Volumen de la música">
+</div>
+</div>
 <!-- footer-comun -->
 <!-- Footer común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
      (src/inyectar-partials.js lo pega entre los marcadores footer-comun de cada página). -->
@@ -145,7 +159,7 @@
 </div>
 </footer>
 <!-- /footer-comun -->
-<script src="/js/sobre-mi.js?v=20260722d" defer></script>
+<script src="/js/sobre-mi.js?v=20260722e" defer></script>
 <script src="/js/shader.js?v=20260718a" defer></script>
 </body>
 </html>
