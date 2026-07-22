@@ -14,10 +14,29 @@
 <meta property="og:url" content="__BASE_URL__/">
 <meta property="og:image" content="__BASE_URL__/assets/hero-manuel.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="__BASE_URL__/">
+<!-- Datos estructurados (schema.org Person) para que Google entienda que es
+     un portfolio personal. __BASE_URL__ lo sustituye el hook de deploy -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Manuel Graya",
+  "alternateName": "manuelgraya",
+  "url": "__BASE_URL__/",
+  "image": "__BASE_URL__/assets/hero-manuel.jpg",
+  "jobTitle": "Ingeniero DevOps",
+  "sameAs": [
+    "https://github.com/manuelgraya",
+    "https://www.linkedin.com/in/manuel-garcia-7023a0204/",
+    "https://www.instagram.com/manuel.graya/"
+  ]
+}
+</script>
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link href="./css/output.css?v=2026072202l" rel="stylesheet">
+<link href="./css/output.css?v=2026072203" rel="stylesheet">
 </head>
 <body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- Pantalla de carga del inicio (CSS-only, .cargador se apaga sola): logo
@@ -305,6 +324,21 @@
 </div>
 <button type="submit" class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px]">Enviar</button>
 </form>
+</div>
+</section>
+<!-- Cierre del index: retrato pixel + lema KISS ("keep it simple and stupid"),
+     justo antes del footer. Imagen en WebP (assets/avatar-kiss.webp). Sección
+     compacta (sin min-h) para que quede como firma antes del pie. -->
+<section class="mb-12 md:mb-16 flex flex-col items-center justify-center gap-8 revela" aria-label="Lema">
+<div class="pixel-border bg-surface-container p-2 w-full max-w-[15rem]">
+<img class="block w-full h-auto" src="./assets/avatar-kiss.webp" width="512" height="768" alt="Ilustración de Manuel Graya sonriendo" loading="lazy">
+</div>
+<div class="terminal-container w-full max-w-sm">
+<p class="text-[14px] leading-relaxed text-center">
+    &gt; keep it simple<br>
+    &gt; and stupid<br>
+<span class="cursor"></span>
+</p>
 </div>
 </section>
 </main>

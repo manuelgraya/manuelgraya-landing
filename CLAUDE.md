@@ -20,6 +20,7 @@ decorativo del index); el resto de interactividad es CSS-only
 - `js/shader.js` — fondo animado de TODAS las páginas: shader WebGL de Stitch (rejilla pixel pulsante con scanline) en un canvas fijo tras el contenido (`.fondo-shader`). Con prefers-reduced-motion pinta un solo fotograma; sin WebGL se quita el canvas. Las pantallas de carga (`.cargador`, SVG SMIL + tecleo) son CSS-only: la del index (~1.5s) retrasa el arranque del efecto TV del hero; las rutas interiores usan `.cargador-breve` (~0.9s, texto propio por página) y su `<main class="entra-pagina">` sube al apagarse. La 404 solo lleva el fondo
 - `js/contacto.js` — JS del formulario de contacto: pide el captcha, envía el formulario por fetch a `/api/contacto` y muestra la notificación estilo terminal (`.aviso-toast.aviso-visible`, mismo estilo que el aviso CSS-only de "código privado"). Los formularios se marcan con `data-contacto`. Al cambiarlo, subir el `?v=` del `<script>` en index y contacto
 - `assets/` — imágenes descargadas del mockup (los enlaces de googleusercontent de Stitch caducan; nunca enlazar a ellos)
+- `sitemap.xml` / `robots.txt` — SEO. Listan/permiten las 4 rutas indexables (`/`, `/proyectos/`, `/sobre-mi/`, `/contacto/`); `robots.txt` desautoriza `/api/` y `/_t.html` y apunta al sitemap. Usan el placeholder `__BASE_URL__` igual que los `.html`. **Al añadir/quitar una página hay que actualizar `sitemap.xml` a mano** (y su `robots.txt` si cambia lo permitido)
 - `deploy/` — scripts de aprovisionamiento del servidor (referencia; ya ejecutados)
 
 ## Desarrollo
@@ -53,6 +54,23 @@ Material Symbols Outlined). Los iconos son ligaduras de Material Symbols.
 - Remote `origin` = GitHub (`manuelgraya/manuelgraya-landing`, público) — solo copia del código, no despliega
 - Los datos concretos del servidor (host, usuario, rutas, puertos) están en
   `CLAUDE.local.md`, que NO se versiona por privacidad
+- **`__BASE_URL__`**: el dominio público NO se versiona. Se guarda en el
+  servidor (`$GIT_DIR/base-url`, una línea sin barra final) y el hook
+  `post-receive` sustituye el placeholder `__BASE_URL__` por su valor en todos
+  los `.html`, `sitemap.xml` y `robots.txt` al desplegar. En URLs absolutas
+  (canonical, `og:url`, JSON-LD, sitemap, robots) usar SIEMPRE `__BASE_URL__`,
+  nunca el dominio literal
+
+## SEO
+
+- Cada página lleva `<title>`, `meta description`, Open Graph/Twitter y
+  `<link rel="canonical" href="__BASE_URL__/…">` (la ruta propia de cada una).
+  La `404.html` va con `robots: noindex` y fuera del sitemap
+- El `index.html` incluye datos estructurados JSON-LD (`schema.org/Person`) con
+  los perfiles sociales en `sameAs`
+- Al **añadir/quitar una página**: darle su canonical + OG propios y meterla en
+  `sitemap.xml` (o sacarla). Puesta en Google (pasos manuales, una vez): dar de
+  alta el dominio en Google Search Console y enviar `__BASE_URL__/sitemap.xml`
 
 ## Convenciones
 

@@ -12,7 +12,8 @@ while read oldrev newrev refname; do
         # en $GIT_DIR/base-url (una línea, sin barra final)
         if [ -f "$GIT_DIR/base-url" ]; then
             BASE_URL=$(cat "$GIT_DIR/base-url")
-            find "$WEB_ROOT" -name '*.html' -exec sed -i "s|__BASE_URL__|$BASE_URL|g" {} +
+            find "$WEB_ROOT" \( -name '*.html' -o -name 'sitemap.xml' -o -name 'robots.txt' \) \
+                -exec sed -i "s|__BASE_URL__|$BASE_URL|g" {} +
             echo ">> __BASE_URL__ -> $BASE_URL"
         fi
         # La API de contacto corre desde el web root: hay que reiniciarla para

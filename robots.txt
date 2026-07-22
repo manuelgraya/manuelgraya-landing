@@ -1,0 +1,9 @@
+# robots.txt de manuelgraya — __BASE_URL__ lo sustituye el hook de deploy
+User-agent: *
+Allow: /
+# El backend del formulario no es contenido indexable
+Disallow: /api/
+# Fichero de pruebas suelto, fuera del sitio real
+Disallow: /_t.html
+
+Sitemap: __BASE_URL__/sitemap.xml

@@ -16,6 +16,20 @@ necesita Node ni build: solo sirve archivos estáticos.
 
 Antes de commitear cambios de estilos: `npm run build`.
 
+## SEO
+
+Cada página incluye `<title>`, `meta description`, Open Graph/Twitter Card y
+`<link rel="canonical">`; el `index.html` añade datos estructurados JSON-LD
+(`schema.org/Person`). El sitio expone `sitemap.xml` y `robots.txt` en la raíz.
+
+Las URLs absolutas usan el placeholder `__BASE_URL__`, que el hook de deploy
+sustituye por el dominio público (guardado fuera del repo). Al añadir o quitar
+una página hay que actualizar `sitemap.xml` a mano.
+
+Para que aparezca en Google (una sola vez): dar de alta el dominio en
+[Google Search Console](https://search.google.com/search-console) y enviar
+`https://<dominio>/sitemap.xml`.
+
 ## Despliegue (push to deploy)
 
 El deploy es un `git push` a un remote privado (`production`): un repo bare
