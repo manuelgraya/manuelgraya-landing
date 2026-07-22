@@ -26,13 +26,13 @@
       texto:
         'Soy Manuel Graya, ingeniero informático. Desde pequeño las matemáticas, ' +
         'resolver problemas y conectar con la gente han sido lo mío. La física me ' +
-        'apasionaba, pero la informática ganó la partida: aquí no hay límites para ' +
+        'apasionaba, pero la informática ganó la partida, aquí no hay límites para ' +
         'la creatividad ni para la curiosidad.\n\n' +
         'Empecé a programar en 2020 y poco después dejé Windows para adentrarme en ' +
         'el software libre. Descubrir el Open Source me demostró que, cuando la ' +
         'humanidad se une con un propósito común, logra avances impresionantes.\n\n' +
         'Hoy estamos viviendo con la IA una revolución equiparable al nacimiento de ' +
-        'la web, y no quiero ser un mero espectador: me he subido a la ola para ' +
+        'la web, y no quiero ser un mero espectador, me he subido a la ola para ' +
         'vivirla en primera línea.',
     },
     {
@@ -53,7 +53,7 @@
       texto:
         'Terminal-first y pragmático. Prefiero entornos reproducibles (Docker), ' +
         'automatizar lo repetitivo (Bash, CI/CD) y dejar el sistema como código.\n\n' +
-        'Priorizo la transparencia y la simplicidad: soluciones que impacten de ' +
+        'Priorizo la transparencia y la simplicidad, soluciones que impacten de ' +
         'verdad, sin dependencias propietarias opacas. Creo en el software libre, en ' +
         'el trabajo en equipo (Scrum, DevOps) y en desplegar rápido sin sacrificar ' +
         'estabilidad.\n\n' +
@@ -76,7 +76,7 @@
       id: 'hobbies',
       etiqueta: '¿Cuáles son tus hobbies?',
       texto:
-        'Me encanta el gimnasio: entreno musculación cada semana y el deporte en ' +
+        'Me encanta el gimnasio, entreno musculación cada semana y el deporte en ' +
         'general me pierde. También practico boxeo.\n\n' +
         'Y, por supuesto, juego a videojuegos, creo proyectos y aprendo tecnologías ' +
         'nuevas. Sobre todo, disfruto de mi familia y mis amigos todo cuanto puedo.',

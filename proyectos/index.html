@@ -16,8 +16,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="__BASE_URL__/proyectos/">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Press+Start+2P&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="/css/output.css?v=2026072203" rel="stylesheet">
 </head>
 <body class="pagina-proyectos bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
@@ -131,11 +132,13 @@
 </div>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
-    Esta misma web: HTML estático y Tailwind CSS compilado, sin JavaScript en producción. Deploy con git push a un servidor propio con Nginx, al estilo old-school. Diseño pixel art hecho en Stitch y adaptado a build local.
+    Esta misma web: sitio multipágina en HTML estático y Tailwind CSS compilado, con estética pixel art. El formulario de contacto corre sobre un microbackend en Python sin dependencias (captcha propio y envío por SMTP), y el fondo animado es un shader WebGL; el resto de interactividad es CSS puro. Deploy con git push a un servidor propio con Nginx, al estilo old-school. Diseño hecho en Stitch y adaptado a build local.
 </p>
 <div class="flex flex-wrap gap-2">
 <span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">HTML</span>
 <span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">Tailwind CSS</span>
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">Python</span>
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">WebGL</span>
 <span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">Nginx</span>
 </div>
 <div class="flex flex-wrap gap-4 mt-2">
@@ -258,6 +261,6 @@
 </footer>
 <!-- /footer-comun -->
 <script src="/js/aviso-codigo.js?v=20260721b" defer></script>
-<script src="/js/shader.js?v=20260718a" defer></script>
+<script src="/js/shader.js?v=20260722a" defer></script>
 </body>
 </html>

@@ -12,6 +12,11 @@
         return;
     }
 
+    // rect cacheado del canvas: como es un fondo fijo a pantalla completa, su
+    // posición solo cambia al redimensionar, no al hacer scroll. Se recalcula
+    // en ajustarTamano (disparado por el ResizeObserver) para no llamar a
+    // getBoundingClientRect en cada mousemove.
+    var rectCanvas = null;
     function ajustarTamano() {
         var w = canvas.clientWidth || 1280;
         var h = canvas.clientHeight || 720;
@@ -19,6 +24,7 @@
             canvas.width = w;
             canvas.height = h;
         }
+        rectCanvas = canvas.getBoundingClientRect();
     }
     if (typeof ResizeObserver !== 'undefined') {
         new ResizeObserver(ajustarTamano).observe(canvas);
@@ -73,12 +79,30 @@
         var s = gl.createShader(tipo);
         gl.shaderSource(s, src);
         gl.compileShader(s);
+        if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+            console.warn('shader.js: error al compilar el shader:', gl.getShaderInfoLog(s));
+            return null;
+        }
         return s;
     }
+    // Si el shader falla en algún driver/GPU, tratamos el canvas como si no
+    // hubiera WebGL: lo quitamos y queda el fondo plano del body, en vez de un
+    // canvas transparente e inerte encima.
+    var vsCompilado = compilar(gl.VERTEX_SHADER, vs);
+    var fsCompilado = compilar(gl.FRAGMENT_SHADER, fs);
+    if (!vsCompilado || !fsCompilado) {
+        canvas.parentNode.removeChild(canvas);
+        return;
+    }
     var prog = gl.createProgram();
-    gl.attachShader(prog, compilar(gl.VERTEX_SHADER, vs));
-    gl.attachShader(prog, compilar(gl.FRAGMENT_SHADER, fs));
+    gl.attachShader(prog, vsCompilado);
+    gl.attachShader(prog, fsCompilado);
     gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+        console.warn('shader.js: error al enlazar el programa:', gl.getProgramInfoLog(prog));
+        canvas.parentNode.removeChild(canvas);
+        return;
+    }
     gl.useProgram(prog);
 
     var buf = gl.createBuffer();
@@ -95,12 +119,11 @@
     // u_mouse en píxeles del canvas (convención ShaderToy)
     var raton = { x: canvas.width / 2, y: canvas.height / 2 };
     window.addEventListener('mousemove', function (evento) {
-        var rect = canvas.getBoundingClientRect();
-        if (rect.width && rect.height) {
-            raton.x = (evento.clientX - rect.left) / rect.width * canvas.width;
-            raton.y = (1 - (evento.clientY - rect.top) / rect.height) * canvas.height;
+        if (rectCanvas && rectCanvas.width && rectCanvas.height) {
+            raton.x = (evento.clientX - rectCanvas.left) / rectCanvas.width * canvas.width;
+            raton.y = (1 - (evento.clientY - rectCanvas.top) / rectCanvas.height) * canvas.height;
         }
-    });
+    }, { passive: true });
 
     function pintar(t) {
         gl.viewport(0, 0, canvas.width, canvas.height);

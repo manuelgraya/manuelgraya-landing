@@ -34,8 +34,9 @@
 }
 </script>
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Press+Start+2P&family=VT323&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="./css/output.css?v=2026072203" rel="stylesheet">
 </head>
 <body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
@@ -190,7 +191,7 @@
 <span class="inline-flex items-center gap-1 font-label-sm text-label-sm bg-secondary-container text-on-secondary-container px-2 py-1 border-2 border-on-surface uppercase leading-none"><span class="material-symbols-outlined text-base">lock_open</span>Público</span>
 </div>
 <h3 class="font-pixel text-[12px] mb-4 text-on-surface">Landing manuelgraya</h3>
-<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Esta misma web: HTML estático y Tailwind, con microbackend Python para el contacto. Deploy con git push a un servidor propio con Nginx.</p>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">Esta misma web: sitio multipágina en HTML estático y Tailwind con estética pixel art, fondo WebGL animado y formulario de contacto sobre un microbackend en Python. Deploy con git push a un servidor propio con Nginx.</p>
 <div class="flex gap-3">
 <a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel" href="https://github.com/manuelgraya/manuelgraya-landing">Código</a>
 <a class="pixel-button bg-white text-on-surface px-3 py-1 text-[10px] uppercase font-pixel" href="/">Demo</a>
@@ -230,7 +231,7 @@
 <!-- Avatar clicable (reutiliza .avatar-marco/.avatar-video/.avatar-scan/.avatar-nombre) -->
 <a href="/sobre-mi/" class="group block revela-izquierda" aria-label="Ir a Sobre Mí">
 <div class="avatar-marco avatar-invita" data-estado="idle">
-<video class="avatar-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+<video class="avatar-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
 <source src="/assets/avatar-idle.webm?v=3" type="video/webm">
 <source src="/assets/avatar-idle.mp4?v=3" type="video/mp4">
 </video>
@@ -394,6 +395,6 @@
 <!-- /footer-comun -->
 <script src="/js/aviso-codigo.js?v=20260721b" defer></script>
 <script src="/js/contacto.js?v=20260718a" defer></script>
-<script src="/js/shader.js?v=20260718a" defer></script>
+<script src="/js/shader.js?v=20260722a" defer></script>
 </body>
 </html>
