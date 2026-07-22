@@ -12,12 +12,12 @@
 <meta property="og:title" content="manuelgraya | Portfolio">
 <meta property="og:description" content="Portfolio de Manuel Graya, ingeniero DevOps. Proyectos, sobre mí y contacto.">
 <meta property="og:url" content="__BASE_URL__/">
-<meta property="og:image" content="__BASE_URL__/assets/hero.jpg">
+<meta property="og:image" content="__BASE_URL__/assets/hero-manuel.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link href="./css/output.css?v=20260722a" rel="stylesheet">
+<link href="./css/output.css?v=20260722d" rel="stylesheet">
 </head>
 <body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- Pantalla de carga del inicio (CSS-only, .cargador se apaga sola): logo
@@ -78,34 +78,61 @@
 <!-- Hero Section: ocupa la primera pantalla completa (min-h) y termina en
      el indicador que invita a bajar a proyectos -->
 <section class="mb-24 flex flex-col justify-center gap-10 md:min-h-[calc(100svh_-_8rem)]">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-<div class="relative group tv-pantalla">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-center">
+<!-- Consola-firma: la ventana de terminal es el elemento protagonista y ocupa
+     mas ancho que la imagen (8/12). Banner ASCII (ANSI Shadow, escalado con
+     container-queries para caber siempre) + whoami tecleado. Arranca al apagarse
+     el cargador con el encendido CRT .tv-enciende -->
+<div class="md:col-span-8 tv-enciende consola-hero">
+<div class="pixel-border bg-[#1e1c11] overflow-hidden">
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-variant border-b-4 border-on-surface">
+<span class="w-3.5 h-3.5 bg-error"></span>
+<span class="w-3.5 h-3.5 bg-primary"></span>
+<span class="w-3.5 h-3.5 bg-secondary"></span>
+<span class="ml-2 font-label-sm text-label-sm text-on-surface truncate">manuel@graya: ~/portfolio</span>
+</div>
+<div class="consola-cuerpo px-5 py-6 sm:px-8 sm:py-8">
+<h1 class="sr-only">Hola, soy Manuel Graya — DevOps &amp; Ingeniero Informático</h1>
+<pre class="consola-banner text-[#7bf8a1]" aria-hidden="true">██╗  ██╗ ██████╗ ██╗      █████╗ ██╗    ███████╗ ██████╗ ██╗   ██╗
+██║  ██║██╔═══██╗██║     ██╔══██╗██║    ██╔════╝██╔═══██╗╚██╗ ██╔╝
+███████║██║   ██║██║     ███████║██║    ███████╗██║   ██║ ╚████╔╝ 
+██╔══██║██║   ██║██║     ██╔══██║╚═╝    ╚════██║██║   ██║  ╚██╔╝  
+██║  ██║╚██████╔╝███████╗██║  ██║██╗    ███████║╚██████╔╝   ██║   
+╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝    ╚══════╝ ╚═════╝    ╚═╝   
+
+███╗   ███╗ █████╗ ███╗   ██╗██╗   ██╗███████╗██╗          ██████╗ ██████╗  █████╗ ██╗   ██╗ █████╗ 
+████╗ ████║██╔══██╗████╗  ██║██║   ██║██╔════╝██║         ██╔════╝ ██╔══██╗██╔══██╗╚██╗ ██╔╝██╔══██╗
+██╔████╔██║███████║██╔██╗ ██║██║   ██║█████╗  ██║         ██║  ███╗██████╔╝███████║ ╚████╔╝ ███████║
+██║╚██╔╝██║██╔══██║██║╚██╗██║██║   ██║██╔══╝  ██║         ██║   ██║██╔══██╗██╔══██║  ╚██╔╝  ██╔══██║
+██║ ╚═╝ ██║██║  ██║██║ ╚████║╚██████╔╝███████╗███████╗    ╚██████╔╝██║  ██║██║  ██║   ██║   ██║  ██║
+╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝╚══════╝     ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝</pre>
+<div class="text-[11px] sm:text-[13px] leading-relaxed mt-6">
+<span class="tty-linea text-[#7bf8a1]" style="--n:8; --retardo:2s">&gt; whoami</span>
+<span class="tty-linea text-[#e7dcb8]" style="--n:17; --retardo:2.35s">Soy Manuel Graya.</span>
+<span class="tty-linea text-[#e7dcb8]" style="--n:30; --retardo:3s">DevOps &amp; Ingeniero Informático</span>
+<span class="tty-linea text-[#7bf8a1] mt-3" style="--n:16; --retardo:4.1s">&gt; cat aboutme.md</span>
+<span class="tty-linea text-[#e7dcb8]" style="--n:23; --retardo:4.7s">Ingeniero por vocación,</span>
+<span class="tty-linea text-[#e7dcb8]" style="--n:18; --retardo:5.55s">DevOps por oficio.</span>
+<span class="tty-linea text-[#e7dcb8]" style="--n:29; --retardo:6.25s">Linux, Docker, Python y café.</span>
+<span class="inline-flex items-center gap-2 mt-3 text-[#7bf8a1]"><span class="tty-linea" style="--n:2; --retardo:7.3s">&gt;</span><span class="cursor cursor-retardado" style="--retardo:7.3s"></span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Imagen (retrato) en marco pixel limpio, con placa de color desplazada
+     detras (mismo patron que el hero original) -->
+<div class="md:col-span-4 relative group tv-pantalla">
 <div class="absolute -inset-2 bg-primary-container z-0"></div>
-<img class="relative z-10 w-full pixel-border object-cover aspect-square tv-carga" alt="Ilustración pixel art de un programador con su gato trabajando en un portátil" src="./assets/hero.jpg">
-</div>
-<div class="pixel-border bg-surface-container p-6 sm:p-8 flex flex-col gap-6 tv-enciende">
-<div class="flex items-center gap-2">
-<span class="w-4 h-4 bg-error rounded-full"></span>
-<span class="w-4 h-4 bg-primary rounded-full"></span>
-<span class="w-4 h-4 bg-secondary rounded-full"></span>
-</div>
-<div>
-<h1 class="font-pixel text-[18px] sm:text-[24px] text-primary mb-4 leading-tight">Graya Dev Ingeniero</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Pragmatismo, código y curiosidad </p>
-</div>
-<div class="terminal-container">
-<p class="text-[14px] leading-relaxed">
-<span class="tty-linea" style="--n:8; --retardo:2.1s">&gt; whoami</span>
-<span class="tty-linea" style="--n:14; --retardo:2.7s">&gt; Manuel Graya</span>
-<span class="tty-linea" style="--n:17; --retardo:3.6s">&gt; Devops Engineer</span>
-<span class="tty-linea" style="--n:24; --retardo:4.6s">&gt; Open source Enthusiast</span>
-<span class="cursor cursor-retardado" style="--retardo:5.9s"></span>
-</p>
-</div>
-<div class="flex gap-4">
-<a href="/contacto/" class="pixel-button bg-primary text-on-primary px-6 py-2 font-label-sm uppercase tracking-widest text-[12px] text-center">Contactar</a>
+<img class="relative z-10 w-full pixel-border object-cover aspect-[2/3] tv-carga" alt="Retrato pixel art de Manuel Graya sonriendo" src="./assets/hero-manuel.webp">
 </div>
 </div>
+<!-- Accesos directos: redes + navegacion. Contacto es la accion principal -->
+<div class="flex flex-wrap justify-center gap-3 sm:gap-4">
+<a href="https://github.com/manuelgraya" class="pixel-button bg-white text-on-surface px-5 py-3 flex items-center gap-2 font-label-sm uppercase tracking-widest text-[12px]"><span class="material-symbols-outlined text-lg">code</span>GitHub</a>
+<a href="https://www.instagram.com/manuel.graya/" class="pixel-button bg-white text-on-surface px-5 py-3 flex items-center gap-2 font-label-sm uppercase tracking-widest text-[12px]"><span class="material-symbols-outlined text-lg">photo_camera</span>Instagram</a>
+<a href="/proyectos/" class="pixel-button bg-secondary text-on-secondary px-5 py-3 flex items-center gap-2 font-label-sm uppercase tracking-widest text-[12px]"><span class="material-symbols-outlined text-lg">folder_open</span>Proyectos</a>
+<a href="/sobre-mi/" class="pixel-button bg-secondary text-on-secondary px-5 py-3 flex items-center gap-2 font-label-sm uppercase tracking-widest text-[12px]"><span class="material-symbols-outlined text-lg">person</span>Sobre Mí</a>
+<a href="/contacto/" class="pixel-button bg-primary text-on-primary px-5 py-3 flex items-center gap-2 font-label-sm uppercase tracking-widest text-[12px]"><span class="material-symbols-outlined text-lg">mail</span>Contacto</a>
 </div>
 <a href="#proyectos" class="indicador-scroll self-center text-primary hover:text-secondary transition-colors" aria-label="Bajar a proyectos">
 <span class="material-symbols-outlined text-4xl">keyboard_double_arrow_down</span>

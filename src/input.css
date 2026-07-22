@@ -280,6 +280,12 @@ body {
         animation-duration: calc(var(--n) * 0.04s);
     }
 
+    /* La consola del hero teclea más rápido que el resto: es larga y no debe
+       tardar en leerse */
+    .consola-hero .tty-linea {
+        animation-duration: calc(var(--n) * 0.035s);
+    }
+
     /* El contenido de las páginas interiores sube al apagarse su cargador */
     .entra-pagina {
         animation: revela-entra 0.4s steps(6, start) 0.8s both;
@@ -423,6 +429,30 @@ body {
 
 @keyframes revela-entra {
     from { opacity: 0; transform: translateY(24px); }
+}
+
+/* Consola-firma del hero: tipografía monoespaciada del cuerpo de la ventana */
+.consola-hero {
+    font-family: 'Space Mono', 'JetBrains Mono', monospace;
+}
+
+/* El cuerpo es el contenedor de referencia para escalar el banner ASCII */
+.consola-cuerpo {
+    container-type: inline-size;
+}
+
+/* Banner ASCII (figlet ANSI Shadow): JetBrains Mono porque tiene TODOS los
+   glifos de bloque y caja en un solo tipo (mezclar fuentes desalinearía el
+   dibujo). El tamaño en cqw hace que la línea más ancha (~100 car.) quepa
+   siempre en el ancho del cuerpo, con tope para que no crezca demasiado en
+   pantallas grandes */
+.consola-banner {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    line-height: 1.05;
+    font-size: min(1.6cqw, 12px);
+    white-space: pre;
+    overflow: hidden;
 }
 
 .pixel-border {
