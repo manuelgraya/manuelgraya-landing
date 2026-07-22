@@ -49,7 +49,7 @@
     },
     {
       id: 'estilo',
-      etiqueta: '¿Cómo definirías tu estilo de ingeniero?',
+      etiqueta: '¿Cómo definirías tu estilo?',
       texto:
         'Terminal-first y pragmático. Prefiero entornos reproducibles (Docker), ' +
         'automatizar lo repetitivo (Bash, CI/CD) y dejar el sistema como código.\n\n' +
@@ -63,7 +63,7 @@
     },
     {
       id: 'juego',
-      etiqueta: '¿Cuál es tu juego favorito?',
+      etiqueta: '¿Juego favorito?',
       texto:
         '¿Uno solo? Ocarina of Time. Pero me quedo con la saga The Legend of Zelda ' +
         'al completo: juntan música, aventura, puzzles mentales y exploración como ' +
@@ -83,7 +83,7 @@
     },
     {
       id: 'redes',
-      etiqueta: '¿Cuáles son tus redes sociales?',
+      etiqueta: '¿Redes sociales?',
       texto:
         'Aunque aquí me veas como un avatar, en mi Instagram puedes ver mis fotos ' +
         'de verdad. Me encuentras en:\n\n' +
