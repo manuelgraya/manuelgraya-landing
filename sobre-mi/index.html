@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Press+Start+2P&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-<link href="/css/output.css?v=2026072204" rel="stylesheet">
+<link href="/css/output.css?v=2026072205" rel="stylesheet">
 </head>
 <body class="pagina-sobre-mi bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- Carga breve de ruta (variante de la pantalla de carga del inicio,
@@ -77,8 +77,11 @@
 <!-- Avatar animado (máquina de estados en js/sobre-mi.js). El vídeo idle está
      optimizado (assets/avatar-idle.webm|mp4, ~400 KB, loop boomerang sin salto y
      con banda negra inferior horneada que tapa la marca de agua original). La
-     placa .avatar-nombre encaja con esa banda. Las poses/animaciones de
-     "escribiendo" y "hablando" se enchufan más adelante desde el JS. -->
+     placa .avatar-nombre encaja con esa banda. Algunas preguntas tienen
+     animación propia (sobre-mi → assets/avatar-teclear.*, juego →
+     assets/avatar-zelda.*, hobbies → assets/avatar-boxeo.*): el JS intercambia
+     el vídeo con un "cambio de canal" de TV (.avatar-canal) y, al acabar,
+     vuelve al idle. -->
 <div class="dialogo-avatar">
 <div class="avatar-marco" data-avatar-marco data-estado="idle">
 <video class="avatar-video" data-avatar-video autoplay muted loop playsinline preload="auto" aria-hidden="true">
@@ -86,6 +89,7 @@
 <source src="/assets/avatar-idle.mp4?v=3" type="video/mp4">
 </video>
 <div class="avatar-scan" aria-hidden="true"></div>
+<div class="avatar-canal" aria-hidden="true"></div>
 <span class="avatar-nombre">MANUEL.EXE</span>
 </div>
 </div>
@@ -159,7 +163,7 @@
 </div>
 </footer>
 <!-- /footer-comun -->
-<script src="/js/sobre-mi.js?v=2026072204" defer></script>
+<script src="/js/sobre-mi.js?v=2026072207" defer></script>
 <script src="/js/shader.js?v=20260722a" defer></script>
 </body>
 </html>

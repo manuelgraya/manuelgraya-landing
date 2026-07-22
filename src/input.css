@@ -744,6 +744,48 @@ img {
     background: #f4c542;
 }
 
+/* ---- Cambio de canal (transición TV entre animaciones del avatar) ----- */
+/* Al elegir una pregunta con animación propia (p. ej. hobbies → boxeo) el JS
+   intercambia el vídeo del avatar y cubre el corte con un "cambio de canal"
+   de tele antigua: destello de estática + colapso/expansión vertical de la
+   imagen. La clase .avatar-canaleando la pone y la quita js/sobre-mi.js. */
+.avatar-canal {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 2;
+    /* Ruido monocromo (feTurbulence) como estática de TV. */
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='140'%20height='140'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.85'%20numOctaves='2'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    mix-blend-mode: screen;
+}
+.avatar-marco.avatar-canaleando .avatar-canal {
+    animation: avatar-estatica 460ms steps(1, end) both;
+}
+.avatar-marco.avatar-canaleando .avatar-video {
+    animation: avatar-cambio-canal 460ms ease-in-out both;
+}
+/* Estática que salta de posición (jitter) y funde a fuera. */
+@keyframes avatar-estatica {
+    0%   { opacity: 0;   background-position: 0 0; }
+    10%  { opacity: .85; background-position: 40% 12%; }
+    30%  { opacity: .9;  background-position: 12% 55%; }
+    45%  { opacity: .95; background-position: 70% 30%; }
+    60%  { opacity: .8;  background-position: 25% 80%; }
+    80%  { opacity: .4;  background-position: 55% 40%; }
+    100% { opacity: 0;   background-position: 0 0; }
+}
+/* La imagen colapsa a una línea brillante y vuelve a abrirse (mitad ≈ swap). */
+@keyframes avatar-cambio-canal {
+    0%   { transform: scaleY(1);    filter: brightness(1); }
+    35%  { transform: scaleY(.5);   filter: brightness(1.6); }
+    46%  { transform: scaleY(.015); filter: brightness(3); }
+    54%  { transform: scaleY(.015); filter: brightness(3); }
+    66%  { transform: scaleY(.5);   filter: brightness(1.6); }
+    100% { transform: scaleY(1);    filter: brightness(1); }
+}
+
 /* ---- Caja de diálogo ------------------------------------------------- */
 .dialogo-panel {
     display: flex;
@@ -924,7 +966,9 @@ img {
 @media (prefers-reduced-motion: reduce) {
     .avatar-marco[data-estado='escribiendo'] .avatar-nombre::before,
     .dialogo-tecleando .dialogo-texto::after,
-    .dialogo-opcion--sel .dialogo-cursor {
+    .dialogo-opcion--sel .dialogo-cursor,
+    .avatar-marco.avatar-canaleando .avatar-canal,
+    .avatar-marco.avatar-canaleando .avatar-video {
         animation: none;
     }
 }

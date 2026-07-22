@@ -23,6 +23,9 @@
     {
       id: 'sobre-mi',
       etiqueta: '¡Cuéntame sobre ti!',
+      // Animación de tecleo en portátil (assets/avatar-teclear.*); al acabar
+      // vuelve al idle, con el mismo "cambio de canal" de TV.
+      animacion: '/assets/avatar-teclear',
       texto:
         'Soy Manuel Graya, ingeniero informático. Desde pequeño las matemáticas, ' +
         'resolver problemas y conectar con la gente han sido lo mío. La física me ' +
@@ -64,6 +67,9 @@
     {
       id: 'juego',
       etiqueta: '¿Juego favorito?',
+      // Animación de Link alzando la Master Sword (assets/avatar-zelda.*); al
+      // acabar vuelve al idle, con el mismo "cambio de canal" de TV.
+      animacion: '/assets/avatar-zelda',
       texto:
         '¿Uno solo? Ocarina of Time. Pero me quedo con la saga The Legend of Zelda ' +
         'al completo: juntan música, aventura, puzzles mentales y exploración como ' +
@@ -75,6 +81,9 @@
     {
       id: 'hobbies',
       etiqueta: '¿Cuáles son tus hobbies?',
+      // Al elegir esta pregunta el avatar cambia de "canal" y reproduce una
+      // animación de boxeo (assets/avatar-boxeo.*); al terminar vuelve al idle.
+      animacion: '/assets/avatar-boxeo',
       texto:
         'Me encanta el gimnasio, entreno musculación cada semana y el deporte en ' +
         'general me pierde. También practico boxeo.\n\n' +
@@ -133,14 +142,91 @@
     let botones = []; // botones del menú
     let indiceSel = 0; // opción resaltada por el cursor
 
+    // Animación puntual del avatar (p. ej. boxeo en hobbies): mientras está
+    // activa, el vídeo NO es el idle, así que no le tocamos el playbackRate.
+    let animacionActiva = false;
+    let tCanal = null; // timeout del swap dentro del cambio de canal
+    // Fuentes originales del idle, para poder volver tras la animación.
+    const FUENTES_IDLE = elVideo
+      ? Array.prototype.map.call(elVideo.querySelectorAll('source'), function (s) {
+          return { src: s.getAttribute('src'), type: s.type };
+        })
+      : [];
+
     // -- Máquina de estados del avatar --------------------------------------
     function setEstado(estado) {
       if (elMarco) elMarco.dataset.estado = estado;
       const medio = MEDIOS_AVATAR[estado] || MEDIOS_AVATAR.idle;
-      if (medio.tipo === 'video' && elVideo && !reducir) {
+      if (medio.tipo === 'video' && elVideo && !reducir && !animacionActiva) {
         // El vídeo idle "acelera" un pelín al escribir para sugerir actividad.
         elVideo.playbackRate = estado === 'escribiendo' ? 1.4 : 1;
       }
+    }
+
+    // -- Cambio de canal / animaciones del avatar ---------------------------
+    // Reemplaza las <source> del vídeo y recarga.
+    function ponFuentes(fuentes) {
+      if (!elVideo) return;
+      while (elVideo.firstChild) elVideo.removeChild(elVideo.firstChild);
+      fuentes.forEach(function (f) {
+        const s = document.createElement('source');
+        s.setAttribute('src', f.src);
+        s.type = f.type;
+        elVideo.appendChild(s);
+      });
+      elVideo.load();
+    }
+
+    // Efecto "cambio de canal" de TV antigua: dispara la estática/colapso (CSS)
+    // y ejecuta el swap del vídeo hacia la mitad, cuando la imagen es una línea.
+    function cambioDeCanal(swap) {
+      window.clearTimeout(tCanal);
+      if (reducir || !elMarco) {
+        swap();
+        return;
+      }
+      elMarco.classList.remove('avatar-canaleando');
+      void elMarco.offsetWidth; // fuerza reflow para reiniciar la animación
+      elMarco.classList.add('avatar-canaleando');
+      tCanal = window.setTimeout(swap, 215);
+      window.setTimeout(function () {
+        elMarco.classList.remove('avatar-canaleando');
+      }, 480);
+    }
+
+    // Reproduce una animación puntual (una vez) y, al acabar, vuelve al idle.
+    function reproduceAnimacion(base) {
+      if (reducir || !elVideo) return;
+      animacionActiva = true;
+      cambioDeCanal(function () {
+        ponFuentes([
+          { src: base + '.webm?v=1', type: 'video/webm' },
+          { src: base + '.mp4?v=1', type: 'video/mp4' },
+        ]);
+        elVideo.loop = false;
+        elVideo.playbackRate = 1;
+        const p = elVideo.play();
+        if (p && typeof p.catch === 'function') p.catch(function () {});
+      });
+    }
+
+    // Vuelve al vídeo idle (con su cambio de canal correspondiente).
+    function vuelveIdle() {
+      if (!elVideo) return;
+      cambioDeCanal(function () {
+        ponFuentes(FUENTES_IDLE);
+        elVideo.loop = true;
+        animacionActiva = false;
+        const p = elVideo.play();
+        if (p && typeof p.catch === 'function') p.catch(function () {});
+      });
+    }
+
+    // Al terminar la animación puntual (loop=false), regresa al idle.
+    if (elVideo) {
+      elVideo.addEventListener('ended', function () {
+        if (animacionActiva) vuelveIdle();
+      });
     }
 
     // -- Paginación ----------------------------------------------------------
@@ -263,6 +349,12 @@
     // -- Iniciar un diálogo --------------------------------------------------
     function iniciaDialogo(dlg) {
       window.clearTimeout(temporizador);
+      // Animación propia de la pregunta (o volver al idle si se sale de una).
+      if (dlg.animacion) {
+        reproduceAnimacion(dlg.animacion);
+      } else if (animacionActiva) {
+        vuelveIdle();
+      }
       textoActual = dlg.texto;
       paginas = paginar(dlg.texto);
       muestraPagina(0, false);
