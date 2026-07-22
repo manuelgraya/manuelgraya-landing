@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link href="./css/output.css?v=20260722d" rel="stylesheet">
+<link href="./css/output.css?v=20260722e" rel="stylesheet">
 </head>
 <body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- Pantalla de carga del inicio (CSS-only, .cargador se apaga sola): logo
@@ -109,7 +109,7 @@
 <div class="text-[11px] sm:text-[13px] leading-relaxed mt-6">
 <span class="tty-linea text-[#7bf8a1]" style="--n:8; --retardo:2s">&gt; whoami</span>
 <span class="tty-linea text-[#e7dcb8]" style="--n:17; --retardo:2.35s">Soy Manuel Graya.</span>
-<span class="tty-linea text-[#e7dcb8]" style="--n:30; --retardo:3s">DevOps &amp; Ingeniero Informático</span>
+<span class="tty-linea text-[#e7dcb8]" style="--n:18; --retardo:3s">DevOps &amp; Ingeniero</span>
 <span class="tty-linea text-[#7bf8a1] mt-3" style="--n:16; --retardo:4.1s">&gt; cat aboutme.md</span>
 <span class="tty-linea text-[#e7dcb8]" style="--n:23; --retardo:4.7s">Ingeniero por vocación,</span>
 <span class="tty-linea text-[#e7dcb8]" style="--n:18; --retardo:5.55s">DevOps por oficio.</span>
@@ -119,11 +119,15 @@
 </div>
 </div>
 </div>
-<!-- Imagen (retrato) en marco pixel limpio, con placa de color desplazada
-     detras (mismo patron que el hero original) -->
-<div class="md:col-span-4 relative group tv-pantalla">
-<div class="absolute -inset-2 bg-primary-container z-0"></div>
-<img class="relative z-10 w-full pixel-border object-cover aspect-[2/3] tv-carga" alt="Retrato pixel art de Manuel Graya sonriendo" src="./assets/hero-manuel.webp">
+<!-- Retrato sin marco: el PNG tiene fondo transparente, asi que se monta solo
+     con .tv-carga (recorta la propia imagen y respeta el alfa; el retrato
+     aparece por lineas siguiendo su silueta). SIN la caja .tv-pantalla, cuyas
+     scanlines y barra de barrido son rectangulares y no encajan con una foto
+     transparente. Centrado y mas pequeño que la consola de presentacion -->
+<div class="md:col-span-4 flex justify-center">
+<div class="w-full max-w-xs">
+<img class="tv-carga block w-full object-cover aspect-[2/3]" alt="Retrato pixel art de Manuel Graya sonriendo" src="./assets/hero-manuel.webp">
+</div>
 </div>
 </div>
 <!-- Accesos directos: redes + navegacion. Contacto es la accion principal -->
