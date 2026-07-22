@@ -378,3 +378,102 @@
     muestraPagina(0, false);
   });
 })();
+
+/*
+ * Música de fondo de /sobre-mi/.
+ *
+ * Muchos navegadores bloquean el autoplay con sonido hasta que el usuario
+ * interactúa con la página, así que intentamos arrancar en carga y, si nos
+ * lo rechazan, volvemos a intentarlo en el primer gesto (click/tecla). El
+ * botón silencia/reactiva y el slider ajusta el volumen; ambas preferencias
+ * se recuerdan en localStorage entre visitas.
+ */
+(function () {
+  'use strict';
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const control = document.querySelector('[data-musica]');
+    if (!control) return;
+
+    const audio = control.querySelector('[data-musica-audio]');
+    const btn = control.querySelector('[data-musica-toggle]');
+    const icono = control.querySelector('[data-musica-icono]');
+    const slider = control.querySelector('[data-musica-volumen]');
+    if (!audio || !btn || !icono || !slider) return;
+
+    const CLAVE_VOL = 'sobremi-musica-vol';
+    const CLAVE_MUTE = 'sobremi-musica-mute';
+
+    // Restaura preferencias (volumen y estado de silencio).
+    let vol = parseFloat(localStorage.getItem(CLAVE_VOL));
+    if (isNaN(vol)) vol = slider.value / 100;
+    vol = Math.min(1, Math.max(0, vol));
+
+    audio.volume = vol;
+    audio.muted = localStorage.getItem(CLAVE_MUTE) === '1';
+    slider.value = Math.round(vol * 100);
+
+    control.hidden = false;
+
+    // Refleja el estado en el icono, el aria y la clase de estilo.
+    function pinta() {
+      const off = audio.muted || audio.volume === 0;
+      icono.textContent = off
+        ? 'volume_off'
+        : audio.volume < 0.5
+        ? 'volume_down'
+        : 'volume_up';
+      btn.setAttribute('aria-pressed', off ? 'true' : 'false');
+      btn.setAttribute('aria-label', off ? 'Activar música' : 'Silenciar música');
+      control.classList.toggle('musica-silenciada', off);
+    }
+
+    function intentaPlay() {
+      const p = audio.play();
+      if (p && typeof p.catch === 'function') {
+        p.catch(function () {
+          /* autoplay bloqueado: esperamos un gesto del usuario */
+        });
+      }
+    }
+
+    // Primer gesto en cualquier parte de la página: reintenta el arranque.
+    function arranquePorGesto() {
+      if (!audio.muted) intentaPlay();
+      window.removeEventListener('pointerdown', arranquePorGesto);
+      window.removeEventListener('keydown', arranquePorGesto);
+    }
+
+    btn.addEventListener('click', function () {
+      audio.muted = !audio.muted;
+      if (!audio.muted && audio.paused) intentaPlay();
+      localStorage.setItem(CLAVE_MUTE, audio.muted ? '1' : '0');
+      pinta();
+    });
+
+    slider.addEventListener('input', function () {
+      const v = slider.value / 100;
+      audio.volume = v;
+      // Subir el volumen desde 0 reactiva el sonido de forma natural.
+      if (v > 0 && audio.muted) audio.muted = false;
+      if (v > 0 && audio.paused) intentaPlay();
+      localStorage.setItem(CLAVE_VOL, String(v));
+      localStorage.setItem(CLAVE_MUTE, audio.muted ? '1' : '0');
+      pinta();
+    });
+
+    // Tras ajustar el volumen con el ratón/táctil, soltamos el foco del slider:
+    // si se quedara enfocado, se tragaría las flechas ↑/↓ que controlan el
+    // cursor del menú de preguntas (el manejador del menú ignora los inputs).
+    // Los usuarios de teclado que llegan con Tab conservan el control con flechas.
+    slider.addEventListener('pointerup', function () { slider.blur(); });
+
+    // El navegador puede cambiar volumen/mute por su cuenta; mantén el icono.
+    audio.addEventListener('volumechange', pinta);
+
+    pinta();
+    if (!audio.muted) intentaPlay();
+    window.addEventListener('pointerdown', arranquePorGesto);
+    window.addEventListener('keydown', arranquePorGesto);
+  });
+})();
