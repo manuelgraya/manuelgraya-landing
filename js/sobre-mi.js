@@ -401,6 +401,16 @@
     const slider = control.querySelector('[data-musica-volumen]');
     if (!audio || !btn || !icono || !slider) return;
 
+    const cajaSlider = control.querySelector('.musica-slider-caja');
+
+    // iOS Safari (y algún WebView) tratan audio.volume como solo lectura: el
+    // slider no cambiaría nada y parecería roto. Lo detectamos escribiendo un
+    // valor y viendo si "cuaja"; si no, ocultamos el slider y dejamos solo el
+    // botón de silencio, que sí funciona en todas partes.
+    audio.volume = 0.375;
+    const volumenAjustable = Math.abs(audio.volume - 0.375) < 0.02;
+    if (!volumenAjustable && cajaSlider) cajaSlider.style.display = 'none';
+
     const CLAVE_VOL = 'sobremi-musica-vol';
     const CLAVE_MUTE = 'sobremi-musica-mute';
 

@@ -455,6 +455,17 @@ body {
     }
 }
 
+/* En móvil no hay salto encadenado (el snap es md+): las secciones fluyen y no
+   ocupan toda la pantalla, así que las flechas —posicionadas en absoluto al
+   fondo de cada sección— se montaban encima de los botones (CTA "¡Conóceme
+   más!", "Todos los proyectos", accesos del hero). Se ocultan por debajo de md. */
+@media (max-width: 767px) {
+    .indicador-scroll,
+    .indicador-salto {
+        display: none;
+    }
+}
+
 /* Indicador de salto entre secciones: como el del hero pero siempre visible
    (sin la aparición retrasada), solo rebota en pasos. */
 @media (prefers-reduced-motion: no-preference) {
@@ -997,5 +1008,22 @@ img {
     }
     .musica-etiqueta {
         display: none;
+    }
+}
+/* Pantallas táctiles: el raíl de 6px era casi imposible de agarrar con el dedo
+   (y el arrastre acababa haciendo scroll). Se agranda el área interactiva y el
+   pulgar, y touch-action evita que el gesto mueva la página en vez del slider. */
+@media (pointer: coarse) {
+    .musica-slider {
+        height: 20px;
+        touch-action: none;
+    }
+    .musica-slider::-webkit-slider-thumb {
+        width: 16px;
+        height: 26px;
+    }
+    .musica-slider::-moz-range-thumb {
+        width: 16px;
+        height: 26px;
     }
 }
