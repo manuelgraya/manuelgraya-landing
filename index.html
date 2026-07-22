@@ -17,7 +17,7 @@
 <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@600&family=Space+Mono:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link href="./css/output.css?v=20260722e" rel="stylesheet">
+<link href="./css/output.css?v=20260722f" rel="stylesheet">
 </head>
 <body class="font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- Pantalla de carga del inicio (CSS-only, .cargador se apaga sola): logo
@@ -119,13 +119,11 @@
 </div>
 </div>
 </div>
-<!-- Retrato sin marco: el PNG tiene fondo transparente, asi que se monta solo
-     con .tv-carga (recorta la propia imagen y respeta el alfa; el retrato
-     aparece por lineas siguiendo su silueta). SIN la caja .tv-pantalla, cuyas
-     scanlines y barra de barrido son rectangulares y no encajan con una foto
-     transparente. Centrado y mas pequeño que la consola de presentacion -->
+<!-- Retrato sin marco (PNG con fondo transparente): efecto CRT retro con
+     scanlines y barrido enmascarados al alfa (.tv-retrato) + montado por lineas
+     .tv-carga. Centrado y mas pequeño que la consola -->
 <div class="md:col-span-4 flex justify-center">
-<div class="w-full max-w-xs">
+<div class="tv-retrato w-full max-w-xs">
 <img class="tv-carga block w-full object-cover aspect-[2/3]" alt="Retrato pixel art de Manuel Graya sonriendo" src="./assets/hero-manuel.webp">
 </div>
 </div>

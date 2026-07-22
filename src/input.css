@@ -502,6 +502,51 @@ body {
     50% { opacity: 0; }
 }
 
+/* ===== Retrato del hero (index) =====
+   Efecto CRT retro adaptado al PNG de fondo transparente: los overlays se
+   enmascaran con el alfa de la propia imagen, así scanlines y barra de barrido
+   siguen la silueta del retrato en vez de formar un rectángulo. El montado por
+   líneas lo aporta .tv-carga en el <img>. */
+.tv-retrato {
+    position: relative;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .tv-retrato::before,
+    .tv-retrato::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        -webkit-mask: url(../assets/hero-manuel.webp) center / 100% 100% no-repeat;
+        mask: url(../assets/hero-manuel.webp) center / 100% 100% no-repeat;
+    }
+
+    /* Scanlines sobre la silueta; se apagan al acabar el "encendido" */
+    .tv-retrato::after {
+        z-index: 20;
+        background: repeating-linear-gradient(to bottom, rgba(30, 28, 17, 0.35) 0 2px, transparent 2px 4px);
+        animation: tv-apaga 0.2s linear 2.6s forwards;
+    }
+
+    /* Barra de barrido verde que recorre el retrato de arriba abajo. La banda
+       viaja moviendo el background-position (no el elemento), así la máscara
+       queda fija respecto a la imagen */
+    .tv-retrato::before {
+        z-index: 30;
+        background-image: linear-gradient(to bottom, transparent 47%, #7bf8a1 49% 51%, transparent 53%);
+        background-size: 100% 220%;
+        background-repeat: no-repeat;
+        filter: drop-shadow(0 0 6px #7bf8a1);
+        animation: tv-barre-retrato 1s steps(28, start) 1.5s both, tv-apaga 0.1s steps(1, start) 2.5s forwards;
+    }
+}
+
+@keyframes tv-barre-retrato {
+    from { background-position: 50% 0%; }
+    to { background-position: 50% 100%; }
+}
+
 .pixel-input {
     border: 4px solid #1e1c11;
     background: #fff;
