@@ -126,6 +126,7 @@
 
     let paginas = [];
     let paginaActual = 0;
+    let textoActual = ''; // texto completo en curso, para repaginar si cambia la métrica
     let tecleando = false;
     let saltar = false; // petición de completar la página al instante
     let temporizador = null;
@@ -262,8 +263,27 @@
     // -- Iniciar un diálogo --------------------------------------------------
     function iniciaDialogo(dlg) {
       window.clearTimeout(temporizador);
+      textoActual = dlg.texto;
       paginas = paginar(dlg.texto);
       muestraPagina(0, false);
+    }
+
+    // Repagina el texto en curso con la métrica ACTUAL y repinta la página
+    // vigente de golpe (sin reteclear). La paginación depende de la altura real
+    // del texto, que cambia cuando: (a) por fin carga la webfont JetBrains Mono
+    // —en móvil llega tarde y, medida antes, la caja rebosaba y recortaba el
+    // texto—, o (b) se rota/redimensiona la pantalla.
+    function reflow() {
+      if (!textoActual) return;
+      const nuevas = paginar(textoActual);
+      // Si la métrica no cambió la paginación (p. ej. fuente ya cacheada), no
+      // repintamos: así no interrumpimos un tecleo en curso (el del saludo).
+      if (nuevas.length === paginas.length && nuevas.every(function (t, i) { return t === paginas[i]; })) {
+        return;
+      }
+      const idxPrevia = paginaActual;
+      paginas = nuevas;
+      muestraPagina(Math.min(idxPrevia, paginas.length - 1), true);
     }
 
     // -- Interacciones con la caja ------------------------------------------
@@ -371,11 +391,22 @@
 
     // Saludo inicial.
     setEstado('idle');
-    paginas = paginar(
+    textoActual =
       'Hola, soy Manuel. Elige una pregunta del menú y te la contesto.\n\n' +
-      'Muévete con el ratón o con las flechas ↑/↓ y pulsa Enter.'
-    );
+      'Muévete con el ratón o con las flechas ↑/↓ y pulsa Enter.';
+    paginas = paginar(textoActual);
     muestraPagina(0, false);
+
+    // Repaginar cuando la fuente real ya está disponible (evita el recorte del
+    // texto medido con la fuente de reserva) y al rotar/redimensionar.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(reflow);
+    }
+    let tReflow = null;
+    window.addEventListener('resize', function () {
+      window.clearTimeout(tReflow);
+      tReflow = window.setTimeout(reflow, 150);
+    });
   });
 })();
 

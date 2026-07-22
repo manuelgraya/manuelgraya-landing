@@ -276,6 +276,23 @@ body {
         animation: cargador-apaga 0.3s steps(8, start) 0.9s forwards;
     }
 
+    /* Dibujo del logo del cargador en CSS (antes SMIL <animate>). El reloj de
+       SMIL arranca al parsear el SVG, pero output.css es render-blocking: en
+       móvil lento, para cuando el CSS pinta el cargador el SMIL ya había
+       gastado su dibujo y el logo aparecía ya trazado. En CSS el dibujo
+       comparte el reloj del cargador (arranca al aplicarse los estilos), así
+       que siempre se ve trazarse antes de desvanecerse. Perímetro del rect
+       60×4 = 240. */
+    .cargador-dibujo {
+        stroke-dasharray: 240;
+        stroke-dashoffset: 240;
+        animation: cargador-dibujo 1.2s ease-out both;
+    }
+
+    .cargador-breve .cargador-dibujo {
+        animation-duration: 0.7s;
+    }
+
     .cargador-breve .tty-linea {
         animation-duration: calc(var(--n) * 0.04s);
     }
@@ -412,6 +429,10 @@ body {
 
 @keyframes cargador-apaga {
     to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes cargador-dibujo {
+    to { stroke-dashoffset: 0; }
 }
 
 @keyframes indicador-baja {
