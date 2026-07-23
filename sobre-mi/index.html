@@ -77,11 +77,10 @@
 <!-- Avatar animado (máquina de estados en js/sobre-mi.js). El vídeo idle está
      optimizado (assets/avatar-idle.webm|mp4, ~400 KB, loop boomerang sin salto y
      con banda negra inferior horneada que tapa la marca de agua original). La
-     placa .avatar-nombre encaja con esa banda. Algunas preguntas tienen
-     animación propia (sobre-mi → assets/avatar-teclear.*, juego →
-     assets/avatar-zelda.*, hobbies → assets/avatar-boxeo.*): el JS intercambia
-     el vídeo con un "cambio de canal" de TV (.avatar-canal) y, al acabar,
-     vuelve al idle. -->
+     placa .avatar-nombre encaja con esa banda. Cada pregunta reproduce una
+     animación (juego → assets/avatar-zelda.*, hobbies → assets/avatar-boxeo.*,
+     el resto → assets/avatar-teclear.*): el JS intercambia el vídeo con un
+     "cambio de canal" de TV (.avatar-canal) y, al acabar, vuelve al idle. -->
 <div class="dialogo-avatar">
 <div class="avatar-marco" data-avatar-marco data-estado="idle">
 <video class="avatar-video" data-avatar-video autoplay muted loop playsinline preload="auto" aria-hidden="true">
@@ -163,7 +162,7 @@
 </div>
 </footer>
 <!-- /footer-comun -->
-<script src="/js/sobre-mi.js?v=2026072209" defer></script>
+<script src="/js/sobre-mi.js?v=2026072210" defer></script>
 <script src="/js/shader.js?v=20260722a" defer></script>
 </body>
 </html>

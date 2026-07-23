@@ -23,8 +23,9 @@
     {
       id: 'sobre-mi',
       etiqueta: '¡Cuéntame sobre ti!',
-      // Animación de tecleo en portátil (assets/avatar-teclear.*); al acabar
-      // vuelve al idle, con el mismo "cambio de canal" de TV.
+      // Animación de tecleo en portátil (assets/avatar-teclear.*): es la de por
+      // defecto y la comparten las preguntas sin animación propia (estudios,
+      // estilo, redes). Al acabar vuelve al idle con el "cambio de canal" de TV.
       animacion: '/assets/avatar-teclear',
       texto:
         'Soy Manuel Graya, ingeniero informático. Desde pequeño las matemáticas, ' +
@@ -41,6 +42,7 @@
     {
       id: 'estudios',
       etiqueta: '¿Qué has estudiado?',
+      animacion: '/assets/avatar-teclear',
       texto:
         'Vengo del mundo de la Ingeniería Informática, que estudié en la ' +
         'Universidad de Cádiz. Me formé tocando de todo: sistemas y bajo nivel ' +
@@ -53,6 +55,7 @@
     {
       id: 'estilo',
       etiqueta: '¿Cómo definirías tu estilo?',
+      animacion: '/assets/avatar-teclear',
       texto:
         'Terminal-first y pragmático. Prefiero entornos reproducibles (Docker), ' +
         'automatizar lo repetitivo (Bash, CI/CD) y dejar el sistema como código.\n\n' +
@@ -93,6 +96,7 @@
     {
       id: 'redes',
       etiqueta: '¿Redes sociales?',
+      animacion: '/assets/avatar-teclear',
       texto:
         'Aunque aquí me veas como un avatar, en mi Instagram puedes ver mis fotos ' +
         'de verdad. Me encuentras en:\n\n' +
