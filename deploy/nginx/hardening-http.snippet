@@ -1,0 +1,16 @@
+# Directivas de nivel `http` para la landing.
+# Ubicacion en el servidor: dentro del bloque `http { ... }` de
+# /etc/nginx/nginx.conf, justo tras la linea `http {`.
+#
+# - real_ip: el trafico entra por cloudflared desde 127.0.0.1, asi que sin
+#   esto TODO el log aparece como 127.0.0.1. Cloudflare inyecta la IP real
+#   del visitante en la cabecera CF-Connecting-IP; aqui la restauramos.
+# - limit_req_zone: define las zonas de rate limit que consume landing.conf.
+#   Las zonas SOLO pueden declararse en contexto http (no en server/location).
+
+    # --- Hardening landing: IP real (Cloudflare) + rate limit ---
+    set_real_ip_from 127.0.0.1;
+    real_ip_header CF-Connecting-IP;
+    limit_req_zone $binary_remote_addr zone=landing_general:10m rate=30r/s;
+    limit_req_zone $binary_remote_addr zone=landing_api:10m rate=5r/s;
+    # --- fin hardening ---

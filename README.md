@@ -54,3 +54,5 @@ git push production main   # esto ES el deploy
    git push -u production main
    ```
 4. Configura nginx (o similar) para servir el web root como sitio estático.
+   La config real del servidor (sitio + endurecimiento: IP real de Cloudflare,
+   rate limiting y log propio) está versionada en [`deploy/nginx/`](deploy/nginx/README.md).
