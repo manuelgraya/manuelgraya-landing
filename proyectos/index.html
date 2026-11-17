@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Press+Start+2P&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-<link href="/css/output.css?v=2026072205" rel="stylesheet">
+<link href="/css/output.css?v=2026111701" rel="stylesheet">
 </head>
 <body class="pagina-proyectos bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
 <!-- Carga breve de ruta (variante de la pantalla de carga del inicio,
@@ -85,11 +85,41 @@
 </section>
 <!-- Listado de proyectos -->
 <div class="flex flex-col gap-12">
+<!-- Prometeo -->
+<article class="group flex flex-col md:flex-row gap-8 bg-surface-container-lowest border-4 border-on-surface shadow-[8px_8px_0px_0px_rgba(30,28,17,1)] p-6">
+<div class="w-full md:w-72 flex-shrink-0 flex flex-col gap-3 items-start">
+<div class="w-full aspect-[16/10] border-4 border-on-surface overflow-hidden bg-on-surface">
+<img src="/assets/proyecto-prometeo.webp?v=1" alt="Portada del proyecto PROMETEO: pantalla de inicio con el reactor azul sobre fondo estrellado, en un marco pixel art" width="1200" height="750" loading="lazy" decoding="async" class="w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:scale-105">
+</div>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm bg-secondary-container text-on-secondary-container px-3 py-1 border-2 border-on-surface uppercase leading-none"><span class="material-symbols-outlined text-base">lock_open</span>Público</span>
+</div>
+<div class="flex flex-col flex-grow gap-4">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface break-words">PROMETEO</h2>
+<div class="flex flex-wrap items-center gap-2">
+<span class="font-label-sm text-label-sm bg-secondary-container text-on-secondary-container px-3 py-1 border-2 border-on-surface uppercase">App · Voz + IA</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+    Agente de voz local para planificar proyectos: hablas (o escribes) con PROMETEO y te devuelve el plan, el prompt, las tareas y las notas en Markdown. Un entrevistador rápido conversa contigo y un Arquitecto escribe los entregables en segundo plano; la voz es local y open source (faster-whisper, Kokoro y Silero VAD). La Forja ejecuta los prompts generados en terminales reales de Claude Code dentro de la interfaz. Funciona en Linux y Windows.
+</p>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">React</span>
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">Three.js</span>
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">FastAPI</span>
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">Claude Agent SDK</span>
+<span class="font-label-sm text-label-sm bg-surface-variant px-2 py-1 border-2 border-on-surface">Whisper</span>
+</div>
+<div class="flex flex-wrap gap-4 mt-2">
+<a class="pixel-button bg-secondary text-on-secondary px-3 py-1 text-[10px] uppercase font-pixel inline-block" href="https://github.com/manuelgraya/prometeo">Código</a>
+</div>
+</div>
+</article>
 <!-- Web Psicóloga -->
-<article class="flex flex-col md:flex-row gap-8 bg-surface-container-lowest border-4 border-on-surface shadow-[8px_8px_0px_0px_rgba(30,28,17,1)] p-6">
-<div class="w-full md:w-32 flex-shrink-0 flex flex-col gap-3 items-start">
-<div class="w-full h-32 bg-primary-container border-4 border-on-surface flex items-center justify-center">
-<span class="material-symbols-outlined text-5xl text-on-primary-container">psychology</span>
+<article class="group flex flex-col md:flex-row gap-8 bg-surface-container-lowest border-4 border-on-surface shadow-[8px_8px_0px_0px_rgba(30,28,17,1)] p-6">
+<div class="w-full md:w-72 flex-shrink-0 flex flex-col gap-3 items-start">
+<div class="w-full aspect-[16/10] border-4 border-on-surface overflow-hidden bg-on-surface">
+<img src="/assets/proyecto-psico.webp?v=1" alt="Portada del proyecto Web Psicóloga: captura de angelagarciapsicologia.com en un marco pixel art" width="1200" height="750" loading="lazy" decoding="async" class="w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:scale-105">
 </div>
 <span class="inline-flex items-center gap-1 font-label-sm text-label-sm bg-error-container text-on-error-container px-3 py-1 border-2 border-on-surface uppercase leading-none"><span class="material-symbols-outlined text-base">lock</span>Privado</span>
 </div>
@@ -115,10 +145,10 @@
 </div>
 </article>
 <!-- Landing manuelgraya -->
-<article class="flex flex-col md:flex-row gap-8 bg-surface-container-lowest border-4 border-on-surface shadow-[8px_8px_0px_0px_rgba(30,28,17,1)] p-6">
-<div class="w-full md:w-32 flex-shrink-0 flex flex-col gap-3 items-start">
-<div class="w-full h-32 bg-tertiary-container border-4 border-on-surface flex items-center justify-center">
-<span class="material-symbols-outlined text-5xl text-on-tertiary-container">terminal</span>
+<article class="group flex flex-col md:flex-row gap-8 bg-surface-container-lowest border-4 border-on-surface shadow-[8px_8px_0px_0px_rgba(30,28,17,1)] p-6">
+<div class="w-full md:w-72 flex-shrink-0 flex flex-col gap-3 items-start">
+<div class="w-full aspect-[16/10] border-4 border-on-surface overflow-hidden bg-on-surface">
+<img src="/assets/proyecto-landing.webp?v=1" alt="Portada del proyecto Landing manuelgraya: captura de esta web en un marco pixel art" width="1200" height="750" loading="lazy" decoding="async" class="w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:scale-105">
 </div>
 <span class="inline-flex items-center gap-1 font-label-sm text-label-sm bg-secondary-container text-on-secondary-container px-3 py-1 border-2 border-on-surface uppercase leading-none"><span class="material-symbols-outlined text-base">lock_open</span>Público</span>
 </div>
@@ -146,10 +176,10 @@
 </div>
 </article>
 <!-- Lista RRPP Bot -->
-<article class="flex flex-col md:flex-row gap-8 bg-surface-container-lowest border-4 border-on-surface shadow-[8px_8px_0px_0px_rgba(30,28,17,1)] p-6">
-<div class="w-full md:w-32 flex-shrink-0 flex flex-col gap-3 items-start">
-<div class="w-full h-32 bg-primary-container border-4 border-on-surface flex items-center justify-center">
-<span class="material-symbols-outlined text-5xl text-on-primary-container">smart_toy</span>
+<article class="group flex flex-col md:flex-row gap-8 bg-surface-container-lowest border-4 border-on-surface shadow-[8px_8px_0px_0px_rgba(30,28,17,1)] p-6">
+<div class="w-full md:w-72 flex-shrink-0 flex flex-col gap-3 items-start">
+<div class="w-full aspect-[16/10] border-4 border-on-surface overflow-hidden bg-on-surface">
+<img src="/assets/proyecto-rrpp.webp?v=1" alt="Portada del proyecto Lista RRPP Bot: maqueta de un chat de Telegram con botones para gestionar listas" width="1200" height="750" loading="lazy" decoding="async" class="w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:scale-105">
 </div>
 <span class="inline-flex items-center gap-1 font-label-sm text-label-sm bg-error-container text-on-error-container px-3 py-1 border-2 border-on-surface uppercase leading-none"><span class="material-symbols-outlined text-base">lock</span>Privado</span>
 </div>
@@ -188,7 +218,7 @@
 <div class="mb-4 text-on-primary-container">$ fetch --proyectos</div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 <div class="space-y-1">
-<p>&gt; PROYECTOS_ACTIVOS: 3</p>
+<p>&gt; PROYECTOS_ACTIVOS: 4</p>
 <p>&gt; EN_PRODUCCION: 3</p>
 <p>&gt; FILOSOFIA: OPEN_SOURCE</p>
 </div>
