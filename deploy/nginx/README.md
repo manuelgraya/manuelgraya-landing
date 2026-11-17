@@ -1,4 +1,4 @@
-# Configuración de nginx — landing (servidor `manuel`, 192.168.0.16)
+# Configuración de nginx — landing
 
 Copia versionada de la config de nginx que sirve la landing, más el endurecimiento
 de seguridad aplicado el **2026-07-25**. La fuente de verdad sigue siendo el
@@ -10,11 +10,11 @@ servidor; estos ficheros son el respaldo/referencia para reproducirla o auditarl
 Internet ──► Cloudflare edge ──► cloudflared (túnel) ──► 127.0.0.1 ──► nginx
                                                                         ├─ :8090  landing        → /srv/landing            (estático)
                                                                         │           /api/contacto → 127.0.0.1:8091          (Python, systemd: landing-contacto.service)
-                                                                        └─ :80    angelagarciapsicologia.com (web de la psicóloga — NO TOCAR)
+                                                                        └─ :80    otra web alojada en el servidor (NO TOCAR)
 ```
 
 - Hay **dos túneles cloudflared**: uno permanente (`/etc/cloudflared/config.yml`, dominio
-  de la psicóloga) y un *quick tunnel* que expone la landing
+  de la otra web) y un *quick tunnel* que expone la landing
   (`cloudflared tunnel --url http://localhost:8090` → URL `*.trycloudflare.com`).
 - Como todo el tráfico llega vía `cloudflared` desde `127.0.0.1`, la IP de origen
   real del visitante **no** es el `$remote_addr` — viene en la cabecera
@@ -47,7 +47,7 @@ pero destapó que la landing **no tenía ninguna defensa**. Cambios:
    - `landing_api`: 5 r/s (burst 10) en `/api/contacto` → responde **429** al saturar,
      protegiendo el Python de contacto.
 3. **Log propio**: `/var/log/nginx/landing.access.log` (antes se mezclaba con la
-   web de la psicóloga en el `access.log` común).
+   otra web del servidor en el `access.log` común).
 
 ## Aplicar / reproducir
 
@@ -80,8 +80,8 @@ sudo nginx -t && sudo systemctl reload nginx
 
 ```sh
 # API de contacto (peticiones reales de usuarios, sin sudo)
-ssh 192.168.0.16 'journalctl -u landing-contacto.service -f'
+ssh <servidor> 'journalctl -u landing-contacto.service -f'
 
 # Accesos de la landing (necesita sudo o pertenecer al grupo http)
-ssh -t 192.168.0.16 'sudo tail -f /var/log/nginx/landing.access.log'
+ssh -t <servidor> 'sudo tail -f /var/log/nginx/landing.access.log'
 ```
