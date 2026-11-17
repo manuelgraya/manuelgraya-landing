@@ -46,7 +46,10 @@ pero destapó que la landing **no tenía ninguna defensa**. Cambios:
      molestar una carga normal (una página tira ~15 assets de golpe).
    - `landing_api`: 5 r/s (burst 10) en `/api/contacto` → responde **429** al saturar,
      protegiendo el Python de contacto.
-3. **Log propio**: `/var/log/nginx/landing.access.log` (antes se mezclaba con la
+3. **Rutas internas cerradas** (2026-11-17): `/api/` (salvo los endpoints exactos `/api/contacto` y
+   `/api/contacto/captcha`) y `/deploy/`
+   devuelven la 404 del sitio, porque el deploy publica el repo entero en el web root.
+4. **Log propio**: `/var/log/nginx/landing.access.log` (antes se mezclaba con la
    otra web del servidor en el `access.log` común).
 
 ## Aplicar / reproducir
