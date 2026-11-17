@@ -651,6 +651,14 @@ img {
     image-rendering: pixelated;
 }
 
+/* Figuras de los artículos («Más allá de la caverna»): con pixelated el navegador
+   reduce las capturas por vecino más próximo y salen dentadas e ilegibles;
+   aquí sí interesa el suavizado normal. Las portadas de las tarjetas de
+   proyectos se quedan pixeladas a propósito. */
+.periodico-marco img {
+    image-rendering: auto;
+}
+
 /* =====================================================================
    /sobre-mi/ — Diálogo estilo juego antiguo (js/sobre-mi.js)
    Avatar animado a la izquierda + caja de diálogo de ALTURA FIJA a la
@@ -1090,5 +1098,427 @@ img {
     .musica-slider::-moz-range-thumb {
         width: 16px;
         height: 26px;
+    }
+}
+
+/* ===== Artículos de proyecto (/proyectos/<slug>/): periódico «Más allá de la caverna» =====
+   Una "hoja" de papel sobre el fondo shader, con mancheta gótica, titular en
+   Playfair Display, cuerpo a columnas en Old Standard TT y toques pixel (borde
+   y sombra duros, capitular en Press Start 2P, marcos de las figuras). Las
+   fuentes se cargan solo en estas páginas (Google Fonts en su <head>). El
+   body lleva también .pagina-proyectos, que marca "Proyectos" activo en el nav. */
+.periodico {
+    --tinta: #1e1c11;
+    --papel: #fbf5e4;
+    --regla: rgba(30, 28, 17, 0.25);
+    position: relative;
+    color: var(--tinta);
+    background-color: var(--papel);
+    /* Grano de papel muy suave */
+    background-image:
+        radial-gradient(rgba(111, 70, 39, 0.05) 1px, transparent 1.5px),
+        radial-gradient(rgba(111, 70, 39, 0.04) 1px, transparent 1.5px);
+    background-size: 7px 7px, 11px 11px;
+    background-position: 0 0, 3px 5px;
+    border: 4px solid var(--tinta);
+    box-shadow: 8px 8px 0 0 var(--tinta);
+    padding: 24px 40px 40px;
+    font-family: 'Old Standard TT', Georgia, serif;
+}
+.periodico-cabecera {
+    text-align: center;
+    border-bottom: 6px double var(--tinta);
+    padding-bottom: 8px;
+}
+.periodico-lema,
+.periodico-fecha {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+.periodico-lema span:nth-child(2) {
+    font-family: 'Old Standard TT', Georgia, serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+}
+.periodico-mancheta {
+    font-family: 'UnifrakturMaguntia', 'Old Standard TT', serif;
+    font-size: clamp(34px, 7vw, 88px);
+    line-height: 1.05;
+    margin: 6px 0 10px;
+}
+.periodico-fecha {
+    border-top: 2px solid var(--tinta);
+    border-bottom: 2px solid var(--tinta);
+    padding: 6px 0;
+}
+.periodico-portada {
+    text-align: center;
+    max-width: 880px;
+    margin: 32px auto 24px;
+}
+/* Press Start 2P no tiene vocales acentuadas: los rótulos con tildes van en
+   JetBrains Mono */
+.periodico-antetitulo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 12px;
+    color: #006d37;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 14px;
+}
+.periodico-titular {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(32px, 5.4vw, 62px);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+}
+.periodico-titular-sec {
+    font-size: clamp(26px, 3.8vw, 42px);
+    margin-bottom: 20px;
+}
+.periodico-entradilla {
+    font-style: italic;
+    font-size: 21px;
+    line-height: 1.45;
+    margin-top: 18px;
+    color: #51443c;
+    text-wrap: pretty;
+}
+.periodico-firma {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 6px 0;
+    border-top: 1px solid var(--tinta);
+    border-bottom: 1px solid var(--tinta);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+/* Figuras: marco pixel + pie en monoespaciada */
+.periodico-figura {
+    break-inside: avoid;
+    margin: 4px 0 22px;
+}
+.periodico-ancho {
+    margin: 0 0 32px;
+}
+.periodico-marco {
+    border: 4px solid var(--tinta);
+    box-shadow: 6px 6px 0 0 var(--tinta);
+    background: var(--tinta);
+    line-height: 0;
+}
+.periodico-marco img,
+.periodico-marco video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.periodico-figura figcaption {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #51443c;
+    border-left: 4px solid #006d37;
+    padding-left: 10px;
+    text-align: left;
+    hyphens: manual;
+}
+.periodico-sello {
+    display: inline-block;
+    margin-right: 6px;
+    padding: 2px 6px;
+    background: #ba1a1a;
+    color: #fff;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    line-height: 1.6;
+    text-transform: uppercase;
+    vertical-align: 1px;
+}
+/* Cuerpo a columnas */
+.periodico-cuerpo {
+    font-size: 17px;
+    line-height: 1.62;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+}
+@media (min-width: 900px) {
+    .periodico-cuerpo {
+        column-count: 2;
+        column-gap: 44px;
+        column-rule: 1px solid var(--regla);
+    }
+}
+.periodico-cuerpo p {
+    margin-bottom: 14px;
+    orphans: 3;
+    widows: 3;
+}
+.periodico-cuerpo h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 1.2;
+    text-align: left;
+    margin: 22px 0 10px;
+    padding-top: 10px;
+    border-top: 3px solid var(--tinta);
+    break-after: avoid;
+}
+.periodico-cuerpo h2:first-child {
+    margin-top: 0;
+}
+.periodico-cuerpo code,
+.periodico-nota code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82em;
+    background: #e9e2d0;
+    padding: 1px 4px;
+}
+/* Capitular pixel */
+.periodico-capitular::first-letter {
+    float: left;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 46px;
+    line-height: 1;
+    padding: 10px 10px 8px;
+    margin: 4px 12px 0 0;
+    background: var(--tinta);
+    color: #7efba4;
+    box-shadow: 4px 4px 0 0 #6f4627;
+}
+/* Cita destacada */
+.periodico-cita {
+    break-inside: avoid;
+    margin: 18px 0 22px;
+    padding: 16px 0;
+    border-top: 4px solid var(--tinta);
+    border-bottom: 4px solid var(--tinta);
+    text-align: center;
+}
+.periodico-cita p {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    text-align: center;
+    hyphens: manual;
+}
+.periodico-cita cite {
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+/* Recuadro "Ficha técnica" */
+.periodico-ficha {
+    break-inside: avoid;
+    margin: 6px 0 20px;
+    padding: 16px 18px;
+    background: #fff9ec;
+    border: 3px solid var(--tinta);
+    box-shadow: 5px 5px 0 0 var(--tinta);
+    text-align: left;
+}
+.periodico-ficha h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px dashed var(--tinta);
+}
+.periodico-ficha dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 12px;
+    font-size: 15px;
+    line-height: 1.4;
+}
+.periodico-ficha dt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-top: 3px;
+    color: #006d37;
+}
+/* Reportaje a todo el ancho */
+.periodico-especial {
+    margin: 12px 0 32px;
+    padding: 28px 0 8px;
+    border-top: 6px double var(--tinta);
+    border-bottom: 6px double var(--tinta);
+    text-align: center;
+}
+@media (min-width: 640px) {
+    .periodico-especial .periodico-cuerpo {
+        text-align: justify;
+    }
+}
+.periodico-especial + .periodico-cuerpo {
+    margin-top: 8px;
+}
+/* Terminal de instalación */
+.periodico-terminal {
+    break-inside: avoid;
+    margin: 6px 0 16px;
+    padding: 14px 16px;
+    background: #333024;
+    border: 3px solid var(--tinta);
+    box-shadow: 5px 5px 0 0 var(--tinta);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #7efba4;
+    text-align: left;
+    overflow-x: auto;
+}
+.periodico-terminal p {
+    margin: 0;
+    white-space: pre;
+}
+.periodico-terminal span {
+    color: #f4bb92;
+}
+.periodico-nota {
+    font-size: 14px;
+    font-style: italic;
+    padding: 10px 12px;
+    border: 1px dashed var(--tinta);
+}
+.periodico-pie {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 6px double var(--tinta);
+}
+@media (max-width: 639px) {
+    .periodico {
+        padding: 16px 16px 28px;
+    }
+    .periodico-lema span:not(:nth-child(2)),
+    .periodico-fecha span:nth-child(3) {
+        display: none;
+    }
+    .periodico-lema {
+        justify-content: center;
+    }
+    .periodico-fecha {
+        font-size: 10px;
+    }
+    .periodico-entradilla {
+        font-size: 18px;
+    }
+    .periodico-cuerpo {
+        font-size: 16px;
+        text-align: left;
+    }
+}
+/* Capturas de móvil (estrechas y altas): centradas y sin estirarse a la columna */
+.periodico-figura-estrecha {
+    max-width: 260px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Calendario semanal (artículo del bot): siete casillas pixel, los días con
+   tarea en verde terminal y la limpieza del domingo en terracota */
+.periodico-semana {
+    margin: 8px 0 28px;
+    padding: 24px 0 8px;
+    border-top: 6px double var(--tinta);
+    text-align: center;
+}
+.periodico-semana h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(24px, 3.4vw, 34px);
+    margin-bottom: 18px;
+}
+.periodico-semana ol {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 10px;
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+}
+.periodico-semana li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-height: 150px;
+    padding: 10px 6px;
+    background: #fff9ec;
+    border: 3px solid var(--tinta);
+    box-shadow: 4px 4px 0 0 var(--tinta);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.35;
+    color: #83746b;
+}
+.periodico-semana .dia {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    font-size: 16px;
+    color: var(--tinta);
+    text-transform: uppercase;
+}
+.periodico-semana li.activo {
+    background: #1e1c11;
+    color: #e9e2d0;
+}
+.periodico-semana li.activo .dia,
+.periodico-semana li.activo strong {
+    color: #7efba4;
+}
+.periodico-semana li.limpieza {
+    background: #6f4627;
+}
+.periodico-semana li.limpieza .dia,
+.periodico-semana li.limpieza strong {
+    color: #ffdcc5;
+}
+.periodico-semana li .material-symbols-outlined {
+    font-size: 26px;
+}
+.periodico-semana li strong {
+    font-size: 13px;
+}
+.periodico-semana > p {
+    font-style: italic;
+    font-size: 16px;
+}
+@media (max-width: 639px) {
+    /* En móvil solo caben los días con tarea: los demás se ocultan */
+    .periodico-semana ol {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .periodico-semana li:not(.activo) {
+        display: none;
     }
 }

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>La landing de manuelgraya, píxel a píxel | manuelgraya</title>
+<meta name="description" content="Artículo sobre esta web: HTML estático y Tailwind, un fondo WebGL, un «Sobre mí» como un RPG y un formulario en Python sin dependencias, desplegada con git push.">
+<meta name="theme-color" content="#fff9ec">
+<!-- __BASE_URL__ se sustituye por la URL pública en el hook de deploy -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="La landing de manuelgraya, píxel a píxel | manuelgraya">
+<meta property="og:description" content="Artículo sobre esta web: HTML estático y Tailwind, un fondo WebGL, un «Sobre mí» como un RPG y un formulario en Python sin dependencias, desplegada con git push.">
+<meta property="og:url" content="__BASE_URL__/proyectos/landing/">
+<meta property="og:image" content="__BASE_URL__/assets/proyecto-landing.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="__BASE_URL__/proyectos/landing/">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=UnifrakturMaguntia&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Press+Start+2P&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="/css/output.css?v=2026111704" rel="stylesheet">
+</head>
+<body class="pagina-proyectos pagina-articulo bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Carga breve de ruta (variante de la pantalla de carga del inicio,
+     CSS-only: .cargador-breve se apaga sola) -->
+<div class="cargador cargador-breve" aria-hidden="true">
+<svg class="w-24 h-24" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<rect class="cargador-dibujo" fill="none" height="60" stroke="#8b5e3c" stroke-width="4" width="60" x="20" y="20"></rect>
+<path d="M35 40 L45 50 L35 60" fill="none" stroke="#8b5e3c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+<animate attributeName="opacity" dur="1s" repeatCount="indefinite" values="0;1;0"></animate>
+</path>
+<rect fill="#8b5e3c" height="4" width="15" x="50" y="55">
+<animate attributeName="opacity" dur="0.8s" repeatCount="indefinite" values="1;0;1"></animate>
+</rect>
+</svg>
+<p class="font-pixel text-[12px] text-primary"><span class="tty-linea" style="--n:25; --retardo:.1s">&gt; SALIENDO DE LA CAVERNA_</span></p>
+</div>
+<!-- Fondo shader compartido con el inicio (js/shader.js) -->
+<div class="fondo-shader" aria-hidden="true"><canvas id="fondo-shader"></canvas></div>
+<!-- header-comun -->
+<!-- TopAppBar común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
+     (src/inyectar-partials.js lo pega entre los marcadores header-comun de cada página).
+     El enlace activo por página se marca vía CSS en src/input.css, no aquí. -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface dark:bg-inverse-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]">
+<a class="flex items-center gap-3" href="/">
+<img alt="Logo" class="h-11 w-auto" src="/assets/logo.png">
+<span class="text-primary uppercase tracking-tighter font-pixel text-[11px] md:text-[14px]">manuelgraya</span>
+</a>
+<nav class="hidden md:flex gap-8 items-center md:absolute md:left-1/2 md:-translate-x-1/2">
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/proyectos/">Proyectos</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/sobre-mi/">Sobre Mí</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/contacto/">Contacto</a>
+</nav>
+<div class="flex items-center gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-all flex items-center gap-1" href="https://github.com/manuelgraya" aria-label="GitHub">
+<span class="material-symbols-outlined">terminal</span>
+</a>
+<a class="abrir-menu md:hidden flex items-center" href="#menu-movil" aria-label="Abrir menú">
+<span class="material-symbols-outlined text-primary text-3xl">menu</span>
+</a>
+<a class="cerrar-menu hidden md:hidden items-center" href="#cerrar-menu" aria-label="Cerrar menú">
+<span class="material-symbols-outlined text-primary text-3xl">close</span>
+</a>
+</div>
+<nav class="hidden md:hidden absolute top-full left-0 w-full flex-col bg-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]" id="menu-movil">
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/proyectos/">Proyectos</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/sobre-mi/">Sobre Mí</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/contacto/">Contacto</a>
+<a class="px-margin py-4 text-on-surface-variant font-label-sm text-label-sm uppercase flex items-center gap-2" href="https://github.com/manuelgraya"><span class="material-symbols-outlined">terminal</span>GitHub</a>
+</nav>
+</header>
+<!-- /header-comun -->
+<main class="entra-pagina flex-grow pt-24 pb-12 px-margin max-w-container-max mx-auto w-full">
+<a href="/proyectos/" class="inline-flex items-center gap-2 mb-6 font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-base" aria-hidden="true">arrow_back</span>Volver a proyectos</a>
+<!-- Artículo con maquetación de periódico: estilos en src/input.css (.periodico) -->
+<article class="periodico" lang="es">
+<header class="periodico-cabecera">
+<p class="periodico-lema"><span>Edición digital</span><span>«Proyectos a la luz, fuera de las sombras»</span><span>Gratis · Open source</span></p>
+<p class="periodico-mancheta">Más allá de la caverna</p>
+<p class="periodico-fecha"><span>Sanlúcar de Barrameda</span><span><time datetime="2026-11-17">Martes, 17 de noviembre de 2026</time></span><span>Proyectos · Nº 003</span></p>
+</header>
+
+<div class="periodico-portada">
+<p class="periodico-antetitulo">Web · Pixel art</p>
+<h1 class="periodico-titular">Una web personal hecha píxel a píxel, y servida a la antigua</h1>
+<p class="periodico-entradilla">La landing de manuelgraya: HTML estático, Tailwind compilado y casi nada de JavaScript, con un fondo WebGL, un diálogo de RPG en «Sobre mí» y un formulario que corre sobre un microservidor en Python sin dependencias.</p>
+<p class="periodico-firma">Por <strong>Manuel Graya</strong> · Lectura: 3 min</p>
+</div>
+
+<figure class="periodico-figura periodico-ancho">
+<div class="periodico-marco">
+<video controls muted loop autoplay playsinline preload="metadata" poster="/assets/landing-inicio-poster.webp" width="1280" height="720" aria-label="Vídeo: la portada de la web arranca con una pantalla de carga, un efecto de televisión antigua y la terminal de presentación">
+<source src="/assets/landing-inicio.webm?v=1" type="video/webm">
+<source src="/assets/landing-inicio.mp4?v=1" type="video/mp4">
+</video>
+</div>
+<figcaption><span class="periodico-sello">En movimiento</span> El arranque: pantalla de carga, encendido de televisión antigua y una terminal que se presenta sola.</figcaption>
+</figure>
+
+<div class="periodico-cuerpo">
+<p class="periodico-capitular">Las webs personales suelen salir de una plantilla. Esta empezó como un diseño en Google Stitch y se reconstruyó a mano para que todo se compile en local: HTML estático, Tailwind CSS compilado y guardado en el repositorio, y ningún paso de build en el servidor. El servidor solo sirve archivos, como en los viejos tiempos.</p>
+<p>Nació el 17 de julio de 2026 y lleva más de cincuenta commits. Este periódico que estás leyendo es su última incorporación.</p>
+
+<h2>Menos JavaScript, más CSS</h2>
+<p>Toda la web funciona con cuatro scripts pequeños, sin frameworks. El menú del móvil, las pantallas de carga, las animaciones al hacer scroll y el botón de «ver más» están hechos solo con CSS. El fondo es un shader WebGL: una rejilla de píxeles que late y se ilumina al paso del ratón. Si el navegador no tiene WebGL, desaparece sin más; si prefieres menos movimiento, se queda en un fotograma quieto.</p>
+
+<blockquote class="periodico-cita">
+<p>«Ingeniero por vocación. DevOps por oficio.»</p>
+<cite>La terminal de la portada</cite>
+</blockquote>
+
+<h2>Un formulario sin dependencias</h2>
+<p>El formulario de contacto no usa ningún servicio externo. Detrás hay un microservidor escrito solo con la biblioteca estándar de Python: genera un captcha aritmético propio, firmado para no tener que guardar estado, descarta los bots con un campo trampa, limita los envíos por IP y manda el mensaje por correo. Delante, Nginx pone sus propios límites.</p>
+
+<figure class="periodico-figura">
+<div class="periodico-marco"><img src="/assets/landing-contacto.webp?v=1" alt="Página de contacto con el formulario «Terminal Mail» y la tarjeta de interfaces técnicas con GitHub, LinkedIn e Instagram" width="1440" height="900" loading="lazy" decoding="async"></div>
+<figcaption>«Terminal Mail»: el formulario de contacto, con estética de consola.</figcaption>
+</figure>
+
+<aside class="periodico-ficha" aria-labelledby="ficha-titulo">
+<h3 id="ficha-titulo">Ficha técnica</h3>
+<dl>
+<dt>En GitHub</dt><dd>Desde el 17 de julio de 2026, en activo · más de 50 commits</dd>
+<dt>Páginas</dt><dd>HTML estático y Tailwind CSS v3 compilado</dd>
+<dt>Scripts</dt><dd>Cuatro scripts vanilla, cargados en diferido</dd>
+<dt>Fondo</dt><dd>Shader WebGL con alternativa sin movimiento</dd>
+<dt>Contacto</dt><dd>Python sin dependencias: captcha firmado y envío por SMTP</dd>
+<dt>Servidor</dt><dd>Nginx en un servidor propio</dd>
+<dt>Despliegue</dt><dd><code>git push</code> a un repositorio con un hook que publica</dd>
+<dt>Diseño</dt><dd>Google Stitch, adaptado a build local</dd>
+</dl>
+</aside>
+</div>
+
+<section class="periodico-especial" aria-labelledby="sobremi-titulo">
+<p class="periodico-antetitulo">Reportaje</p>
+<h2 id="sobremi-titulo" class="periodico-titular periodico-titular-sec">«Sobre mí», contado como en un videojuego</h2>
+<figure class="periodico-figura periodico-ancho">
+<div class="periodico-marco">
+<video controls muted loop autoplay playsinline preload="metadata" poster="/assets/landing-sobremi-poster.webp" width="1280" height="720" aria-label="Vídeo: el diálogo de «Sobre mí»; al elegir una pregunta el avatar cambia de animación y el texto se escribe letra a letra">
+<source src="/assets/landing-sobremi.webm?v=1" type="video/webm">
+<source src="/assets/landing-sobremi.mp4?v=1" type="video/mp4">
+</video>
+</div>
+<figcaption><span class="periodico-sello">En movimiento</span> Eliges una pregunta y el avatar cambia de canal: de Link con su espada a programar con el portátil.</figcaption>
+</figure>
+<div class="periodico-cuerpo">
+<p>En lugar de un texto largo, la página «Sobre mí» es un diálogo como los de los juegos de rol de toda la vida. Hay un menú de preguntas que se maneja con el ratón o con las flechas del teclado, y las respuestas se escriben letra a letra y se paginan dentro de una caja de tamaño fijo.</p>
+<p>Cada respuesta tiene su propia animación del avatar, que entra con una transición de cambio de canal, y suena una música de fondo cuyo volumen la web recuerda para la próxima visita.</p>
+</div>
+</section>
+
+<div class="periodico-cuerpo">
+<h2>Desplegar es hacer <code>git push</code></h2>
+<p>No hay panel de control ni integración continua: publicar es empujar la rama principal a un repositorio en el servidor. Un hook copia los archivos a la carpeta que sirve Nginx y pone el dominio en las URLs absolutas.</p>
+<div class="periodico-terminal" role="region" aria-label="Ejemplo de despliegue">
+<p><span>$</span> npm run build</p>
+<p><span>$</span> git push production main</p>
+<p>remote: &gt;&gt; Desplegando main ...</p>
+<p>remote: &gt;&gt; Despliegue completado</p>
+</div>
+
+<figure class="periodico-figura periodico-figura-estrecha">
+<div class="periodico-marco"><img src="/assets/landing-movil.webp?v=1" alt="La portada de la web vista en un móvil, con la terminal de presentación y el avatar" width="390" height="844" loading="lazy" decoding="async"></div>
+<figcaption>En el móvil, todo se apila sin perder el estilo.</figcaption>
+</figure>
+
+<h2>Hasta el error tiene gracia</h2>
+<p>Si alguien se pierde, la página de error no se limita a un 404 seco: abre un informe de fallo del sistema y confiesa que el gato se ha comido la página.</p>
+
+<figure class="periodico-figura">
+<div class="periodico-marco"><img src="/assets/landing-404.webp?v=1" alt="Página 404 con un gran «404», una terminal de informe de error y un aviso rojo de «System error»" width="1440" height="900" loading="lazy" decoding="async"></div>
+<figcaption>La página 404: «El gato se ha comido esta página».</figcaption>
+</figure>
+</div>
+
+<footer class="periodico-pie">
+<a class="pixel-button bg-secondary text-on-secondary px-4 py-2 text-[10px] uppercase font-pixel inline-flex items-center gap-2" href="https://github.com/manuelgraya/manuelgraya-landing">Código en GitHub</a>
+<a class="pixel-button bg-white text-on-surface px-4 py-2 text-[10px] uppercase font-pixel inline-flex items-center gap-2" href="/proyectos/">Más proyectos</a>
+</footer>
+</article>
+</main>
+<!-- footer-comun -->
+<!-- Footer común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
+     (src/inyectar-partials.js lo pega entre los marcadores footer-comun de cada página). -->
+<footer class="w-full py-gutter px-margin bg-surface-container border-t-4 border-primary">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white flex items-center justify-center pixel-border">
+<span class="material-symbols-outlined text-4xl text-on-surface" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div>
+<h4 class="font-pixel text-[12px] text-on-surface">manuelgraya</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">© 2026 - Made with pixels</p>
+</div>
+</div>
+<div class="flex gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://github.com/manuelgraya">GitHub</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://www.linkedin.com/in/manuel-garcia-7023a0204/">LinkedIn</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://www.instagram.com/manuel.graya/">Instagram</a>
+</div>
+<div class="flex flex-col items-center md:items-end gap-2">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
+<span class="font-label-sm text-label-sm text-on-surface">SYSTEM_ONLINE</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Powered by Open Source and Coffee</p>
+</div>
+</div>
+</footer>
+<!-- /footer-comun -->
+<script src="/js/shader.js?v=20260722a" defer></script>
+</body>
+</html>

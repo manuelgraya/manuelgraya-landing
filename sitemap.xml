@@ -14,6 +14,30 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>__BASE_URL__/proyectos/prometeo/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>__BASE_URL__/proyectos/psicologa/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>__BASE_URL__/proyectos/landing/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>__BASE_URL__/proyectos/lista-rrpp-bot/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>__BASE_URL__/sobre-mi/</loc>
     <lastmod>2026-07-22</lastmod>
     <changefreq>monthly</changefreq>

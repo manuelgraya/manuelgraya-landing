@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PROMETEO, el agente de voz que planifica proyectos | manuelgraya</title>
+<meta name="description" content="Artículo sobre PROMETEO: un agente de voz local que te entrevista, escribe el plan, el prompt y las tareas en Markdown y ejecuta agentes de Claude Code en su Forja.">
+<meta name="theme-color" content="#fff9ec">
+<!-- __BASE_URL__ se sustituye por la URL pública en el hook de deploy -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="PROMETEO, el agente de voz que planifica proyectos | manuelgraya">
+<meta property="og:description" content="Artículo sobre PROMETEO: un agente de voz local que te entrevista, escribe el plan, el prompt y las tareas en Markdown y ejecuta agentes de Claude Code en su Forja.">
+<meta property="og:url" content="__BASE_URL__/proyectos/prometeo/">
+<meta property="og:image" content="__BASE_URL__/assets/proyecto-prometeo.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="__BASE_URL__/proyectos/prometeo/">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=UnifrakturMaguntia&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Press+Start+2P&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="/css/output.css?v=2026111704" rel="stylesheet">
+</head>
+<body class="pagina-proyectos pagina-articulo bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Carga breve de ruta (variante de la pantalla de carga del inicio,
+     CSS-only: .cargador-breve se apaga sola) -->
+<div class="cargador cargador-breve" aria-hidden="true">
+<svg class="w-24 h-24" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<rect class="cargador-dibujo" fill="none" height="60" stroke="#8b5e3c" stroke-width="4" width="60" x="20" y="20"></rect>
+<path d="M35 40 L45 50 L35 60" fill="none" stroke="#8b5e3c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+<animate attributeName="opacity" dur="1s" repeatCount="indefinite" values="0;1;0"></animate>
+</path>
+<rect fill="#8b5e3c" height="4" width="15" x="50" y="55">
+<animate attributeName="opacity" dur="0.8s" repeatCount="indefinite" values="1;0;1"></animate>
+</rect>
+</svg>
+<p class="font-pixel text-[12px] text-primary"><span class="tty-linea" style="--n:25; --retardo:.1s">&gt; SALIENDO DE LA CAVERNA_</span></p>
+</div>
+<!-- Fondo shader compartido con el inicio (js/shader.js) -->
+<div class="fondo-shader" aria-hidden="true"><canvas id="fondo-shader"></canvas></div>
+<!-- header-comun -->
+<!-- TopAppBar común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
+     (src/inyectar-partials.js lo pega entre los marcadores header-comun de cada página).
+     El enlace activo por página se marca vía CSS en src/input.css, no aquí. -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface dark:bg-inverse-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]">
+<a class="flex items-center gap-3" href="/">
+<img alt="Logo" class="h-11 w-auto" src="/assets/logo.png">
+<span class="text-primary uppercase tracking-tighter font-pixel text-[11px] md:text-[14px]">manuelgraya</span>
+</a>
+<nav class="hidden md:flex gap-8 items-center md:absolute md:left-1/2 md:-translate-x-1/2">
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/proyectos/">Proyectos</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/sobre-mi/">Sobre Mí</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/contacto/">Contacto</a>
+</nav>
+<div class="flex items-center gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-all flex items-center gap-1" href="https://github.com/manuelgraya" aria-label="GitHub">
+<span class="material-symbols-outlined">terminal</span>
+</a>
+<a class="abrir-menu md:hidden flex items-center" href="#menu-movil" aria-label="Abrir menú">
+<span class="material-symbols-outlined text-primary text-3xl">menu</span>
+</a>
+<a class="cerrar-menu hidden md:hidden items-center" href="#cerrar-menu" aria-label="Cerrar menú">
+<span class="material-symbols-outlined text-primary text-3xl">close</span>
+</a>
+</div>
+<nav class="hidden md:hidden absolute top-full left-0 w-full flex-col bg-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]" id="menu-movil">
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/proyectos/">Proyectos</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/sobre-mi/">Sobre Mí</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/contacto/">Contacto</a>
+<a class="px-margin py-4 text-on-surface-variant font-label-sm text-label-sm uppercase flex items-center gap-2" href="https://github.com/manuelgraya"><span class="material-symbols-outlined">terminal</span>GitHub</a>
+</nav>
+</header>
+<!-- /header-comun -->
+<main class="entra-pagina flex-grow pt-24 pb-12 px-margin max-w-container-max mx-auto w-full">
+<a href="/proyectos/" class="inline-flex items-center gap-2 mb-6 font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-base" aria-hidden="true">arrow_back</span>Volver a proyectos</a>
+<!-- Artículo con maquetación de periódico: estilos en src/input.css (.periodico) -->
+<article class="periodico" lang="es">
+<header class="periodico-cabecera">
+<p class="periodico-lema"><span>Edición digital</span><span>«Proyectos a la luz, fuera de las sombras»</span><span>Gratis · Open source</span></p>
+<p class="periodico-mancheta">Más allá de la caverna</p>
+<p class="periodico-fecha"><span>Sanlúcar de Barrameda</span><span><time datetime="2026-11-16">Lunes, 16 de noviembre de 2026</time></span><span>Proyectos · Nº 004</span></p>
+</header>
+
+<div class="periodico-portada">
+<p class="periodico-antetitulo">Tecnología · Inteligencia artificial</p>
+<h1 class="periodico-titular">PROMETEO, el agente que escucha tus ideas y las convierte en un plan</h1>
+<p class="periodico-entradilla">Un asistente de voz que corre en tu propio ordenador te entrevista, redacta el plan, el prompt, las tareas y las notas en Markdown, y después pone a trabajar a una cuadrilla de agentes de Claude Code en su Forja.</p>
+<p class="periodico-firma">Por <strong>Manuel Graya</strong> · Lectura: 4 min</p>
+</div>
+
+<figure class="periodico-figura periodico-ancho">
+<div class="periodico-marco">
+<video controls muted loop autoplay playsinline preload="metadata" poster="/assets/prometeo-inicio-poster.webp" width="1280" height="720" aria-label="Vídeo: PROMETEO despierta, pide el nombre del proyecto y empieza la conversación">
+<source src="/assets/prometeo-inicio.webm?v=1" type="video/webm">
+<source src="/assets/prometeo-inicio.mp4?v=1" type="video/mp4">
+</video>
+</div>
+<figcaption><span class="periodico-sello">En movimiento</span> El reactor despierta, pregunta cómo se llama el proyecto y empieza a hablar. Activa el sonido: esa es su voz.</figcaption>
+</figure>
+
+<div class="periodico-cuerpo">
+<p class="periodico-capitular">Todo proyecto empieza con una conversación, y casi siempre se pierde en ella. Las ideas van y vienen, las decisiones se quedan en el aire y, cuando por fin toca escribir el plan, media charla se ha olvidado. PROMETEO nace para ese momento: hablas con él (o le escribes) y, al terminar, tienes sobre la mesa el plan, el prompt para la IA, las tareas y las notas, todo en archivos <code>.md</code>.</p>
+<p>El proyecto arrancó el 9 de noviembre de 2026 con otro nombre, ORION, y ese mismo día cambió de constelación. En su primera semana sumó casi ochenta commits.</p>
+
+<h2>Una entrevista, no un formulario</h2>
+<p>No hay casillas que rellenar. Un <strong>entrevistador</strong> rápido (Claude Sonnet) conversa contigo y te hace preguntas directas hasta que el plan está claro. Si el proyecto lo pide, te sugiere además conexiones MCP útiles: una base de datos, un calendario, un repositorio.</p>
+<p>La voz es local y de código abierto. <strong>faster-whisper</strong> entiende lo que dices, <strong>Kokoro</strong> le pone voz a la respuesta y <strong>Silero VAD</strong>, que corre en el propio navegador, detecta cuándo has terminado de hablar. Se puede usar en modo manos libres o por turnos.</p>
+
+<figure class="periodico-figura">
+<div class="periodico-marco"><img src="/assets/prometeo-conversacion.webp?v=1" alt="Vista de conversación de PROMETEO: transcripción a la izquierda, el reactor en el centro y el panel de entregables a la derecha" width="1440" height="810" loading="lazy" decoding="async"></div>
+<figcaption>La conversación: a la izquierda, la transcripción; a la derecha, los entregables que se van generando.</figcaption>
+</figure>
+
+<h2>Dos cerebros: el que habla y el que escribe</h2>
+<p>Mientras el entrevistador mantiene la charla ágil, un segundo agente, el <strong>Arquitecto</strong> (Claude Opus), analiza en segundo plano todo lo hablado. Basta con pedirlo en voz alta («dame el plan», «crea el prompt», «las tareas», «las notas») para que el entregable aparezca en el panel de la derecha y en la carpeta del proyecto.</p>
+
+<blockquote class="periodico-cita">
+<p>«Me cuentas tu idea, te hago las preguntas justas y la convierto en un plan claro y accionable.»</p>
+<cite>PROMETEO, respondiendo a «¿Quién eres?»</cite>
+</blockquote>
+
+<h2>Cada proyecto, una carpeta</h2>
+<p>Cada proyecto vive en su propia carpeta, con el código y un vault de Obsidian, lista para convertirse en un repositorio tal cual. Las conversaciones y los entregables quedan aparte, así que el proyecto sale limpio. Al retomar uno, PROMETEO saluda recordando lo que quedó pendiente.</p>
+
+<figure class="periodico-figura">
+<div class="periodico-marco"><img src="/assets/prometeo-proyectos.webp?v=1" alt="Lista de proyectos de PROMETEO con la fecha de actualización y los entregables de cada uno" width="1440" height="900" loading="lazy" decoding="async"></div>
+<figcaption>La lista de proyectos, con los entregables que ya tiene cada uno.</figcaption>
+</figure>
+
+<aside class="periodico-ficha" aria-labelledby="ficha-titulo">
+<h3 id="ficha-titulo">Ficha técnica</h3>
+<dl>
+<dt>En GitHub</dt><dd>Del 9 al 16 de noviembre de 2026 · 79 commits</dd>
+<dt>Interfaz</dt><dd>React 19, react-three-fiber (reactor y galaxia) y Vite</dd>
+<dt>Servidor</dt><dd>FastAPI y Claude Agent SDK</dd>
+<dt>Voz</dt><dd>faster-whisper, Kokoro ONNX y Silero VAD</dd>
+<dt>Modelos</dt><dd>Sonnet entrevista, Opus redacta; o un modelo local con LM Studio</dd>
+<dt>Sistemas</dt><dd>Linux y Windows 10/11, con el mismo código</dd>
+<dt>Pruebas</dt><dd>CI en Ubuntu y Windows con una prueba de humo que simula el micrófono</dd>
+<dt>Cuenta</dt><dd>Usa tu suscripción de Claude a través de Claude Code</dd>
+</dl>
+</aside>
+</div>
+
+<section class="periodico-especial" aria-labelledby="forja-titulo">
+<p class="periodico-antetitulo">Reportaje</p>
+<h2 id="forja-titulo" class="periodico-titular periodico-titular-sec">La Forja: una cuadrilla de agentes con nombre de estrella</h2>
+<figure class="periodico-figura periodico-ancho">
+<div class="periodico-marco">
+<video controls muted loop autoplay playsinline preload="metadata" poster="/assets/prometeo-forja-poster.webp" width="1280" height="720" aria-label="Vídeo: la Forja de PROMETEO con un agente de Claude Code trabajando en una terminal">
+<source src="/assets/prometeo-forja.webm?v=1" type="video/webm">
+<source src="/assets/prometeo-forja.mp4?v=1" type="video/mp4">
+</video>
+</div>
+<figcaption><span class="periodico-sello">En movimiento</span> Salto a la Forja: Sirio, Vega, Sol y Centauri orbitan alrededor de PROMETEO, que coordina su trabajo.</figcaption>
+</figure>
+<div class="periodico-cuerpo">
+<p>Planificar es la mitad del trabajo. La otra mitad se hace en la <strong>Forja</strong>, que ejecuta los prompts generados (o tareas sueltas) en <strong>terminales reales de Claude Code</strong> dentro de la propia interfaz. Cada agente recibe un nombre de estrella y aparece orbitando alrededor del reactor.</p>
+<p>PROMETEO hace de orquestador: lleva cada encargo por sus etapas (trabajando, validación, revisión, documentación y terminado) y comprueba el resultado antes de darlo por bueno. Un registro anota cada movimiento, y unos medidores muestran cuánto uso de Claude queda en las ventanas de 5 horas y de 7 días.</p>
+</div>
+</section>
+
+<div class="periodico-cuerpo">
+<h2>Hecho a la medida de cada máquina</h2>
+<p>Todo se ajusta desde la interfaz: la voz y su velocidad, si la transcripción y la síntesis van por CPU o por GPU, el modelo de Whisper, el modelo y el esfuerzo de Claude, el idioma (español o inglés) y el tema de color. Quien prefiera no salir de su equipo puede usar un modelo local de LM Studio para el entrevistador y el Arquitecto.</p>
+
+<figure class="periodico-figura">
+<div class="periodico-marco"><img src="/assets/prometeo-ajustes.webp?v=1" alt="Vista de ajustes de PROMETEO: voz, rendimiento con CPU o GPU, modelo de Whisper y modelos de Claude" width="1440" height="900" loading="lazy" decoding="async"></div>
+<figcaption>Ajustes: voz, rendimiento y «cerebro», todo sin tocar un archivo.</figcaption>
+</figure>
+
+<figure class="periodico-figura">
+<div class="periodico-marco"><img src="/assets/prometeo-voces.webp?v=1" alt="Catálogo de voces de PROMETEO, cada una con botones para escucharla y usarla" width="1440" height="900" loading="lazy" decoding="async"></div>
+<figcaption>El catálogo de voces: se escucha una muestra de cada una antes de elegirla.</figcaption>
+</figure>
+
+<h2>Preguntas que responde en voz alta</h2>
+<p>La sección de preguntas frecuentes no se lee: se escucha. Eliges una pregunta y PROMETEO la contesta con un audio que generó una sola vez con su voz actual (o con uno grabado a mano, si alguien prefiere ponerle la suya).</p>
+
+<figure class="periodico-figura">
+<div class="periodico-marco"><img src="/assets/prometeo-faq.webp?v=1" alt="Vista de preguntas frecuentes de PROMETEO con botones para preguntar cada una" width="1440" height="900" loading="lazy" decoding="async"></div>
+<figcaption>Las preguntas frecuentes, cada una con su botón «Preguntar».</figcaption>
+</figure>
+
+<h2>Cómo probarlo</h2>
+<p>En Linux basta con clonar el repositorio, iniciar sesión en Claude Code y lanzar el comando <code>prometeo</code>, que levanta el servidor y la interfaz en <code>localhost:5173</code>. En Windows hay un instalador de una sola línea para PowerShell que no necesita ni Node ni git.</p>
+<div class="periodico-terminal" role="region" aria-label="Comandos de instalación en Linux">
+<p><span>$</span> git clone https://github.com/manuelgraya/prometeo</p>
+<p><span>$</span> cd prometeo</p>
+<p><span>$</span> claude login</p>
+<p><span>$</span> ./bin/prometeo install</p>
+<p><span>$</span> prometeo</p>
+</div>
+<p class="periodico-nota"><strong>Nota de la redacción:</strong> todo el flujo está probado en Linux. En Windows pasa la CI y la instalación limpia, pero aún falta probarlo a fondo en un equipo real.</p>
+</div>
+
+<footer class="periodico-pie">
+<a class="pixel-button bg-secondary text-on-secondary px-4 py-2 text-[10px] uppercase font-pixel inline-flex items-center gap-2" href="https://github.com/manuelgraya/prometeo">Código en GitHub</a>
+<a class="pixel-button bg-white text-on-surface px-4 py-2 text-[10px] uppercase font-pixel inline-flex items-center gap-2" href="/proyectos/">Más proyectos</a>
+</footer>
+</article>
+</main>
+<!-- footer-comun -->
+<!-- Footer común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
+     (src/inyectar-partials.js lo pega entre los marcadores footer-comun de cada página). -->
+<footer class="w-full py-gutter px-margin bg-surface-container border-t-4 border-primary">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white flex items-center justify-center pixel-border">
+<span class="material-symbols-outlined text-4xl text-on-surface" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div>
+<h4 class="font-pixel text-[12px] text-on-surface">manuelgraya</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">© 2026 - Made with pixels</p>
+</div>
+</div>
+<div class="flex gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://github.com/manuelgraya">GitHub</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://www.linkedin.com/in/manuel-garcia-7023a0204/">LinkedIn</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://www.instagram.com/manuel.graya/">Instagram</a>
+</div>
+<div class="flex flex-col items-center md:items-end gap-2">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
+<span class="font-label-sm text-label-sm text-on-surface">SYSTEM_ONLINE</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Powered by Open Source and Coffee</p>
+</div>
+</div>
+</footer>
+<!-- /footer-comun -->
+<script src="/js/shader.js?v=20260722a" defer></script>
+</body>
+</html>

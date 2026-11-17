@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Web de Ángela García Psicología: una consulta online cercana | manuelgraya</title>
+<meta name="description" content="Artículo sobre la web de Ángela García Psicología: Django, bilingüe, con panel para editar el contenido y contacto por formulario, WhatsApp o correo.">
+<meta name="theme-color" content="#fff9ec">
+<!-- __BASE_URL__ se sustituye por la URL pública en el hook de deploy -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Web de Ángela García Psicología: una consulta online cercana | manuelgraya">
+<meta property="og:description" content="Artículo sobre la web de Ángela García Psicología: Django, bilingüe, con panel para editar el contenido y contacto por formulario, WhatsApp o correo.">
+<meta property="og:url" content="__BASE_URL__/proyectos/psicologa/">
+<meta property="og:image" content="__BASE_URL__/assets/proyecto-psico.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="__BASE_URL__/proyectos/psicologa/">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=UnifrakturMaguntia&family=JetBrains+Mono:wght@400;600&family=Space+Mono:wght@400;700&family=Press+Start+2P&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="/css/output.css?v=2026111704" rel="stylesheet">
+</head>
+<body class="pagina-proyectos pagina-articulo bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Carga breve de ruta (variante de la pantalla de carga del inicio,
+     CSS-only: .cargador-breve se apaga sola) -->
+<div class="cargador cargador-breve" aria-hidden="true">
+<svg class="w-24 h-24" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<rect class="cargador-dibujo" fill="none" height="60" stroke="#8b5e3c" stroke-width="4" width="60" x="20" y="20"></rect>
+<path d="M35 40 L45 50 L35 60" fill="none" stroke="#8b5e3c" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+<animate attributeName="opacity" dur="1s" repeatCount="indefinite" values="0;1;0"></animate>
+</path>
+<rect fill="#8b5e3c" height="4" width="15" x="50" y="55">
+<animate attributeName="opacity" dur="0.8s" repeatCount="indefinite" values="1;0;1"></animate>
+</rect>
+</svg>
+<p class="font-pixel text-[12px] text-primary"><span class="tty-linea" style="--n:25; --retardo:.1s">&gt; SALIENDO DE LA CAVERNA_</span></p>
+</div>
+<!-- Fondo shader compartido con el inicio (js/shader.js) -->
+<div class="fondo-shader" aria-hidden="true"><canvas id="fondo-shader"></canvas></div>
+<!-- header-comun -->
+<!-- TopAppBar común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
+     (src/inyectar-partials.js lo pega entre los marcadores header-comun de cada página).
+     El enlace activo por página se marca vía CSS en src/input.css, no aquí. -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin h-16 bg-surface dark:bg-inverse-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]">
+<a class="flex items-center gap-3" href="/">
+<img alt="Logo" class="h-11 w-auto" src="/assets/logo.png">
+<span class="text-primary uppercase tracking-tighter font-pixel text-[11px] md:text-[14px]">manuelgraya</span>
+</a>
+<nav class="hidden md:flex gap-8 items-center md:absolute md:left-1/2 md:-translate-x-1/2">
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/proyectos/">Proyectos</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/sobre-mi/">Sobre Mí</a>
+<a class="text-on-surface-variant hover:text-primary border-b-4 border-transparent font-label-sm text-label-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="/contacto/">Contacto</a>
+</nav>
+<div class="flex items-center gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-all flex items-center gap-1" href="https://github.com/manuelgraya" aria-label="GitHub">
+<span class="material-symbols-outlined">terminal</span>
+</a>
+<a class="abrir-menu md:hidden flex items-center" href="#menu-movil" aria-label="Abrir menú">
+<span class="material-symbols-outlined text-primary text-3xl">menu</span>
+</a>
+<a class="cerrar-menu hidden md:hidden items-center" href="#cerrar-menu" aria-label="Cerrar menú">
+<span class="material-symbols-outlined text-primary text-3xl">close</span>
+</a>
+</div>
+<nav class="hidden md:hidden absolute top-full left-0 w-full flex-col bg-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(30,28,17,1)]" id="menu-movil">
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/proyectos/">Proyectos</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/sobre-mi/">Sobre Mí</a>
+<a class="px-margin py-4 border-b-2 border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase" href="/contacto/">Contacto</a>
+<a class="px-margin py-4 text-on-surface-variant font-label-sm text-label-sm uppercase flex items-center gap-2" href="https://github.com/manuelgraya"><span class="material-symbols-outlined">terminal</span>GitHub</a>
+</nav>
+</header>
+<!-- /header-comun -->
+<main class="entra-pagina flex-grow pt-24 pb-12 px-margin max-w-container-max mx-auto w-full">
+<a href="/proyectos/" class="inline-flex items-center gap-2 mb-6 font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-base" aria-hidden="true">arrow_back</span>Volver a proyectos</a>
+<!-- Artículo con maquetación de periódico: estilos en src/input.css (.periodico) -->
+<article class="periodico" lang="es">
+<header class="periodico-cabecera">
+<p class="periodico-lema"><span>Edición digital</span><span>«Proyectos a la luz, fuera de las sombras»</span><span>Gratis · Open source</span></p>
+<p class="periodico-mancheta">Más allá de la caverna</p>
+<p class="periodico-fecha"><span>Sanlúcar de Barrameda</span><span><time datetime="2026-10-11">Domingo, 11 de octubre de 2026</time></span><span>Proyectos · Nº 002</span></p>
+</header>
+
+<div class="periodico-portada">
+<p class="periodico-antetitulo">Web · Salud</p>
+<h1 class="periodico-titular">Una consulta de psicología online que se siente cercana desde el primer clic</h1>
+<p class="periodico-entradilla">La web de Ángela García Psicología, en producción con Django: presentación cálida, tarifas claras, contacto por el canal que prefiera cada persona y un panel para que la propia psicóloga edite todo sin tocar código.</p>
+<p class="periodico-firma">Por <strong>Manuel Graya</strong> · Lectura: 3 min</p>
+</div>
+
+<figure class="periodico-figura periodico-ancho">
+<div class="periodico-marco"><img src="/assets/psico-inicio.webp?v=1" alt="Portada de angelagarciapsicologia.com: el nombre en letra manuscrita morada, el lema y una foto de la psicóloga" width="1440" height="900" decoding="async"></div>
+<figcaption>La portada: el nombre en letra manuscrita, a juego con el logo, y la familia de morados que pidió la clienta.</figcaption>
+</figure>
+
+<div class="periodico-cuerpo">
+<p class="periodico-capitular">Quien llega a esta web casi nunca está buscando psicóloga desde cero. Viene recomendado, ha oído hablar de Ángela y quiere confirmar que es la persona adecuada, ver cómo trabaja y cuánto cuesta. El encargo partía de ahí: que la primera impresión fuera «puedo hablarle». Cercana, humana y nada intimidante; ni fría como una clínica ni mística como un centro de bienestar.</p>
+<p>La consulta es cien por cien online, por videollamada, así que la web es la puerta de entrada. Se construyó entre julio y octubre de 2026 y está en producción en <a href="https://angelagarciapsicologia.com/">angelagarciapsicologia.com</a>.</p>
+
+<h2>Cuatro pasos y ninguna duda</h2>
+<p>La portada explica el proceso entero antes de que nadie tenga que preguntarlo: rellenas el formulario con tu motivo y tu disponibilidad, recibes respuesta y se agenda una primera sesión para conoceros, y a partir de ahí empieza la terapia. Debajo, las ventajas de la terapia online y las preguntas frecuentes.</p>
+
+<figure class="periodico-figura">
+<div class="periodico-marco"><img src="/assets/psico-como-funciona.webp?v=1" alt="Sección «¿Cómo funciona?» de la web: cuatro pasos numerados en una línea vertical" width="1440" height="960" loading="lazy" decoding="async"></div>
+<figcaption>«¿Cómo funciona?»: los cuatro pasos para empezar, sin letra pequeña.</figcaption>
+</figure>
+
+<blockquote class="periodico-cita">
+<p>«Te acompaño a darle voz a lo que duele y transformarlo.»</p>
+<cite>Lema de la portada</cite>
+</blockquote>
+
+<h2>El contenido, en manos de la clienta</h2>
+<p>Nada está escrito a fuego en el código. El panel de administración de Django hace de gestor de contenidos: perfil profesional, servicios y tarifas, testimonios, preguntas frecuentes y una copia de cada mensaje recibido. Los testimonios solo se publican si tienen marcada la casilla de consentimiento; es un requisito ético que no admite atajos.</p>
+
+<figure class="periodico-figura">
+<div class="periodico-marco"><img src="/assets/psico-sobre-mi.webp?v=1" alt="Página «Sobre mí»: foto de la psicóloga junto a su biografía" width="1440" height="900" loading="lazy" decoding="async"></div>
+<figcaption>«Sobre mí», con el lema en manuscrita: «Permítete empezar de nuevo las veces que necesites».</figcaption>
+</figure>
+
+<figure class="periodico-figura">
+<div class="periodico-marco"><img src="/assets/psico-tarifas.webp?v=1" alt="Página de tarifas con tarjetas para sesión individual, de pareja y bonos de cuatro sesiones" width="1440" height="900" loading="lazy" decoding="async"></div>
+<figcaption>Tarifas en tarjetas: sesión suelta o bono, individual o en pareja.</figcaption>
+</figure>
+
+<aside class="periodico-ficha" aria-labelledby="ficha-titulo">
+<h3 id="ficha-titulo">Ficha técnica</h3>
+<dl>
+<dt>En GitHub</dt><dd>Del 7 de julio al 11 de octubre de 2026 · 67 commits</dd>
+<dt>Servidor</dt><dd>Django 6 con Python 3.14</dd>
+<dt>Interfaz</dt><dd>Plantillas de Django y Tailwind CSS v4, pensada primero para el móvil</dd>
+<dt>Datos</dt><dd>PostgreSQL en producción, SQLite en desarrollo</dd>
+<dt>Gestión</dt><dd>Django Admin como gestor de contenidos</dd>
+<dt>Idiomas</dt><dd>Español e inglés, con URLs traducidas</dd>
+<dt>Despliegue</dt><dd>GitHub Actions por SSH: migraciones, estáticos y reinicio en cada push</dd>
+<dt>Alojamiento</dt><dd>Servidor Linux propio con Nginx y HTTPS</dd>
+</dl>
+</aside>
+
+<h2>Español e inglés, con su propia URL</h2>
+<p>Ángela pasa consulta en los dos idiomas, y la web también: cada página tiene su versión inglesa con la dirección traducida, no un simple selector que cambia los textos. Todo está pensado primero para el móvil, que es por donde llega mucha gente, desde Instagram o desde un enlace que le han pasado.</p>
+
+<figure class="periodico-figura">
+<div class="periodico-marco"><img src="/assets/psico-ingles.webp?v=1" alt="Portada de la web en inglés: «I help you give voice to what hurts and transform it»" width="1440" height="900" loading="lazy" decoding="async"></div>
+<figcaption>La versión en inglés, en <code>/en/</code>.</figcaption>
+</figure>
+
+<figure class="periodico-figura periodico-figura-estrecha">
+<div class="periodico-marco"><img src="/assets/psico-movil.webp?v=1" alt="La portada de la web vista en un móvil" width="390" height="844" loading="lazy" decoding="async"></div>
+<figcaption>En el móvil, con el botón de WhatsApp siempre a mano.</figcaption>
+</figure>
+
+<h2>Contactar, por donde prefieras</h2>
+<p>El objetivo de la web es uno solo: que la persona contacte, por el canal que le resulte más cómodo. Por eso conviven el formulario, un botón flotante de WhatsApp y el correo. El formulario pide el teléfono con selector de país, filtra el spam con un campo trampa invisible y exige aceptar la política de privacidad: hablamos de datos de salud, la categoría más protegida del RGPD.</p>
+
+<figure class="periodico-figura">
+<div class="periodico-marco"><img src="/assets/psico-contacto.webp?v=1" alt="Formulario de contacto con nombre, email, teléfono con prefijo, tipo de terapia y mensaje" width="580" height="690" loading="lazy" decoding="async"></div>
+<figcaption>El formulario de contacto: lo justo para poder responder.</figcaption>
+</figure>
+
+<p class="periodico-nota"><strong>Nota de la redacción:</strong> el código de este proyecto es privado por petición de la clienta. Aquí solo se muestra lo que cualquiera puede ver en la web pública.</p>
+</div>
+
+<footer class="periodico-pie">
+<a class="pixel-button bg-secondary text-on-secondary px-4 py-2 text-[10px] uppercase font-pixel inline-flex items-center gap-2" href="https://angelagarciapsicologia.com/">Visitar la web</a>
+<a class="pixel-button bg-white text-on-surface px-4 py-2 text-[10px] uppercase font-pixel inline-flex items-center gap-2" href="/proyectos/">Más proyectos</a>
+</footer>
+</article>
+</main>
+<!-- footer-comun -->
+<!-- Footer común a todas las vistas. Editar SOLO aquí y ejecutar `npm run build`
+     (src/inyectar-partials.js lo pega entre los marcadores footer-comun de cada página). -->
+<footer class="w-full py-gutter px-margin bg-surface-container border-t-4 border-primary">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white flex items-center justify-center pixel-border">
+<span class="material-symbols-outlined text-4xl text-on-surface" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div>
+<h4 class="font-pixel text-[12px] text-on-surface">manuelgraya</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">© 2026 - Made with pixels</p>
+</div>
+</div>
+<div class="flex gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://github.com/manuelgraya">GitHub</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://www.linkedin.com/in/manuel-garcia-7023a0204/">LinkedIn</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="https://www.instagram.com/manuel.graya/">Instagram</a>
+</div>
+<div class="flex flex-col items-center md:items-end gap-2">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
+<span class="font-label-sm text-label-sm text-on-surface">SYSTEM_ONLINE</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Powered by Open Source and Coffee</p>
+</div>
+</div>
+</footer>
+<!-- /footer-comun -->
+<script src="/js/shader.js?v=20260722a" defer></script>
+</body>
+</html>
