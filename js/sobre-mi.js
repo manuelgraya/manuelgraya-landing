@@ -57,15 +57,16 @@
       etiqueta: '¿Cómo definirías tu estilo?',
       animacion: '/assets/avatar-teclear',
       texto:
-        'Terminal-first y pragmático. Prefiero entornos reproducibles (Docker), ' +
-        'automatizar lo repetitivo (Bash, CI/CD) y dejar el sistema como código.\n\n' +
-        'Priorizo la transparencia y la simplicidad, soluciones que impacten de ' +
-        'verdad, sin dependencias propietarias opacas. Creo en el software libre, en ' +
-        'el trabajo en equipo (Scrum, DevOps) y en desplegar rápido sin sacrificar ' +
-        'estabilidad.\n\n' +
-        'Ahora mismo me estoy formando a fondo en el uso de la IA: Claude Code, ' +
-        'Gemini, GPT, modelos locales en mi propio servidor... la integro en el día ' +
-        'a día para ir más rápido sin perder el control del código.',
+        'Terminal-first y pragmático. Antes de escribir una línea preparo el ' +
+        'terreno: un flujo de trabajo con agentes de IA y una buena base de ' +
+        'contexto automatizada mediante skills, para que trabajen con criterio y ' +
+        'sin dar palos de ciego.\n\n' +
+        'Estudio y reviso cada punto del proyecto y uso las mejores herramientas ' +
+        'del momento para llevar las ideas a cabo de la forma más rápida y óptima: ' +
+        'git como fuente de verdad, CI/CD para desplegar sin miedo y agentes ' +
+        'optimizados para gastar solo lo necesario.\n\n' +
+        'Creo en el software libre, la transparencia y la simplicidad. La IA me ' +
+        'hace ir más rápido, pero el control del código sigue siendo mío.',
     },
     {
       id: 'juego',
